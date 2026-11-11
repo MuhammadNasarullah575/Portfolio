@@ -27,7 +27,7 @@ export default function Navbar({ onOpenResume }: NavbarProps) {
     { label: "03. Projects", href: "#projects" },
     { label: "04. Experience", href: "#experience" },
     { label: "05. Stack", href: "#skills" },
-    { label: "06. Mentorship", href: "#learning" },
+    { label: "06. Hardware Lab", href: "#hardware-lab" },
     { label: "07. Services", href: "#services" },
     { label: "08. Contact", href: "#contact" },
   ];

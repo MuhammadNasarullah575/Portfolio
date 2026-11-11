@@ -1,3 +1,13 @@
+export interface HardwareProject {
+  id: string;
+  title: string;
+  image: string;
+  category: string;
+  components: string[];
+  description: string;
+  impact: string;
+}
+
 export interface Project {
   id: string;
   title: string;
@@ -5,6 +15,7 @@ export interface Project {
   category: "AI/ML" | "Web Development" | "Robotics & IoT" | "Data Science";
   tag: string;
   featured: boolean;
+  image?: string;
   summary: string;
   objective: string;
   technologies: string[];
@@ -16,7 +27,7 @@ export interface Project {
     detailsUrl?: string;
   };
   metrics?: string[];
-  gradient: string;
+  accentColor?: string;
 }
 
 export interface Experience {
@@ -55,18 +66,18 @@ export const personalData = {
   roleSubtitles: [
     "AI/ML Engineer",
     "Full-Stack Web Developer",
-    "Computer Engineer",
+    "Computer Engineer (PEC Registered)",
     "Robotics & IoT Specialist",
-    "Computer Vision & NLP Explorer",
+    "Data Scraping & Automation Expert",
   ],
   tagline: "Building Intelligent Solutions Through AI, Engineering, and Modern Web Technologies.",
   location: "Sargodha, Punjab, Pakistan",
-  email: "nasarullah.engr@gmail.com", // Professional placeholder easy to customize
+  email: "nasarullah.engr@gmail.com",
   phone: "+92 300 0000000",
   github: "https://github.com/MuhammadNasarullah575",
-  linkedin: "https://www.linkedin.com/in/muhammad-nasarullah/", // easy to replace
+  linkedin: "https://www.linkedin.com/in/muhammad-nasarullah/",
   fiverr: "https://www.fiverr.com/",
-  status: "Available for AI/ML & Full-Stack Opportunities",
+  status: "Available for AI/ML, Full-Stack & Automation Opportunities",
   education: {
     degree: "Bachelor of Science in Computer Engineering",
     institution: "Institute of Space Technology (IST), KICSIT",
@@ -86,19 +97,221 @@ export const personalData = {
     ]
   },
   heroStats: [
-    { value: "6+", label: "Major Production & AI Projects" },
-    { value: "3+", label: "Industry & Research Roles" },
-    { value: "3.23", label: "BS Computer Engineering CGPA" },
+    { value: "8+", label: "Production & Engineering Projects" },
+    { value: "3+", label: "Industry & Tech Fellowship Roles" },
+    { value: "3.23", label: "BS Computer Engineering CGPA (IST)" },
     { value: "100+", label: "Students Mentored in Robotics & STEM" },
   ],
   bioParagraphs: [
-    "I am Muhammad Nasarullah, a Computer Engineer with a deep passion for Artificial Intelligence, Machine Learning, Full-Stack Web Development, and emerging cyber-physical systems.",
-    "I hold a Bachelor's degree in Computer Engineering from the Institute of Space Technology (IST), KICSIT, with a CGPA of 3.23/4.00. I combine the analytical rigor of hardware & system engineering with the agility of modern full-stack software and deep learning models.",
-    "My hands-on experience spans across production AI/ML development, web scraping, data processing, computer vision, robotics, IoT, and educational technology. I also served as a Tech Fellow under the Federal Directorate of Education's Disruptive Education initiative, training the next generation in STEM, Arduino, and smart automation.",
+    "I am Muhammad Nasarullah, a Computer Engineer with a deep passion for Artificial Intelligence, Machine Learning, Full-Stack Web Development, and cyber-physical systems.",
+    "I hold a Bachelor's degree in Computer Engineering from the Institute of Space Technology (IST), KICSIT, with a CGPA of 3.23/4.00. I combine the analytical rigor of hardware & system engineering with modern full-stack web architectures and deep learning pipelines.",
+    "My hands-on experience spans across production AI/ML systems, automated web scraping (Playwright/Python), computer vision, robotics, IoT, and educational technology. As a Tech Fellow under the Federal Directorate of Education's Disruptive Education initiative, I trained 100+ students in practical STEM, Arduino, sensors, and hardware prototyping.",
     "I believe in continuous learning, practical experimentation, and engineering intelligent software that solves real-world human and commercial challenges."
   ],
   vision: "My vision is to contribute to the development of intelligent technologies that make everyday processes smarter, faster, and more efficient. I aim to grow at the intersection of AI/ML and Full-Stack Engineering, transforming complex algorithms into scalable, accessible products."
 };
+
+export const hardwareProjects: HardwareProject[] = [
+  {
+    id: "door-lock",
+    title: "Smart Keypad Door Lock System",
+    image: "/images/tech-fellow/door-lock.jfif",
+    category: "Access Control & Embedded Security",
+    components: ["Arduino Uno", "4x4 Matrix Keypad", "Micro Servo (SG90)", "16x2 I2C LCD Display", "Buzzer"],
+    description: "An automated electronic locking mechanism requiring secure passcode authentication via matrix keypad, actuating a high-torque servo bolt and displaying status messages on an LCD screen.",
+    impact: "Built & demonstrated to teach students security electronics, password hashing logic, and digital actuator control."
+  },
+  {
+    id: "pong-game",
+    title: "Arduino OLED Retro Pong Game",
+    image: "/images/tech-fellow/pong-game.jfif",
+    category: "Interactive Embedded Gaming",
+    components: ["Arduino Uno", "0.96-inch I2C OLED Display", "Analog Potentiometers", "Tactile Pushbuttons"],
+    description: "A complete physical hardware gaming console running real-time 2D physics, collision detection algorithms, and dynamic paddle controls rendered smoothly on a high-contrast OLED display.",
+    impact: "Demonstrated real-time coordinate math, frame-buffer rendering, and analog input processing to STEM students."
+  },
+  {
+    id: "heart-rate",
+    title: "Smart Heart Rate Pulse Monitor",
+    image: "/images/tech-fellow/heart-rate.jfif",
+    category: "Biomedical Telemetry & IoT",
+    components: ["Optical Pulse Sensor", "Arduino Uno", "OLED/LCD Display", "Piezo Buzzer Alert"],
+    description: "Photoplethysmography (PPG) optical sensor measuring capillary blood volume variations to compute real-time Beats Per Minute (BPM) with cardiac arrhythmia threshold alerts.",
+    impact: "Showcased biomedical signal sampling, noise filtering, and threshold detection in healthcare electronics."
+  },
+  {
+    id: "digital-ruler",
+    title: "Ultrasonic Digital Measuring Ruler",
+    image: "/images/tech-fellow/digital-ruler.jfif",
+    category: "Acoustic Spatial Sensing",
+    components: ["HC-SR04 Ultrasonic Sensor", "Arduino Uno", "16x2 LCD Display", "Pushbutton Mode Switch"],
+    description: "High-accuracy contactless distance measurement instrument calculating spatial clearance through 40kHz acoustic echo time-of-flight physics with millimeter precision.",
+    impact: "Taught speed-of-sound time-of-flight mathematical calculations and sensor calibration techniques."
+  },
+  {
+    id: "keypad-calc",
+    title: "Hardware Embedded Keypad Calculator",
+    image: "/images/tech-fellow/keypad-calc.jfif",
+    category: "Mathematical Logic & Embedded OS",
+    components: ["Arduino Uno", "Numeric Matrix Keypad", "16x2 LCD Display", "C/C++ Math Engine"],
+    description: "A standalone mathematical computing unit processing arithmetic operations (+, -, *, /) directly in microcontroller memory with instant LCD evaluation and operand parsing.",
+    impact: "Reinforced data parsing, string arithmetic, and state-machine input handling in embedded environments."
+  },
+  {
+    id: "digital-piano",
+    title: "Tactile Electronic Digital Piano",
+    image: "/images/tech-fellow/digital-piano.jfif",
+    category: "Acoustic Frequency Synthesis",
+    components: ["Tactile Switch Array", "Arduino Uno", "Piezo Tone Transducer", "Resistor Ladder Network"],
+    description: "Multi-frequency sound synthesizer generating musical octave frequencies (C4, D4, E4, F4, G4, A4, B4) through precise PWM timer wave generation when tactile inputs are pressed.",
+    impact: "Demonstrated acoustic frequency generation, resistor ladder signal multiplexing, and timer interrupts."
+  }
+];
+
+export const projects: Project[] = [
+  {
+    id: "tijaaro-ecommerce",
+    title: "Tijaaro — Modern Full-Stack E-Commerce Platform",
+    subtitle: "High-Converting Storefront + Comprehensive Administrative Master Gateway",
+    category: "Web Development",
+    tag: "Production Web App",
+    featured: true,
+    image: "/images/tijaaro-showcase.png",
+    accentColor: "#00b3ff",
+    summary: "A production-grade, ultra-responsive e-commerce platform engineered with Next.js, React, and modern UI architecture. Features a lightning-fast customer shopping experience paired with an enterprise-level administrative control gateway for catalog and order management.",
+    objective: "To develop an elegant, scalable, and responsive commerce application featuring dual user/admin interfaces with high conversion rates and seamless checkout workflows.",
+    technologies: ["Next.js (App Router)", "React", "JavaScript (ES6+)", "Tailwind CSS", "Vercel", "Git/GitHub", "REST APIs"],
+    keyFeatures: [
+      "Customer Storefront: Dynamic product catalog, real-time search, cart management, and responsive layouts.",
+      "Administrative Master Gateway: Dedicated back-office dashboard for inventory, orders, and website management.",
+      "Mobile-First Responsive UI: Optimized viewports across smartphones, tablets, and high-res desktops.",
+      "Blazing Fast Performance: Server-side rendering (SSR) and client components for sub-second load times.",
+      "CI/CD Cloud Deployment: Live production hosting on Vercel with automated GitHub integration."
+    ],
+    metrics: ["Live Production App", "Dual Store & Admin Portals", "Sub-Second Page Loads"],
+    links: {
+      demo: "https://e-commerce-websites-ecru.vercel.app/",
+      adminDemo: "https://e-commerce-websites-ecru.vercel.app/sz-master-gateway-9842xk",
+      github: "https://github.com/MuhammadNasarullah575"
+    }
+  },
+  {
+    id: "daraz-scraper",
+    title: "Daraz Marketplace Automated Data Harvester",
+    subtitle: "Resilient Python Web Scraping & Structured ETL Extraction Pipeline",
+    category: "Data Science",
+    tag: "Automation & ETL",
+    featured: true,
+    image: "/images/daraz-scraper.jfif",
+    accentColor: "#f97316",
+    summary: "A robust, automated web harvesting pipeline built in Python to extract structured product intelligence from Pakistan's largest e-commerce marketplace (Daraz). Designed to overcome dynamic JavaScript rendering, infinite scroll, and anti-bot obstacles to harvest clean product catalogs.",
+    objective: "To automate competitor product monitoring, pricing intelligence, and customer sentiment analytics by building a fault-tolerant web data extraction engine.",
+    technologies: ["Python", "Playwright", "BeautifulSoup4", "Pandas", "NumPy", "JSON/CSV Export", "Anti-Bot Bypass"],
+    keyFeatures: [
+      "Automated extraction of product titles, current/discounted prices, star ratings, review counts, and seller badges.",
+      "Dynamic browser automation handling heavy client-side JavaScript rendering and lazy-loaded product grids.",
+      "Resilient pagination crawler collecting multi-page catalog datasets with rate-limit evasion.",
+      "Automated data cleaning, deduplication, and structured export to CSV/JSON formats for analytical pipelines.",
+      "Error handling and retry mechanisms ensuring uninterrupted long-running batch extraction jobs."
+    ],
+    metrics: ["1,000+ Products/Min", "Dynamic JS Handling", "Clean Structured Data"],
+    links: {
+      github: "https://github.com/MuhammadNasarullah575"
+    }
+  },
+  {
+    id: "fire-detection",
+    title: "AI-Based Real-Time Fire & Smoke Detection System",
+    subtitle: "Computer Vision Hazard Detection with YOLOv8 & Automated Notifications",
+    category: "AI/ML",
+    tag: "Final Year Project",
+    featured: true,
+    accentColor: "#ef4444",
+    summary: "An intelligent, life-saving computer vision system developed as my Final Year Project at IST/KICSIT. Utilizing custom-trained YOLOv8 models, OpenCV, and Kalman filtering to identify fire, flame, smoke, and sparks in real-time CCTV streams, triggering automated SMTP email alerts.",
+    objective: "To drastically improve fire safety in industrial and commercial buildings through automated, ultra-fast visual detection, false-alarm suppression, and real-time alert notifications.",
+    technologies: ["Python", "YOLOv8", "OpenCV", "CVZone", "Kalman Filter", "Tkinter", "Pygame", "SMTP", "XAMPP"],
+    keyFeatures: [
+      "Real-time simultaneous detection of fire, flame, smoke, and hazardous sparks with high mAP accuracy.",
+      "Kalman Filter integration for robust multi-frame tracking and noise reduction across live CCTV feeds.",
+      "Automated instant email alert dispatch via secure SMTP protocol with attached hazard snapshot.",
+      "Audible hazard alarm triggering powered by Pygame audio engine.",
+      "Desktop GUI built with Tkinter for live CCTV feed visualization, threshold adjustment, and control."
+    ],
+    metrics: ["Real-Time 30+ FPS", "Multi-Hazard Detection", "Instant SMTP Alerts"],
+    links: {
+      github: "https://github.com/MuhammadNasarullah575"
+    }
+  },
+  {
+    id: "short-squeeze",
+    title: "Short Squeeze Risk Prediction System",
+    subtitle: "Quantitative Financial Market Analysis & Technical Indicator Engine",
+    category: "Data Science",
+    tag: "FinTech & ML",
+    featured: true,
+    accentColor: "#00ff9c",
+    summary: "A data-driven financial intelligence engine built to analyze US-listed equities, evaluate short interest dynamics, and estimate 5-day short squeeze probabilities using statistical models and technical indicators.",
+    objective: "To equip traders and quantitative analysts with probabilistic squeeze forecasts by processing real-time exchange data, short interest, and volume surges.",
+    technologies: ["Python", "Pandas", "NumPy", "Scikit-learn", "Streamlit", "FINRA Data", "Financial APIs"],
+    keyFeatures: [
+      "Automated pipeline harvesting FINRA short volume and exchange trading statistics.",
+      "Dynamic computation of technical indicators: RSI, MACD, Relative Volume (RVOL), and Days-to-Cover.",
+      "Probabilistic 5-day Short Squeeze Risk classification model using Scikit-learn.",
+      "Interactive, responsive Streamlit dashboard featuring intuitive equity screener and charting.",
+      "Historical backtesting data modules with alert triggers for unusual volume spikes."
+    ],
+    metrics: ["5-Day Risk Classification", "FINRA Data Ingestion", "Interactive Live Dashboard"],
+    links: {
+      github: "https://github.com/MuhammadNasarullah575"
+    }
+  },
+  {
+    id: "news-stock-prediction",
+    title: "News-Based Stock Market Prediction System",
+    subtitle: "NLP Sentiment Classification & Multi-Horizon Market Impact Modeling",
+    category: "AI/ML",
+    tag: "NLP & Predictive AI",
+    featured: true,
+    accentColor: "#a855f7",
+    summary: "An advanced machine learning system that digests real-time financial journalism, processes news semantics using Transformer NLP models (DistilBART), and forecasts market price actions into Spike, Neutral, and Crash categories.",
+    objective: "To investigate and quantify the predictive correlation between breaking financial headlines and intraday stock price movement regimes.",
+    technologies: ["Python", "NLP", "DistilBART", "LightGBM", "Logistic Regression", "PostgreSQL", "Financial APIs"],
+    keyFeatures: [
+      "Automated extraction and continuous text preprocessing of live financial news streams.",
+      "Deep semantic feature embedding and sentiment classification via DistilBART transformers.",
+      "Multi-class market movement prediction: categorizing outcomes into Spike, Neutral, and Crash.",
+      "Hybrid ensemble architecture marrying NLP text signals with numerical market indicators.",
+      "Robust PostgreSQL storage layer for chronological historical headline and ticker data."
+    ],
+    metrics: ["DistilBART Transformers", "Spike/Neutral/Crash Regime", "PostgreSQL Storage"],
+    links: {
+      github: "https://github.com/MuhammadNasarullah575"
+    }
+  },
+  {
+    id: "news-classification",
+    title: "Machine Learning-Based News Classification",
+    subtitle: "High-Dimensional Semantic Embeddings & Neural NLP Classifier",
+    category: "AI/ML",
+    tag: "NLP & Deep Learning",
+    featured: false,
+    accentColor: "#06b6d4",
+    summary: "An end-to-end NLP news classification framework built upon 3,460 manually labeled headlines. Leveraged state-of-the-art sentence transformers (all-MiniLM-L6-v2), dimensionality reduction, and comparative model architectures.",
+    objective: "To automate multi-domain topic classification for high-throughput news aggregation feeds with top-tier precision and low latency.",
+    technologies: ["Python", "NLP", "Sentence Transformers", "MiniLM", "PCA", "ANOVA", "SVC", "BiLSTM", "PostgreSQL"],
+    keyFeatures: [
+      "Rigorous dataset curation and labeling across 3,460 domain-specific news headlines.",
+      "Dense semantic vector representation using pretrained all-MiniLM-L6-v2 sentence embeddings.",
+      "Dimensionality reduction and feature selection using PCA and statistical ANOVA testing.",
+      "Benchmarking between Support Vector Classifiers (SVC) and Bidirectional LSTM (BiLSTM) networks.",
+      "High accuracy multi-category text categorization pipeline."
+    ],
+    metrics: ["3,460 Hand-Labeled Dataset", "Sentence-Transformers", "SVC vs BiLSTM Benchmarking"],
+    links: {
+      github: "https://github.com/MuhammadNasarullah575"
+    }
+  }
+];
 
 export const experiences: Experience[] = [
   {
@@ -159,224 +372,6 @@ export const experiences: Experience[] = [
   }
 ];
 
-export const skillCategories: SkillCategory[] = [
-  {
-    title: "Artificial Intelligence & ML",
-    description: "Computer vision, deep neural networks, predictive modeling, and NLP pipelines",
-    icon: "Brain",
-    skills: [
-      { name: "Computer Vision & YOLOv8", level: 92, isKey: true },
-      { name: "OpenCV & Video Processing", level: 90, isKey: true },
-      { name: "Machine Learning (Scikit-learn)", level: 88, isKey: true },
-      { name: "Natural Language Processing (NLP)", level: 85, isKey: true },
-      { name: "Deep Learning (TensorFlow / Keras)", level: 80 },
-      { name: "Sentence Transformers & Embeddings", level: 84 },
-      { name: "Data Preprocessing & Augmentation", level: 90 },
-      { name: "Model Evaluation & Metrics", level: 88 }
-    ]
-  },
-  {
-    title: "Full-Stack Web Development",
-    description: "Modern, responsive, user-centric web applications and scalable APIs",
-    icon: "Layout",
-    skills: [
-      { name: "React.js & Next.js", level: 90, isKey: true },
-      { name: "JavaScript (ES6+) & TypeScript", level: 88, isKey: true },
-      { name: "HTML5 & Tailwind CSS / Modern CSS", level: 95, isKey: true },
-      { name: "RESTful API Design & Integration", level: 86 },
-      { name: "Node.js & Express.js", level: 80 },
-      { name: "PostgreSQL & SQL", level: 82 },
-      { name: "MongoDB & Mongoose", level: 78 },
-      { name: "Responsive UI / UX Architecture", level: 92 }
-    ]
-  },
-  {
-    title: "Data Science & Automation",
-    description: "Web data extraction, pipeline automation, analytics dashboards, and processing",
-    icon: "Database",
-    skills: [
-      { name: "Python Scripting & Automation", level: 94, isKey: true },
-      { name: "Web Scraping (Playwright, BS4)", level: 92, isKey: true },
-      { name: "Pandas & NumPy Data Wrangling", level: 90, isKey: true },
-      { name: "Streamlit Dashboard Development", level: 88 },
-      { name: "Financial Data Analysis & Risk Metrics", level: 85 },
-      { name: "Data Cleaning & Structured Pipelines", level: 90 },
-      { name: "Data Visualization (Matplotlib, Seaborn)", level: 84 }
-    ]
-  },
-  {
-    title: "Robotics & Embedded Systems",
-    description: "Microcontroller programming, sensor integration, hardware prototyping",
-    icon: "Cpu",
-    skills: [
-      { name: "Arduino Uno & Microcontrollers", level: 90, isKey: true },
-      { name: "IoT & Sensor Interfacing", level: 88, isKey: true },
-      { name: "UART & Serial Communications", level: 85 },
-      { name: "C / C++ Embedded Basics", level: 82 },
-      { name: "Electronics & Circuit Design", level: 84 },
-      { name: "Actuators, Displays & Motor Control", level: 86 }
-    ]
-  },
-  {
-    title: "Tools, Platforms & Deployment",
-    description: "Development environments, version control, and cloud hosting",
-    icon: "Wrench",
-    skills: [
-      { name: "Git & GitHub Version Control", level: 92, isKey: true },
-      { name: "VS Code & Extensions", level: 95 },
-      { name: "Vercel Deployment & CI/CD", level: 90, isKey: true },
-      { name: "Google Colab & Jupyter Notebooks", level: 92 },
-      { name: "Linux / CLI Environments", level: 82 },
-      { name: "XAMPP & Local Server Stacks", level: 85 }
-    ]
-  }
-];
-
-export const projects: Project[] = [
-  {
-    id: "fire-detection",
-    title: "AI-Based Fire Detection System",
-    subtitle: "Real-Time Hazard Detection with Computer Vision & Automated Alerts",
-    category: "AI/ML",
-    tag: "Final Year Project",
-    featured: true,
-    gradient: "from-orange-500/20 via-red-500/10 to-amber-500/20",
-    summary: "An intelligent, life-saving computer vision application developed as my Final Year Project at IST/KICSIT. It utilizes custom-trained YOLOv8 models to identify fire, flame, smoke, and sparks in real-time video streams, automatically dispatching alert emails.",
-    objective: "To drastically improve fire safety in high-risk zones through automated, ultra-fast visual detection, false-alarm suppression, and real-time alert notifications.",
-    technologies: ["Python", "YOLOv8", "OpenCV", "CVZone", "Kalman Filter", "Tkinter", "Pygame", "SMTP", "XAMPP"],
-    keyFeatures: [
-      "Real-time simultaneous detection of fire, flame, smoke, and hazardous sparks.",
-      "Fine-tuned YOLOv8 deep learning vision backbone with high mAP accuracy.",
-      "Kalman Filter integration for robust multi-frame tracking and noise reduction.",
-      "Automated instant email alert dispatch via secure SMTP protocol.",
-      "Audible hazard alarm triggering powered by Pygame audio engine.",
-      "Desktop GUI built with Tkinter for live CCTV feed visualization and control."
-    ],
-    metrics: ["Real-time 30+ FPS detection", "Multi-hazard classification", "Instant SMTP notifications"],
-    links: {
-      github: "https://github.com/MuhammadNasarullah575",
-    }
-  },
-  {
-    id: "short-squeeze",
-    title: "Short Squeeze Risk Prediction System",
-    subtitle: "Quantitative Financial Market Analysis & Technical Indicator Engine",
-    category: "Data Science",
-    tag: "FinTech & ML",
-    featured: true,
-    gradient: "from-emerald-500/20 via-teal-500/10 to-cyan-500/20",
-    summary: "A data-driven financial intelligence engine built to analyze US-listed equities, evaluate short interest dynamics, and estimate 5-day short squeeze probabilities using statistical models and technical indicators.",
-    objective: "To equip traders and quantitative analysts with probabilistic squeeze forecasts by processing real-time exchange data, short interest, and volume surges.",
-    technologies: ["Python", "Pandas", "NumPy", "Scikit-learn", "Streamlit", "FINRA Data", "Financial APIs"],
-    keyFeatures: [
-      "Automated pipeline harvesting FINRA short volume and exchange trading statistics.",
-      "Dynamic computation of technical indicators: RSI, MACD, Relative Volume (RVOL), and Days-to-Cover.",
-      "Probabilistic 5-day Short Squeeze Risk classification model using Scikit-learn.",
-      "Interactive, responsive Streamlit dashboard featuring intuitive equity screener and charting.",
-      "Historical backtesting data modules with alert triggers for unusual volume spikes."
-    ],
-    metrics: ["5-Day Risk Classification", "FINRA Data Ingestion", "Interactive Live Dashboard"],
-    links: {
-      github: "https://github.com/MuhammadNasarullah575",
-    }
-  },
-  {
-    id: "tijaaro-ecommerce",
-    title: "Tijaaro – E-Commerce Web Application",
-    subtitle: "Dual-Interface Modern Commerce Platform with Admin Control Center",
-    category: "Web Development",
-    tag: "Full-Stack Web",
-    featured: true,
-    gradient: "from-blue-500/20 via-indigo-500/10 to-sky-500/20",
-    summary: "A production-grade, responsive e-commerce web platform engineered with modern Next.js and React architecture, featuring both a high-converting storefront and a dedicated administrative master gateway.",
-    objective: "To deliver a blazing-fast, elegant shopping experience for end customers paired with comprehensive back-office product and order management for administrators.",
-    technologies: ["Next.js", "React", "JavaScript", "HTML5", "CSS3 / Tailwind", "Git", "GitHub", "Vercel"],
-    keyFeatures: [
-      "High-performance customer storefront with catalog browsing, search, and dynamic product filtering.",
-      "Secure administrative master gateway dashboard for inventory and product management.",
-      "Fully responsive, mobile-first design optimized for all screen viewports.",
-      "Ultra-fast page loads and SEO optimization powered by Next.js server and client components.",
-      "Production deployment with automated CI/CD pipeline on Vercel."
-    ],
-    metrics: ["Live Production App", "Dual Customer & Admin Portal", "100% Mobile Responsive"],
-    links: {
-      demo: "https://e-commerce-websites-ecru.vercel.app/",
-      adminDemo: "https://e-commerce-websites-ecru.vercel.app/sz-master-gateway-9842xk",
-      github: "https://github.com/MuhammadNasarullah575"
-    }
-  },
-  {
-    id: "news-stock-prediction",
-    title: "News-Based Stock Market Prediction System",
-    subtitle: "NLP Sentiment Classification & Multi-Horizon Market Impact Modeling",
-    category: "AI/ML",
-    tag: "NLP & Predictive AI",
-    featured: true,
-    gradient: "from-purple-500/20 via-pink-500/10 to-indigo-500/20",
-    summary: "An advanced machine learning system that digests real-time financial journalism, processes news semantics using Transformer NLP models, and forecasts market price actions into Spike, Neutral, and Crash categories.",
-    objective: "To investigate and quantify the predictive correlation between breaking financial headlines and intraday stock price movement regimes.",
-    technologies: ["Python", "NLP", "DistilBART", "LightGBM", "Logistic Regression", "PostgreSQL", "Financial APIs"],
-    keyFeatures: [
-      "Automated extraction and continuous text preprocessing of live financial news streams.",
-      "Deep semantic feature embedding and sentiment classification via DistilBART transformers.",
-      "Multi-class market movement prediction: categorizing outcomes into Spike, Neutral, and Crash.",
-      "Hybrid ensemble architecture marrying NLP text signals with numerical market indicators.",
-      "Robust PostgreSQL storage layer for chronological historical headline and ticker data."
-    ],
-    metrics: ["DistilBART Transformers", "Spike/Neutral/Crash Regime", "PostgreSQL Storage"],
-    links: {
-      github: "https://github.com/MuhammadNasarullah575",
-    }
-  },
-  {
-    id: "news-classification",
-    title: "Machine Learning-Based News Classification",
-    subtitle: "High-Dimensional Semantic Embeddings & Neural NLP Classifier",
-    category: "AI/ML",
-    tag: "NLP & Deep Learning",
-    featured: false,
-    gradient: "from-cyan-500/20 via-blue-500/10 to-teal-500/20",
-    summary: "An end-to-end NLP news classification framework built upon 3,460 manually labeled headlines. Leveraged state-of-the-art sentence transformers (all-MiniLM-L6-v2), dimensionality reduction, and comparative model architectures.",
-    objective: "To automate multi-domain topic classification for high-throughput news aggregation feeds with top-tier precision and low latency.",
-    technologies: ["Python", "NLP", "Sentence Transformers", "MiniLM", "PCA", "ANOVA", "SVC", "BiLSTM", "PostgreSQL"],
-    keyFeatures: [
-      "Rigorous dataset curation and labeling across 3,460 domain-specific news headlines.",
-      "Dense semantic vector representation using pretrained all-MiniLM-L6-v2 sentence embeddings.",
-      "Dimensionality reduction and feature selection using PCA and statistical ANOVA testing.",
-      "Benchmarking between Support Vector Classifiers (SVC) and Bidirectional LSTM (BiLSTM) networks.",
-      "High accuracy multi-category text categorization pipeline."
-    ],
-    metrics: ["3,460 Hand-Labeled Dataset", "Sentence-Transformers", "SVC vs BiLSTM Benchmarking"],
-    links: {
-      github: "https://github.com/MuhammadNasarullah575",
-    }
-  },
-  {
-    id: "robotics-iot",
-    title: "Robotics, Electronics & IoT Suite",
-    subtitle: "Embedded Hardware Prototyping, Sensor Networks & Interactive Systems",
-    category: "Robotics & IoT",
-    tag: "Embedded Systems",
-    featured: true,
-    gradient: "from-green-500/20 via-emerald-500/10 to-lime-500/20",
-    summary: "A diverse collection of physical computing and embedded engineering projects developed both independently and as part of the Tech Fellowship with LearnOBots and the Federal Directorate of Education.",
-    objective: "To pioneer practical, functional prototypes by synthesizing microcontrollers, sensor telemetry, and hardware-level programming.",
-    technologies: ["Arduino Uno", "C/C++", "Sensors", "LCD / OLED Displays", "Servo Motors", "IoT", "UART"],
-    keyFeatures: [
-      "Smart Door Lock: Secured access system incorporating numeric keypad, servo motor lock bolt, and LCD display.",
-      "Arduino OLED Pong Game: Physical hardware gaming system rendered on a 0.96-inch I2C OLED display with tactile inputs.",
-      "Keypad-Based Embedded Calculator: Hardware math processor with keypad and instant LCD evaluation.",
-      "Ultrasonic Measurement System: Accurate distance and spatial clearance metering via ultrasonic soundwave echoes.",
-      "Heart Rate & Biomedical Monitoring: Pulse sensor integration tracking real-time BPM and cardiac rhythms.",
-      "Smart Irrigation Prototype: Soil moisture sensor triggering automated relay-actuated plant watering."
-    ],
-    metrics: ["8+ Functional Prototypes", "Arduino & Microcontroller Tech", "STEM Curriculum Certified"],
-    links: {
-      github: "https://github.com/MuhammadNasarullah575",
-    }
-  }
-];
-
 export const services: Service[] = [
   {
     id: "ai-ml",
@@ -399,7 +394,7 @@ export const services: Service[] = [
     description: "Building production-grade web applications utilizing Next.js, React, Tailwind CSS, and robust backend APIs. Focused on clean code, exceptional user experience, high SEO scores, and blazing speed.",
     deliverables: [
       "Custom responsive web applications with Next.js & React",
-      "E-commerce platforms with customer storefront and admin controls",
+      "E-commerce platforms with customer storefront and admin controls (like Tijaaro)",
       "RESTful API design and database integrations (PostgreSQL, MongoDB)",
       "Modern UI/UX design implementation, SEO & mobile optimization"
     ],
@@ -435,37 +430,3 @@ export const services: Service[] = [
     badge: "Hardware & IoT"
   }
 ];
-
-export const professionalStrengths = [
-  {
-    title: "Analytical Problem Solving",
-    desc: "Rigorous ability to dissect complex technical bottlenecks and engineer pragmatic, production-grade solutions.",
-    icon: "Sparkles"
-  },
-  {
-    title: "Interdisciplinary Engineering",
-    desc: "Seamlessly bridging deep learning, full-stack software, data pipelines, and embedded hardware systems.",
-    icon: "Layers"
-  },
-  {
-    title: "Research & Rapid Prototyping",
-    desc: "Adept at translating academic papers, experimental models, and new frameworks into functional prototypes.",
-    icon: "Search"
-  },
-  {
-    title: "Technical Communication",
-    desc: "Proven track record as a Tech Fellow communicating complex engineering concepts with clarity and impact.",
-    icon: "Users"
-  },
-  {
-    title: "Continuous Learning",
-    desc: "Deep curiosity and disciplined self-learning, consistently mastering modern toolchains and emerging tech.",
-    icon: "TrendingUp"
-  },
-  {
-    title: "Product & Business Focus",
-    desc: "Balancing algorithm performance with real-world user experience, speed, and client business outcomes.",
-    icon: "CheckCircle2"
-  }
-];
-

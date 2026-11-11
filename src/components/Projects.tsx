@@ -31,18 +31,47 @@ export default function Projects() {
 
   // High-impact visual thumbnail renderers for each project
   const renderVisualThumbnail = (project: Project) => {
+    // If the project has an actual user-provided picture, render high-res image showcase
+    if (project.image) {
+      return (
+        <div className="w-full h-56 bg-black relative flex items-center justify-center overflow-hidden group">
+          <img
+            src={project.image}
+            alt={project.title}
+            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#0d1117] via-transparent to-transparent opacity-80" />
+          
+          {/* Subtle Cyber scanline overlay */}
+          <div className="absolute inset-0 pointer-events-none opacity-10 bg-[linear-gradient(#00ff9c_1px,transparent_1px)] bg-[size:100%_4px]" />
+          
+          <div className="absolute bottom-2 left-3 right-3 flex justify-between items-center text-[10px] font-mono text-white bg-black/80 backdrop-blur-md px-2.5 py-1 rounded border border-[#1f2933]">
+            <span className="text-[#00ff9c] font-bold flex items-center gap-1">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#00ff9c] animate-pulse" />
+              LIVE_SYSTEM_ASSET
+            </span>
+            <span className="text-slate-400">HIGH_RES_PREVIEW</span>
+          </div>
+        </div>
+      );
+    }
+
     switch (project.id) {
       case "fire-detection":
         return (
-          <div className="w-full h-52 bg-[#090d16] relative flex items-center justify-center overflow-hidden group-hover:scale-105 transition-transform duration-500">
+          <div className="w-full h-56 bg-[#090d16] relative flex items-center justify-center overflow-hidden group-hover:scale-105 transition-transform duration-500">
             {/* Visual HUD Simulation */}
             <div className="absolute inset-0 bg-[radial-gradient(#ff4d00_1px,transparent_1px)] bg-[size:16px_16px] opacity-15" />
-            <div className="w-36 h-28 border-2 border-red-500 rounded relative flex flex-col justify-between p-2 shadow-[0_0_20px_rgba(239,68,68,0.4)]">
+            <div className="w-40 h-32 border-2 border-red-500 rounded relative flex flex-col justify-between p-2.5 shadow-[0_0_20px_rgba(239,68,68,0.4)] bg-red-500/5">
               <span className="font-mono text-[9px] bg-red-600 text-white px-1.5 py-0.5 rounded font-bold w-fit">
-                YOLOv8: FIRE [98.7%]
+                YOLOv8: FLAME [99.2%]
               </span>
-              <div className="flex justify-between items-end">
-                <span className="font-mono text-[8px] text-red-400">FPS: 32.4</span>
+              <div className="space-y-1 font-mono text-[8px] text-red-300">
+                <p>&gt; Kalman Track: Active</p>
+                <p>&gt; SMTP Alert: Armed</p>
+              </div>
+              <div className="flex justify-between items-end border-t border-red-500/40 pt-1">
+                <span className="font-mono text-[8px] text-red-400">FPS: 34.2</span>
                 <span className="w-2 h-2 rounded-full bg-red-500 animate-ping" />
               </div>
             </div>
@@ -55,53 +84,32 @@ export default function Projects() {
 
       case "short-squeeze":
         return (
-          <div className="w-full h-52 bg-[#090d16] relative flex items-center justify-center overflow-hidden group-hover:scale-105 transition-transform duration-500">
+          <div className="w-full h-56 bg-[#090d16] relative flex items-center justify-center overflow-hidden group-hover:scale-105 transition-transform duration-500">
             <div className="absolute inset-0 bg-[radial-gradient(#00ff9c_1px,transparent_1px)] bg-[size:16px_16px] opacity-15" />
             {/* FinTech Chart Bars */}
-            <div className="flex items-end gap-2.5 h-24">
+            <div className="flex items-end gap-2.5 h-28">
               <div className="w-4 h-12 bg-slate-700 rounded-t" />
               <div className="w-4 h-16 bg-slate-700 rounded-t" />
               <div className="w-4 h-10 bg-slate-700 rounded-t" />
-              <div className="w-4 h-20 bg-[#00ff9c] rounded-t shadow-[0_0_15px_rgba(0,255,156,0.6)] animate-pulse" />
-              <div className="w-4 h-14 bg-emerald-500 rounded-t" />
+              <div className="w-4 h-24 bg-[#00ff9c] rounded-t shadow-[0_0_15px_rgba(0,255,156,0.6)] animate-pulse" />
+              <div className="w-4 h-18 bg-emerald-500 rounded-t" />
+              <div className="w-4 h-14 bg-cyan-500 rounded-t" />
             </div>
-            <div className="absolute top-4 right-4 font-mono text-[10px] text-[#00ff9c] bg-black/70 px-2 py-0.5 border border-[#00ff9c]/40">
+            <div className="absolute top-4 right-4 font-mono text-[10px] text-[#00ff9c] bg-black/70 px-2 py-0.5 border border-[#00ff9c]/40 rounded">
               5-DAY_SQUEEZE_PROB: 88.5%
             </div>
-          </div>
-        );
-
-      case "tijaaro-ecommerce":
-        return (
-          <div className="w-full h-52 bg-[#090d16] relative flex items-center justify-center overflow-hidden group-hover:scale-105 transition-transform duration-500">
-            <div className="absolute inset-0 bg-[radial-gradient(#00b3ff_1px,transparent_1px)] bg-[size:16px_16px] opacity-15" />
-            <div className="w-64 h-32 rounded bg-[#0d1117] border border-[#00b3ff]/40 p-3 flex flex-col justify-between shadow-[0_0_20px_rgba(0,179,255,0.2)]">
-              <div className="flex items-center justify-between border-b border-[#1f2933] pb-1.5">
-                <span className="font-header text-[11px] font-bold text-white flex items-center gap-1">
-                  <ShoppingBag className="w-3 h-3 text-[#00b3ff]" /> TIJAARO_STORE
-                </span>
-                <span className="font-mono text-[8px] text-[#00ff9c] bg-[#00ff9c]/10 px-1 border border-[#00ff9c]/30">
-                  LIVE_VERCEL
-                </span>
-              </div>
-              <div className="grid grid-cols-3 gap-1.5 py-1">
-                <div className="h-10 bg-[#1f2933]/60 rounded" />
-                <div className="h-10 bg-[#1f2933]/60 rounded" />
-                <div className="h-10 bg-[#1f2933]/60 rounded" />
-              </div>
-              <div className="font-mono text-[8px] text-[#9da7b3] flex justify-between">
-                <span>CLIENT_STORE</span>
-                <span className="text-[#00b3ff]">ADMIN_GATEWAY</span>
-              </div>
+            <div className="absolute bottom-3 left-4 font-mono text-[10px] text-[#9da7b3] flex items-center gap-1.5">
+              <TrendingUp className="w-3.5 h-3.5 text-[#00ff9c]" />
+              <span>FINRA Short Interest Analytics</span>
             </div>
           </div>
         );
 
       case "news-stock-prediction":
         return (
-          <div className="w-full h-52 bg-[#090d16] relative flex items-center justify-center overflow-hidden group-hover:scale-105 transition-transform duration-500">
+          <div className="w-full h-56 bg-[#090d16] relative flex items-center justify-center overflow-hidden group-hover:scale-105 transition-transform duration-500">
             <div className="absolute inset-0 bg-[radial-gradient(#a855f7_1px,transparent_1px)] bg-[size:16px_16px] opacity-15" />
-            <div className="w-60 p-3 rounded bg-[#0d1117] border border-purple-500/40 font-mono text-[9px] space-y-2">
+            <div className="w-64 p-3.5 rounded bg-[#0d1117] border border-purple-500/40 font-mono text-[9px] space-y-2 shadow-lg">
               <div className="flex justify-between text-purple-400">
                 <span>[DistilBART_NLP]</span>
                 <span>SENTIMENT: BULLISH</span>
@@ -117,10 +125,10 @@ export default function Projects() {
           </div>
         );
 
-      case "news-classification":
+      default:
         return (
-          <div className="w-full h-52 bg-[#090d16] relative flex items-center justify-center overflow-hidden group-hover:scale-105 transition-transform duration-500">
-            <div className="w-60 p-3 rounded bg-[#0d1117] border border-cyan-500/40 font-mono text-[9px] space-y-2">
+          <div className="w-full h-56 bg-[#090d16] relative flex items-center justify-center overflow-hidden group-hover:scale-105 transition-transform duration-500">
+            <div className="w-64 p-3.5 rounded bg-[#0d1117] border border-cyan-500/40 font-mono text-[9px] space-y-2 shadow-lg">
               <div className="flex justify-between text-cyan-400">
                 <span>[MiniLM-L6-v2]</span>
                 <span>3,460 LABELED</span>
@@ -128,30 +136,10 @@ export default function Projects() {
               <div className="text-slate-300 text-[8px]">
                 Dense Vector Embedding (Dim: 384)
               </div>
-              <div className="flex gap-1 text-[8px]">
+              <div className="flex gap-1.5 text-[8px]">
                 <span className="px-1.5 py-0.5 bg-[#1f2933] text-white">BiLSTM</span>
                 <span className="px-1.5 py-0.5 bg-[#00ff9c]/20 text-[#00ff9c]">SVC</span>
                 <span className="px-1.5 py-0.5 bg-[#1f2933] text-white">PCA</span>
-              </div>
-            </div>
-          </div>
-        );
-
-      default:
-        return (
-          <div className="w-full h-52 bg-[#090d16] relative flex items-center justify-center overflow-hidden group-hover:scale-105 transition-transform duration-500">
-            <div className="w-60 p-3 rounded bg-[#0d1117] border border-[#00ff9c]/40 font-mono text-[9px] space-y-2">
-              <div className="flex justify-between text-[#00ff9c]">
-                <span className="flex items-center gap-1">
-                  <Cpu className="w-3.5 h-3.5" /> ARDUINO_UNO
-                </span>
-                <span>8+ PROTOTYPES</span>
-              </div>
-              <div className="grid grid-cols-2 gap-1 text-[8px] text-slate-300">
-                <span className="p-1 bg-[#1f2933]/70">Smart Door Lock</span>
-                <span className="p-1 bg-[#1f2933]/70">OLED Pong Game</span>
-                <span className="p-1 bg-[#1f2933]/70">Heart Rate BPM</span>
-                <span className="p-1 bg-[#1f2933]/70">Smart Irrigation</span>
               </div>
             </div>
           </div>

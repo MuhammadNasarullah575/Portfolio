@@ -1,6 +1,6 @@
 "use client";
 
-import { personalData, experiences, projects, skillCategories } from "@/data/portfolioData";
+import { personalData, experiences, projects } from "@/data/portfolioData";
 import { 
   X, 
   Printer, 
