@@ -72,7 +72,7 @@ export const personalData = {
   ],
   tagline: "Building Intelligent Solutions Through AI, Engineering, and Modern Web Technologies.",
   location: "Sargodha, Punjab, Pakistan",
-  email: "nasarullah.engr@gmail.com",
+  email: "nasarullah.lak@gmail.com",
   phone: "+92 300 0000000",
   github: "https://github.com/MuhammadNasarullah575",
   linkedin: "https://www.linkedin.com/in/muhammad-nasarullah/",
