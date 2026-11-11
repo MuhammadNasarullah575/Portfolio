@@ -1,187 +1,199 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { personalData } from "@/data/portfolioData";
 import { 
-  Cpu, 
+  Sun, 
+  Moon, 
   Menu, 
   X, 
+  FileText, 
+  Sparkles, 
+  ArrowRight, 
   Github, 
   Linkedin, 
-  FileText, 
-  Terminal, 
-  ChevronRight, 
-  Sparkles 
+  Mail 
 } from "lucide-react";
 
 interface NavbarProps {
   onOpenResume?: () => void;
+  isDark: boolean;
+  onToggleTheme: () => void;
 }
 
-export default function Navbar({ onOpenResume }: NavbarProps) {
+export default function Navbar({ onOpenResume, isDark, onToggleTheme }: NavbarProps) {
+  const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 20);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   const navLinks = [
-    { label: "01. About", href: "#about" },
-    { label: "02. Process", href: "#process" },
-    { label: "03. Projects", href: "#projects" },
-    { label: "04. Experience", href: "#experience" },
-    { label: "05. Stack", href: "#skills" },
-    { label: "06. Hardware Lab", href: "#hardware-lab" },
-    { label: "07. Services", href: "#services" },
-    { label: "08. Contact", href: "#contact" },
+    { label: "About", href: "#about" },
+    { label: "Projects", href: "#projects" },
+    { label: "Hardware Lab", href: "#hardware-lab" },
+    { label: "Experience", href: "#experience" },
+    { label: "Skills", href: "#skills" },
+    { label: "Services", href: "#services" },
+    { label: "Contact", href: "#contact" },
   ];
 
   return (
     <>
-      <nav className="fixed top-0 w-full z-50 bg-[#050505]/90 backdrop-blur-xl border-b border-[#1f2933]">
-        <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-          {/* Logo */}
-          <a
-            href="#"
-            className="font-header text-lg sm:text-xl tracking-tighter text-[#00ff9c] flex items-center gap-2 group"
-          >
-            <div className="w-8 h-8 rounded border border-[#00ff9c]/40 bg-[#0d1117] flex items-center justify-center group-hover:border-[#00ff9c] group-hover:shadow-[0_0_15px_rgba(0,255,156,0.4)] transition-all">
-              <Cpu className="w-4 h-4 text-[#00ff9c]" />
-            </div>
-            <span className="font-bold tracking-tight text-white group-hover:text-[#00ff9c] transition-colors">
-              ENGR. <span className="text-[#00ff9c]">NASARULLAH</span>
-            </span>
-          </a>
-
-          {/* Desktop Nav */}
-          <div className="hidden xl:flex items-center gap-7 font-mono text-xs uppercase tracking-widest text-[#9da7b3]">
-            {navLinks.map((link) => (
-              <a
-                key={link.label}
-                href={link.href}
-                className="hover:text-[#00ff9c] transition-colors"
-              >
-                {link.label}
-              </a>
-            ))}
-
-            <div className="flex items-center gap-4 border-l border-[#1f2933] pl-6">
-              <a
-                href={personalData.github}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-[#9da7b3] hover:text-[#00ff9c] transition"
-                title="GitHub"
-              >
-                <Github className="w-4 h-4" />
-              </a>
-              <a
-                href={personalData.linkedin}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-[#9da7b3] hover:text-[#00b3ff] transition"
-                title="LinkedIn"
-              >
-                <Linkedin className="w-4 h-4" />
-              </a>
-              <button
-                onClick={onOpenResume}
-                className="px-3 py-1 border border-[#00ff9c]/50 text-[#00ff9c] hover:bg-[#00ff9c] hover:text-black transition-all rounded-sm font-bold text-[10px] tracking-wider"
-              >
-                CURRICULUM_VITAE
-              </button>
-            </div>
-          </div>
-
-          {/* Tablet/Mobile Actions */}
-          <div className="flex xl:hidden items-center gap-3">
-            <button
-              onClick={onOpenResume}
-              className="px-2.5 py-1 border border-[#00ff9c]/50 text-[#00ff9c] text-[10px] font-mono hover:bg-[#00ff9c] hover:text-black transition rounded-sm"
-            >
-              CV
-            </button>
-            <button
-              onClick={() => setMobileMenuOpen(true)}
-              className="text-white hover:text-[#00ff9c] transition p-1"
-              aria-label="Open Menu"
-            >
-              <Menu className="w-7 h-7" />
-            </button>
-          </div>
-        </div>
-      </nav>
-
-      {/* Mobile Drawer Overlay */}
-      {mobileMenuOpen && (
-        <div
-          onClick={() => setMobileMenuOpen(false)}
-          className="fixed inset-0 bg-black/70 z-[55] backdrop-blur-sm transition-opacity"
-        />
-      )}
-
-      {/* Mobile Drawer */}
-      <div
-        className={`fixed inset-y-0 right-0 z-[60] w-full sm:w-80 bg-[#0d1117] border-l border-[#00ff9c]/30 shadow-2xl transition-transform duration-500 ease-in-out md:hidden ${
-          mobileMenuOpen ? "translate-x-0" : "translate-x-full"
+      <header
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+          isScrolled
+            ? "bg-white/80 dark:bg-slate-950/80 backdrop-blur-md border-b border-slate-200/80 dark:border-slate-800/80 shadow-sm py-3.5"
+            : "bg-transparent py-5"
         }`}
       >
-        <div className="flex flex-col h-full p-8 relative overflow-y-auto">
-          {/* Scanline pattern */}
-          <div className="absolute inset-0 pointer-events-none opacity-10 bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.25)_50%),linear-gradient(90deg,rgba(0,255,156,0.06),rgba(0,179,255,0.02),rgba(0,255,156,0.06))] bg-[length:100%_4px,4px_100%]" />
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex items-center justify-between">
+            
+            {/* Logo */}
+            <a href="#" className="flex items-center gap-3 group">
+              <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-indigo-600 via-indigo-500 to-violet-600 p-[1.5px] shadow-sm group-hover:shadow-indigo-500/25 transition-all">
+                <div className="w-full h-full bg-white dark:bg-slate-900 rounded-[10px] flex items-center justify-center">
+                  <span className="font-extrabold text-sm bg-gradient-to-r from-indigo-600 to-violet-600 bg-clip-text text-transparent">
+                    MN
+                  </span>
+                </div>
+              </div>
 
-          {/* Top Bar */}
-          <div className="flex justify-between items-center mb-12 relative z-10">
-            <span className="font-mono text-[10px] text-[#00ff9c] tracking-wider">
-              SYSTEM_NAV_v3.2
-            </span>
-            <button
-              onClick={() => setMobileMenuOpen(false)}
-              className="text-white hover:text-[#00ff9c] transition-colors p-2 border border-[#1f2933]"
-            >
-              <X className="w-5 h-5" />
-            </button>
-          </div>
+              <div className="flex flex-col">
+                <span className="font-bold text-slate-900 dark:text-white text-base tracking-tight flex items-center gap-1.5">
+                  {personalData.name}
+                  <span className="w-2 h-2 rounded-full bg-emerald-500" />
+                </span>
+                <span className="text-xs text-slate-500 dark:text-slate-400 font-medium hidden sm:inline-block">
+                  AI/ML & Full-Stack Engineer
+                </span>
+              </div>
+            </a>
 
-          {/* Links */}
-          <nav className="flex flex-col gap-5 font-header text-lg uppercase tracking-tight relative z-10">
-            {navLinks.map((link) => (
-              <a
-                key={link.label}
-                href={link.href}
-                onClick={() => setMobileMenuOpen(false)}
-                className="group flex items-center justify-between text-slate-300 hover:text-[#00ff9c] transition-all"
+            {/* Desktop Navigation */}
+            <nav className="hidden lg:flex items-center gap-1 bg-slate-100/80 dark:bg-slate-900/60 p-1.5 rounded-full border border-slate-200/80 dark:border-slate-800 backdrop-blur-sm">
+              {navLinks.map((link) => (
+                <a
+                  key={link.label}
+                  href={link.href}
+                  className="text-xs font-semibold text-slate-600 dark:text-slate-300 hover:text-indigo-600 dark:hover:text-white px-3.5 py-1.5 rounded-full hover:bg-white dark:hover:bg-slate-800/80 transition-all duration-200 shadow-none hover:shadow-sm"
+                >
+                  {link.label}
+                </a>
+              ))}
+            </nav>
+
+            {/* Right Action Cluster */}
+            <div className="flex items-center gap-2.5">
+              
+              {/* Theme Toggle Button (Light/Dark Mode) */}
+              <button
+                onClick={onToggleTheme}
+                aria-label="Toggle Theme"
+                className="p-2.5 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 text-slate-700 dark:text-slate-300 hover:text-indigo-600 dark:hover:text-indigo-400 hover:border-indigo-300 dark:hover:border-indigo-500/50 transition-all shadow-sm cursor-pointer"
+                title={isDark ? "Switch to Light Mode" : "Switch to Dark Mode"}
               >
-                <span>{link.label}</span>
-                <ChevronRight className="w-4 h-4 opacity-0 group-hover:opacity-100 text-[#00ff9c] transition-all" />
-              </a>
-            ))}
-          </nav>
+                {isDark ? (
+                  <Sun className="w-4 h-4 text-amber-400 animate-spin-slow" />
+                ) : (
+                  <Moon className="w-4 h-4 text-indigo-600" />
+                )}
+              </button>
 
-          {/* Bottom Telemetry */}
-          <div className="mt-auto border-t border-[#1f2933] pt-6 relative z-10">
-            <div className="font-mono text-[10px] text-[#9da7b3] mb-4 space-y-1">
-              <p>&gt; STATUS: <span className="text-[#00ff9c]">ENCRYPTED_ONLINE</span></p>
-              <p>&gt; PEC_REG: <span className="text-white">VERIFIED_COMP_ENGR</span></p>
-              <p>&gt; CORE: <span className="text-[#00b3ff]">AI_VISION_FULLSTACK</span></p>
+              {/* View CV Trigger */}
+              <button
+                onClick={onOpenResume}
+                className="hidden sm:inline-flex items-center gap-1.5 px-3.5 py-2 text-xs font-semibold rounded-xl bg-white dark:bg-slate-900 text-slate-800 dark:text-slate-200 border border-slate-200 dark:border-slate-800 hover:border-slate-300 dark:hover:border-slate-700 transition shadow-sm cursor-pointer"
+              >
+                <FileText className="w-3.5 h-3.5 text-indigo-600 dark:text-indigo-400" />
+                <span>Resume</span>
+              </button>
+
+              {/* Let's Talk CTA */}
+              <a
+                href="#contact"
+                className="inline-flex items-center gap-1.5 px-4 py-2 text-xs font-semibold rounded-xl bg-gradient-to-r from-indigo-600 via-indigo-500 to-violet-600 hover:from-indigo-700 hover:to-violet-700 text-white transition-all shadow-md shadow-indigo-500/20 hover:shadow-indigo-500/35 hover:-translate-y-0.5 cursor-pointer"
+              >
+                <Sparkles className="w-3.5 h-3.5" />
+                <span>Let's Talk</span>
+              </a>
+
+              {/* Mobile Menu Hamburger */}
+              <button
+                onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+                className="lg:hidden p-2 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 text-slate-700 dark:text-slate-200"
+                aria-label="Toggle Menu"
+              >
+                {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+              </button>
+
             </div>
-            <div className="flex gap-3">
-              <a
-                href={personalData.github}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="p-2.5 bg-[#1f2933] text-white hover:bg-[#00ff9c] hover:text-black transition-all"
+
+          </div>
+        </div>
+      </header>
+
+      {/* Mobile Drawer */}
+      {mobileMenuOpen && (
+        <div className="fixed inset-0 z-40 bg-black/40 backdrop-blur-sm lg:hidden animate-in fade-in">
+          <div
+            className="fixed top-20 left-4 right-4 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-6 shadow-2xl space-y-4"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="flex flex-col space-y-1">
+              {navLinks.map((link) => (
+                <a
+                  key={link.label}
+                  href={link.href}
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="px-3.5 py-2.5 rounded-lg text-sm font-semibold text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-indigo-600 transition"
+                >
+                  {link.label}
+                </a>
+              ))}
+            </div>
+
+            <div className="pt-4 border-t border-slate-200 dark:border-slate-800 flex flex-col gap-2.5">
+              <button
+                onClick={() => {
+                  setMobileMenuOpen(false);
+                  if (onOpenResume) onOpenResume();
+                }}
+                className="w-full flex items-center justify-center gap-2 py-2.5 rounded-xl border border-slate-200 dark:border-slate-800 text-xs font-semibold text-slate-800 dark:text-slate-200 bg-slate-50 dark:bg-slate-800/60"
               >
-                <Github className="w-4 h-4" />
-              </a>
-              <a
-                href={personalData.linkedin}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="p-2.5 bg-[#1f2933] text-white hover:bg-[#00ff9c] hover:text-black transition-all"
-              >
-                <Linkedin className="w-4 h-4" />
-              </a>
+                <FileText className="w-4 h-4 text-indigo-600 dark:text-indigo-400" />
+                <span>View & Print Curriculum Vitae</span>
+              </button>
+
+              <div className="flex items-center justify-between pt-2">
+                <span className="text-xs text-slate-500 font-medium">Switch Theme:</span>
+                <button
+                  onClick={onToggleTheme}
+                  className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-slate-200 dark:border-slate-700 text-xs font-semibold text-slate-700 dark:text-slate-200"
+                >
+                  {isDark ? (
+                    <>
+                      <Sun className="w-3.5 h-3.5 text-amber-400" />
+                      <span>Light Mode</span>
+                    </>
+                  ) : (
+                    <>
+                      <Moon className="w-3.5 h-3.5 text-indigo-600" />
+                      <span>Dark Mode</span>
+                    </>
+                  )}
+                </button>
+              </div>
             </div>
           </div>
         </div>
-      </div>
+      )}
     </>
   );
 }

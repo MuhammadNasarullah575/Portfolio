@@ -1,17 +1,14 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import About from "@/components/About";
-import Process from "@/components/Process";
 import Projects from "@/components/Projects";
+import HardwareLab from "@/components/HardwareLab";
 import Experience from "@/components/Experience";
 import Skills from "@/components/Skills";
-import HardwareLab from "@/components/HardwareLab";
-import LearningPath from "@/components/LearningPath";
 import Services from "@/components/Services";
-import Badges from "@/components/Badges";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 import ResumeModal from "@/components/ResumeModal";
@@ -21,60 +18,86 @@ export default function Home() {
   const [selectedService, setSelectedService] = useState<string>(
     "AI & Machine Learning Solutions"
   );
+  
+  // Default theme is LIGHT mode as requested ("theme bi default light ho lakin Dark theme k liye bi button given ho")
+  const [isDark, setIsDark] = useState<boolean>(false);
+
+  useEffect(() => {
+    // Check local storage or system preference only if user previously saved
+    const savedTheme = localStorage.getItem("theme");
+    if (savedTheme === "dark") {
+      setIsDark(true);
+      document.documentElement.classList.add("dark");
+    } else {
+      setIsDark(false);
+      document.documentElement.classList.remove("dark");
+    }
+  }, []);
+
+  const toggleTheme = () => {
+    setIsDark((prev) => {
+      const nextTheme = !prev;
+      if (nextTheme) {
+        document.documentElement.classList.add("dark");
+        localStorage.setItem("theme", "dark");
+      } else {
+        document.documentElement.classList.remove("dark");
+        localStorage.setItem("theme", "light");
+      }
+      return nextTheme;
+    });
+  };
 
   const handleSelectService = (serviceTitle: string) => {
     setSelectedService(serviceTitle);
   };
 
   return (
-    <div className="min-h-screen bg-[#050505] text-[#e6edf3] relative selection:bg-[#00ff9c]/20 selection:text-[#00ff9c] font-sans">
-      {/* Top Cyber Navigation Bar */}
-      <Navbar onOpenResume={() => setResumeOpen(true)} />
+    <div className="min-h-screen bg-slate-50 dark:bg-[#090d16] text-slate-900 dark:text-slate-100 transition-colors duration-300 relative selection:bg-indigo-500/20 selection:text-indigo-600 dark:selection:bg-indigo-500/30 dark:selection:text-indigo-300">
+      
+      {/* Navigation with Theme Switcher */}
+      <Navbar
+        onOpenResume={() => setResumeOpen(true)}
+        isDark={isDark}
+        onToggleTheme={toggleTheme}
+      />
 
-      {/* Main Experience Flow */}
+      {/* Main Flow */}
       <main>
-        {/* Hero Section with Signal Flow Canvas */}
+        {/* Hero Section */}
         <Hero onOpenResume={() => setResumeOpen(true)} />
 
-        {/* 01. Profile Overview & 3D Neural Hologram */}
+        {/* About & Credentials */}
         <About />
 
-        {/* 02. Workflow Engineering Process (STEP_01 to STEP_09) */}
-        <Process />
-
-        {/* 03. Featured Projects Showcase (With Real Tijaaro & Daraz Scraper Photos) */}
+        {/* Featured Projects with Real Pictures (Tijaaro, Fire Detection, Daraz, Short Squeeze) */}
         <Projects />
 
-        {/* 04. Professional Experience Timeline (LimeoX, LearnOBots, AITeC) */}
-        <Experience />
-
-        {/* 05. Technical Stack & Toolchain Grid */}
-        <Skills />
-
-        {/* 06. Tech Fellow Embedded Hardware Lab (6 Real Prototype Photos) */}
+        {/* Tech Fellow Hardware Lab (6 Real Prototype Photos + Lightbox) */}
         <HardwareLab />
 
-        {/* 07. STEM, Robotics & AI Fellowship Curriculum */}
-        <LearningPath />
+        {/* Experience Timeline */}
+        <Experience />
 
-        {/* 08. Client Consulting & Development Services */}
+        {/* Technical Skills */}
+        <Skills />
+
+        {/* Client Offerings */}
         <Services onSelectService={handleSelectService} />
 
-        {/* 09. Engineer Badges & Credential Seals */}
-        <Badges />
-
-        {/* 10. Comm_Link_01 Hardware Contact Terminal */}
+        {/* Contact & Inquiries */}
         <Contact preselectedService={selectedService} />
       </main>
 
-      {/* Futuristic Telemetry Footer */}
+      {/* Footer */}
       <Footer />
 
-      {/* In-App ATS Curriculum Vitae Modal with Print to PDF */}
+      {/* In-App Resume / CV Viewer Modal */}
       <ResumeModal
         isOpen={resumeOpen}
         onClose={() => setResumeOpen(false)}
       />
+
     </div>
   );
 }

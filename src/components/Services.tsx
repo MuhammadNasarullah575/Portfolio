@@ -18,10 +18,10 @@ interface ServicesProps {
 export default function Services({ onSelectService }: ServicesProps) {
   const getIcon = (iconName: string) => {
     switch (iconName) {
-      case "Brain": return <Brain className="w-6 h-6 text-[#00ff9c]" />;
-      case "Layout": return <Code2 className="w-6 h-6 text-[#00b3ff]" />;
-      case "Database": return <Database className="w-6 h-6 text-[#00ff9c]" />;
-      default: return <Cpu className="w-6 h-6 text-[#00b3ff]" />;
+      case "Brain": return <Brain className="w-6 h-6 text-indigo-600 dark:text-indigo-400" />;
+      case "Layout": return <Code2 className="w-6 h-6 text-violet-600 dark:text-violet-400" />;
+      case "Database": return <Database className="w-6 h-6 text-blue-600 dark:text-blue-400" />;
+      default: return <Cpu className="w-6 h-6 text-emerald-600 dark:text-emerald-400" />;
     }
   };
 
@@ -36,72 +36,82 @@ export default function Services({ onSelectService }: ServicesProps) {
   };
 
   return (
-    <section id="services" className="max-w-7xl mx-auto px-6 py-24 border-b border-[#1f2933]">
-      <div className="mb-14">
-        <p className="font-mono text-[#00ff9c] text-xs tracking-[0.5em] mb-4 uppercase">
-          07. CLIENT_SOLUTIONS
-        </p>
-        <h2 className="font-header text-3xl sm:text-4xl font-bold text-white text-left">
-          Consulting & Development Offerings
-        </h2>
-        <p className="text-[#9da7b3] font-mono text-xs sm:text-sm mt-2">
-          Turnkey engineering services for startups, businesses, and research initiatives.
-        </p>
-      </div>
-
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        {services.map((srv) => (
-          <div
-            key={srv.id}
-            className="p-7 sm:p-8 bg-[#0d1117] border border-[#1f2933] hover:border-[#00ff9c]/50 transition-all duration-300 rounded-sm flex flex-col justify-between group hover:-translate-y-1 hover:shadow-[0_0_25px_rgba(0,255,156,0.15)]"
-          >
-            <div>
-              {/* Header */}
-              <div className="flex items-center justify-between mb-4">
-                <div className="w-12 h-12 rounded border border-[#1f2933] bg-[#050505] flex items-center justify-center group-hover:border-[#00ff9c] transition-colors">
-                  {getIcon(srv.icon)}
-                </div>
-                <span className="font-mono text-[10px] font-bold px-2 py-0.5 border border-[#00ff9c]/40 text-[#00ff9c] bg-[#00ff9c]/5 uppercase tracking-wider">
-                  {srv.badge}
-                </span>
-              </div>
-
-              {/* Title & Description */}
-              <h3 className="font-header text-xl font-bold text-white mb-2 group-hover:text-[#00ff9c] transition-colors">
-                {srv.title}
-              </h3>
-              <p className="text-xs sm:text-sm text-[#9da7b3] leading-relaxed mb-6 font-sans">
-                {srv.description}
-              </p>
-
-              {/* Deliverables Checklist */}
-              <div className="space-y-2 mb-6">
-                <span className="font-mono text-[11px] text-white uppercase tracking-wider block font-bold mb-2">
-                  KEY_DELIVERABLES:
-                </span>
-                <ul className="space-y-2 text-xs text-slate-300">
-                  {srv.deliverables.map((item, idx) => (
-                    <li key={idx} className="flex items-start gap-2 bg-[#050505] p-2 border border-[#1f2933] rounded-sm">
-                      <span className="w-1.5 h-1.5 bg-[#00ff9c] shrink-0 mt-1.5" />
-                      <span>{item}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </div>
-
-            {/* CTA */}
-            <div className="pt-4 border-t border-[#1f2933]">
-              <button
-                onClick={() => handleHireClick(srv.title)}
-                className="w-full py-2.5 px-4 border border-[#00ff9c]/40 text-[#00ff9c] hover:bg-[#00ff9c] hover:text-black font-mono text-xs font-bold uppercase tracking-wider transition-all duration-200 flex items-center justify-center gap-2 rounded-sm"
-              >
-                <span>REQUEST_SERVICE.exe</span>
-                <ArrowRight className="w-3.5 h-3.5" />
-              </button>
-            </div>
+    <section id="services" className="py-24 relative border-t border-slate-200/80 dark:border-slate-800">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        {/* Section Header */}
+        <div className="flex flex-col items-center text-center mb-16">
+          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-indigo-50 dark:bg-indigo-950/60 border border-indigo-200 dark:border-indigo-800/80 text-indigo-600 dark:text-indigo-400 text-xs font-semibold uppercase tracking-wider mb-3">
+            <Sparkles className="w-3.5 h-3.5" />
+            <span>Consulting & Offerings</span>
           </div>
-        ))}
+
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-slate-900 dark:text-white tracking-tight">
+            Services I Offer
+          </h2>
+
+          <p className="text-slate-600 dark:text-slate-400 max-w-2xl text-sm sm:text-base mt-3 leading-relaxed">
+            Turnkey engineering, machine learning pipelines, and modern web application development for businesses and innovators.
+          </p>
+        </div>
+
+        {/* Services Cards Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          {services.map((srv) => (
+            <div
+              key={srv.id}
+              className="p-8 sm:p-9 rounded-3xl bg-white dark:bg-slate-900/60 border border-slate-200/80 dark:border-slate-800 hover:border-indigo-300 dark:hover:border-indigo-500/50 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between group hover:-translate-y-1"
+            >
+              <div>
+                {/* Header */}
+                <div className="flex items-center justify-between mb-5">
+                  <div className="w-12 h-12 rounded-2xl bg-indigo-50 dark:bg-slate-800 border border-indigo-100 dark:border-slate-700 flex items-center justify-center group-hover:scale-105 transition-transform shadow-sm">
+                    {getIcon(srv.icon)}
+                  </div>
+                  <span className="text-xs font-bold px-3 py-1 rounded-full bg-indigo-50 dark:bg-indigo-950/60 text-indigo-700 dark:text-indigo-300 border border-indigo-200/70 dark:border-indigo-800">
+                    {srv.badge}
+                  </span>
+                </div>
+
+                {/* Title & Description */}
+                <h3 className="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white mb-2.5 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">
+                  {srv.title}
+                </h3>
+                
+                <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400 leading-relaxed mb-6">
+                  {srv.description}
+                </p>
+
+                {/* Deliverables Checklist */}
+                <div className="space-y-2 mb-8">
+                  <h4 className="text-xs font-bold uppercase tracking-wider text-slate-400">
+                    Typical Deliverables:
+                  </h4>
+                  <ul className="space-y-2.5 text-xs sm:text-sm text-slate-700 dark:text-slate-300">
+                    {srv.deliverables.map((item, idx) => (
+                      <li key={idx} className="flex items-start gap-2.5">
+                        <CheckCircle2 className="w-4 h-4 text-emerald-500 shrink-0 mt-0.5" />
+                        <span>{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+
+              {/* Action Button */}
+              <div className="pt-5 border-t border-slate-100 dark:border-slate-800">
+                <button
+                  onClick={() => handleHireClick(srv.title)}
+                  className="w-full inline-flex items-center justify-center gap-2 py-3 px-4 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-indigo-600 hover:text-white text-slate-800 dark:text-slate-200 text-xs sm:text-sm font-semibold transition-all duration-200 cursor-pointer shadow-sm"
+                >
+                  <span>Request This Service</span>
+                  <ArrowRight className="w-4 h-4" />
+                </button>
+              </div>
+            </div>
+          ))}
+        </div>
+
       </div>
     </section>
   );

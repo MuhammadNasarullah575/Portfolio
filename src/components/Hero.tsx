@@ -2,17 +2,18 @@
 
 import { useState, useEffect } from "react";
 import { personalData } from "@/data/portfolioData";
-import SignalCanvas from "./SignalCanvas";
 import { 
-  Terminal, 
   ArrowRight, 
   FileText, 
-  Linkedin, 
   Github, 
-  ChevronDown, 
-  Cpu, 
+  Linkedin, 
+  Mail, 
+  MapPin, 
+  CheckCircle, 
   Sparkles, 
-  Activity 
+  Layers, 
+  Cpu, 
+  ArrowUpRight 
 } from "lucide-react";
 
 interface HeroProps {
@@ -20,152 +21,153 @@ interface HeroProps {
 }
 
 export default function Hero({ onOpenResume }: HeroProps) {
-  const specialties = [
+  const roles = [
     "AI & Machine Learning Engineer",
     "Computer Vision & YOLOv8 Specialist",
-    "Full-Stack Web Developer (Next.js / React)",
+    "Full-Stack Web Developer (Next.js & React)",
     "Robotics & IoT Systems Architect",
     "PEC Registered Computer Engineer",
   ];
 
-  const [currentText, setCurrentText] = useState("");
-  const [count, setCount] = useState(0);
-  const [index, setIndex] = useState(0);
-  const [isDeleting, setIsDeleting] = useState(false);
+  const [currentRoleIndex, setCurrentRoleIndex] = useState(0);
 
   useEffect(() => {
-    const fullText = specialties[count % specialties.length];
-
-    const timer = setTimeout(() => {
-      if (!isDeleting) {
-        setCurrentText(fullText.slice(0, index + 1));
-        setIndex((prev) => prev + 1);
-
-        if (index + 1 === fullText.length) {
-          setTimeout(() => setIsDeleting(true), 2200);
-        }
-      } else {
-        setCurrentText(fullText.slice(0, index - 1));
-        setIndex((prev) => prev - 1);
-
-        if (index - 1 === 0) {
-          setIsDeleting(false);
-          setCount((prev) => prev + 1);
-        }
-      }
-    }, isDeleting ? 40 : 80);
-
-    return () => clearTimeout(timer);
-  }, [index, isDeleting, count]);
+    const interval = setInterval(() => {
+      setCurrentRoleIndex((prev) => (prev + 1) % roles.length);
+    }, 2800);
+    return () => clearInterval(interval);
+  }, [roles.length]);
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center pt-24 pb-16 px-4 overflow-hidden border-b border-[#1f2933]">
-      {/* Background Signal Flow Canvas & Grid */}
-      <SignalCanvas />
-      <div className="fixed inset-0 grid-bg opacity-30 -z-20 pointer-events-none" />
+    <section className="relative min-h-[92vh] flex items-center justify-center pt-28 pb-16 px-4 overflow-hidden">
+      
+      {/* Background Subtle Gradient Blobs (Adapts to Light / Dark) */}
+      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[650px] h-[650px] bg-gradient-to-tr from-indigo-500/10 via-violet-500/10 to-cyan-500/10 rounded-full blur-[130px] pointer-events-none" />
+      <div className="absolute top-1/3 -left-32 w-80 h-80 bg-blue-500/10 rounded-full blur-[120px] pointer-events-none" />
+      <div className="absolute bottom-10 -right-32 w-80 h-80 bg-purple-500/10 rounded-full blur-[120px] pointer-events-none" />
 
-      {/* Radial Ambient Glow */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#00ff9c]/5 rounded-full blur-[140px] pointer-events-none animate-pulse-glow" />
+      {/* Grid Pattern */}
+      <div className="absolute inset-0 light-grid-pattern dark:dark-grid-pattern opacity-60 pointer-events-none" />
 
       <div className="relative z-10 max-w-5xl mx-auto text-center flex flex-col items-center">
         
-        {/* System Initialize Tag */}
-        <div className="inline-flex items-center gap-2 px-3 py-1 bg-[#0d1117] border border-[#00ff9c]/30 rounded-sm mb-6 shadow-[0_0_15px_rgba(0,255,156,0.1)]">
-          <span className="w-2 h-2 rounded-full bg-[#00ff9c] animate-ping" />
-          <span className="font-mono text-[#00ff9c] text-xs sm:text-sm tracking-[0.3em] uppercase">
-            System.Initialize()
+        {/* Availability Status Badge */}
+        <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/90 dark:bg-slate-900/80 border border-slate-200 dark:border-slate-800 shadow-sm mb-6 text-xs font-semibold text-slate-700 dark:text-slate-300 backdrop-blur-md">
+          <span className="relative flex h-2 w-2">
+            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+            <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+          </span>
+          <span>{personalData.status}</span>
+          <span className="text-slate-300 dark:text-slate-700">|</span>
+          <span className="text-slate-500 dark:text-slate-400 flex items-center gap-1 font-normal">
+            <MapPin className="w-3 h-3 text-indigo-500" />
+            Sargodha, Pakistan
           </span>
         </div>
 
-        {/* Large Name Header */}
-        <h1 className="font-header text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-black tracking-tight mb-4 text-white uppercase">
-          Engr.{" "}
-          <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#00ff9c] via-[#22c55e] to-[#00b3ff] drop-shadow-[0_0_25px_rgba(0,255,156,0.35)]">
-            Nasarullah
+        {/* Main Headline */}
+        <h1 className="text-4xl sm:text-6xl md:text-7xl font-extrabold tracking-tight text-slate-900 dark:text-white mb-4">
+          Hi, I'm{" "}
+          <span className="bg-gradient-to-r from-indigo-600 via-violet-600 to-indigo-500 bg-clip-text text-transparent">
+            {personalData.name}
           </span>
         </h1>
 
-        {/* Typing Console Prompt */}
+        {/* Dynamic Rotating Role */}
         <div className="h-10 sm:h-12 flex items-center justify-center mb-6">
-          <p className="font-mono text-base sm:text-xl md:text-2xl text-[#9da7b3] flex items-center">
-            <span className="text-[#00ff9c] mr-2 font-bold">&gt;</span>
-            <span className="text-white font-medium">{currentText}</span>
-            <span className="inline-block w-2.5 h-5 bg-[#00ff9c] ml-1 animate-pulse" />
+          <p className="text-lg sm:text-2xl font-bold text-slate-700 dark:text-slate-300 flex items-center gap-2">
+            <span className="text-indigo-600 dark:text-indigo-400 font-mono font-bold">&gt;</span>
+            <span className="transition-all duration-300">
+              {roles[currentRoleIndex]}
+            </span>
           </p>
         </div>
 
-        {/* Tagline */}
-        <p className="font-mono text-xs sm:text-sm text-[#00ff9c]/90 max-w-2xl mb-4 uppercase tracking-wider">
-          // "{personalData.tagline}"
+        {/* Professional Tagline */}
+        <p className="text-sm sm:text-base md:text-lg text-slate-600 dark:text-slate-300 max-w-2xl font-medium italic mb-4 leading-relaxed">
+          "{personalData.tagline}"
         </p>
 
-        {/* Core Subtitle Paragraph */}
-        <p className="text-sm sm:text-base text-[#9da7b3] max-w-2xl leading-relaxed mb-10 font-sans">
-          Computer Engineer from <strong className="text-white">Institute of Space Technology (IST)</strong>. 
-          Architecting AI-powered computer vision models, data-driven market forecasting engines, and high-performance full-stack web applications.
+        {/* Narrative Pitch */}
+        <p className="text-xs sm:text-sm md:text-base text-slate-600 dark:text-slate-400 max-w-2xl leading-relaxed mb-10">
+          Computer Engineer from <strong className="text-slate-900 dark:text-white font-semibold">Institute of Space Technology (IST)</strong>. 
+          I combine <strong className="text-indigo-600 dark:text-indigo-400 font-semibold">Machine Learning</strong>, <strong className="text-indigo-600 dark:text-indigo-400 font-semibold">Computer Vision</strong>, and <strong className="text-indigo-600 dark:text-indigo-400 font-semibold">Modern Full-Stack Web Development</strong> to transform complex engineering ideas into practical, commercial-grade solutions.
         </p>
 
-        {/* Cyber Action Buttons */}
-        <div className="flex flex-col sm:flex-row gap-4 justify-center items-center w-full max-w-md sm:max-w-none mb-12 font-mono">
+        {/* Call to Actions */}
+        <div className="flex flex-wrap items-center justify-center gap-3.5 mb-12">
           <a
             href="#projects"
-            className="w-full sm:w-auto bg-[#00ff9c] text-black px-8 py-3.5 font-bold uppercase text-xs sm:text-sm tracking-wider hover:scale-105 hover:shadow-[0_0_25px_rgba(0,255,156,0.5)] transition duration-300 rounded-sm flex items-center justify-center gap-2 group"
+            className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-gradient-to-r from-indigo-600 via-indigo-500 to-violet-600 hover:from-indigo-700 hover:to-violet-700 text-white font-semibold text-xs sm:text-sm shadow-md shadow-indigo-500/20 hover:shadow-indigo-500/35 hover:-translate-y-0.5 transition-all"
           >
-            <span>03. VIEW_PROJECTS</span>
-            <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+            <span>Explore Featured Projects</span>
+            <ArrowRight className="w-4 h-4" />
           </a>
 
           <a
-            href="#contact"
-            className="w-full sm:w-auto border border-[#1f2933] bg-[#0d1117]/80 text-white px-8 py-3.5 font-bold uppercase text-xs sm:text-sm tracking-wider hover:border-[#00ff9c] hover:text-[#00ff9c] hover:bg-[#00ff9c]/5 transition duration-300 rounded-sm flex items-center justify-center gap-2"
+            href="#hardware-lab"
+            className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-white dark:bg-slate-900 hover:bg-slate-50 dark:hover:bg-slate-800 text-slate-800 dark:text-slate-200 border border-slate-200 dark:border-slate-800 font-semibold text-xs sm:text-sm shadow-sm transition-all"
           >
-            <Terminal className="w-4 h-4 text-[#00ff9c]" />
-            <span>INITIATE_CONTACT</span>
+            <Cpu className="w-4 h-4 text-indigo-600 dark:text-indigo-400" />
+            <span>Tech Fellow Hardware Lab</span>
           </a>
 
           <button
             onClick={onOpenResume}
-            className="w-full sm:w-auto border border-[#00b3ff]/40 bg-[#0d1117]/80 text-[#00b3ff] px-6 py-3.5 font-bold uppercase text-xs sm:text-sm tracking-wider hover:border-[#00b3ff] hover:bg-[#00b3ff]/10 hover:shadow-[0_0_20px_rgba(0,179,255,0.3)] transition duration-300 rounded-sm flex items-center justify-center gap-2"
+            className="inline-flex items-center gap-2 px-5 py-3.5 rounded-xl bg-slate-100 dark:bg-slate-800/80 hover:bg-slate-200 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-300 font-semibold text-xs sm:text-sm transition-all"
           >
-            <FileText className="w-4 h-4" />
-            <span>RESUME_ATS</span>
+            <FileText className="w-4 h-4 text-indigo-600 dark:text-indigo-400" />
+            <span>Curriculum Vitae</span>
           </button>
         </div>
 
-        {/* Live System Telemetry Strip */}
-        <div className="w-full max-w-4xl border-t border-[#1f2933] pt-6 flex flex-wrap justify-center sm:justify-between items-center gap-4 text-[10px] sm:text-xs font-mono uppercase tracking-[0.2em] text-[#555]">
-          <div className="flex items-center gap-2">
-            <span className="w-2 h-2 rounded-full bg-[#00ff9c] animate-ping" />
-            <span className="text-[#9da7b3]">STATUS:</span>
-            <span className="text-[#00ff9c] font-bold">AVAILABLE_FOR_HIRE</span>
-          </div>
+        {/* Social Quick Links Bar */}
+        <div className="flex items-center gap-3 text-slate-500 dark:text-slate-400 mb-14">
+          <a
+            href={personalData.github}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="p-2.5 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 hover:text-indigo-600 dark:hover:text-white hover:border-indigo-300 dark:hover:border-indigo-500/40 transition shadow-sm"
+            title="GitHub"
+          >
+            <Github className="w-4 h-4" />
+          </a>
+          <a
+            href={personalData.linkedin}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="p-2.5 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 hover:text-indigo-600 dark:hover:text-white hover:border-indigo-300 dark:hover:border-indigo-500/40 transition shadow-sm"
+            title="LinkedIn"
+          >
+            <Linkedin className="w-4 h-4" />
+          </a>
+          <a
+            href={`mailto:${personalData.email}`}
+            className="p-2.5 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 hover:text-indigo-600 dark:hover:text-white hover:border-indigo-300 dark:hover:border-indigo-500/40 transition shadow-sm"
+            title="Email"
+          >
+            <Mail className="w-4 h-4" />
+          </a>
+        </div>
 
-          <div>
-            <span className="text-[#9da7b3]">PEC_ACCREDITED:</span>{" "}
-            <span className="text-white font-bold">COMP_ENGINEER</span>
-          </div>
-
-          <div>
-            <span className="text-[#9da7b3]">DEGREE:</span>{" "}
-            <span className="text-[#00b3ff] font-bold">BS_CE (IST/KICSIT)</span>
-          </div>
-
-          <div>
-            <span className="text-[#9da7b3]">HONOR:</span>{" "}
-            <span className="text-[#00ff9c] font-bold">HAFIZ_E_QURAN</span>
-          </div>
+        {/* Live Metric Stats Cards */}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-3.5 sm:gap-4 w-full max-w-4xl">
+          {personalData.heroStats.map((stat, idx) => (
+            <div
+              key={idx}
+              className="p-5 rounded-2xl bg-white/90 dark:bg-slate-900/60 border border-slate-200/80 dark:border-slate-800 backdrop-blur-sm hover:border-indigo-300 dark:hover:border-indigo-500/40 transition-all text-center shadow-sm hover:shadow-md hover:-translate-y-0.5 group"
+            >
+              <div className="text-2xl sm:text-3xl font-extrabold bg-gradient-to-r from-indigo-600 to-violet-600 bg-clip-text text-transparent group-hover:scale-105 transition-transform">
+                {stat.value}
+              </div>
+              <div className="text-xs text-slate-500 dark:text-slate-400 mt-1 font-medium">
+                {stat.label}
+              </div>
+            </div>
+          ))}
         </div>
 
       </div>
-
-      {/* Scroll indicator */}
-      <a
-        href="#about"
-        className="absolute bottom-4 left-1/2 -translate-x-1/2 text-[#555] hover:text-[#00ff9c] transition-colors flex flex-col items-center font-mono text-[9px] uppercase tracking-widest"
-      >
-        <span>SCROLL_DOWN</span>
-        <ChevronDown className="w-3.5 h-3.5 animate-bounce mt-1 text-[#00ff9c]" />
-      </a>
     </section>
   );
 }

@@ -8,205 +8,206 @@ import {
   X, 
   Sparkles, 
   CheckCircle2, 
-  Award, 
   Layers, 
-  ExternalLink 
+  BookOpen, 
+  Award 
 } from "lucide-react";
 
 export default function HardwareLab() {
   const [activeItem, setActiveItem] = useState<HardwareProject | null>(null);
 
   return (
-    <section id="hardware-lab" className="max-w-7xl mx-auto px-6 py-24 border-b border-[#1f2933]">
-      
-      {/* Section Header */}
-      <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-14 gap-6">
-        <div>
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded bg-[#00ff9c]/10 border border-[#00ff9c]/30 font-mono text-[11px] text-[#00ff9c] font-bold uppercase tracking-widest mb-3">
-            <Cpu className="w-3.5 h-3.5" />
-            <span>06. EMBEDDED_HARDWARE_LAB</span>
-          </div>
-
-          <h2 className="font-header text-3xl sm:text-4xl font-bold text-white tracking-tight">
-            Tech Fellow Robotics & IoT Prototypes
-          </h2>
-          
-          <p className="text-[#9da7b3] font-mono text-xs sm:text-sm mt-2 max-w-2xl leading-relaxed">
-            Physical computing systems, sensor telemetry, and embedded electronics engineered and taught under the 
-            <strong className="text-white"> Federal Directorate of Education (FDE)</strong> & 
-            <strong className="text-[#00ff9c]"> LearnOBots</strong> Disruptive Education Fellowship.
-          </p>
-        </div>
-
-        <div className="flex items-center gap-3 font-mono text-xs">
-          <span className="px-3 py-1.5 bg-[#0d1117] border border-[#1f2933] text-[#9da7b3] rounded">
-            6 Physical Prototypes
-          </span>
-          <span className="px-3 py-1.5 bg-[#00ff9c]/10 border border-[#00ff9c]/40 text-[#00ff9c] font-bold rounded">
-            100+ Students Mentored
-          </span>
-        </div>
-      </div>
-
-      {/* Hardware Gallery Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {hardwareProjects.map((item) => (
-          <div
-            key={item.id}
-            onClick={() => setActiveItem(item)}
-            className="group bg-[#0d1117] border border-[#1f2933] hover:border-[#00ff9c]/60 rounded-xl overflow-hidden transition-all duration-300 flex flex-col justify-between cursor-pointer hover:-translate-y-1.5 hover:shadow-[0_0_30px_rgba(0,255,156,0.18)]"
-          >
-            {/* Real Project Photo Container */}
-            <div className="relative h-60 bg-black/60 overflow-hidden flex items-center justify-center border-b border-[#1f2933]">
-              <img
-                src={item.image}
-                alt={item.title}
-                className="w-full h-full object-contain p-2 group-hover:scale-105 transition-transform duration-500"
-              />
-
-              {/* Category Pill */}
-              <div className="absolute top-3 left-3 bg-[#00ff9c] text-black font-mono text-[9px] font-bold px-2.5 py-1 uppercase tracking-wider rounded shadow-md">
-                {item.category.split("&")[0].trim()}
-              </div>
-
-              {/* Zoom Action Icon */}
-              <div className="absolute top-3 right-3 p-1.5 rounded bg-black/70 border border-[#1f2933] text-white opacity-0 group-hover:opacity-100 transition-opacity">
-                <Maximize2 className="w-3.5 h-3.5 text-[#00ff9c]" />
-              </div>
-
-              {/* Status Bar */}
-              <div className="absolute bottom-2 left-3 right-3 flex justify-between items-center text-[9px] font-mono text-slate-300 bg-black/80 backdrop-blur-sm px-2.5 py-1 rounded border border-[#1f2933]">
-                <span className="text-[#00ff9c] flex items-center gap-1">
-                  <span className="w-1.5 h-1.5 rounded-full bg-[#00ff9c] animate-pulse" />
-                  PHYSICAL_PROTOTYPE
-                </span>
-                <span className="text-slate-400">ARDUINO_UNO</span>
-              </div>
+    <section id="hardware-lab" className="py-24 relative border-t border-slate-200/80 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-950/40">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        {/* Section Header */}
+        <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-14 gap-6">
+          <div>
+            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-50 dark:bg-emerald-950/60 border border-emerald-200 dark:border-emerald-800/80 text-emerald-700 dark:text-emerald-400 text-xs font-semibold uppercase tracking-wider mb-3">
+              <Cpu className="w-3.5 h-3.5" />
+              <span>Embedded Hardware & Robotics</span>
             </div>
 
-            {/* Content Body */}
-            <div className="p-6 flex-1 flex flex-col justify-between">
-              <div>
-                <h3 className="font-header text-lg font-bold text-white group-hover:text-[#00ff9c] transition-colors mb-2">
-                  {item.title}
-                </h3>
-                
-                <p className="text-xs text-[#9da7b3] leading-relaxed line-clamp-3 mb-4 font-sans">
-                  {item.description}
-                </p>
-              </div>
-
-              <div>
-                {/* Hardware Component Pills */}
-                <div className="flex flex-wrap gap-1.5 pt-4 border-t border-[#1f2933] mb-4">
-                  {item.components.map((comp) => (
-                    <span
-                      key={comp}
-                      className="text-[10px] font-mono px-2 py-0.5 rounded bg-[#050505] text-[#9da7b3] border border-[#1f2933]"
-                    >
-                      {comp}
-                    </span>
-                  ))}
-                </div>
-
-                <div className="flex items-center justify-between font-mono text-[11px] text-[#00ff9c] pt-2">
-                  <span className="font-bold flex items-center gap-1">
-                    INSPECT_SPECS
-                  </span>
-                  <span className="text-slate-400 text-[10px]">
-                    Click to Enlarge
-                  </span>
-                </div>
-              </div>
-            </div>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-slate-900 dark:text-white tracking-tight">
+              Tech Fellow Hardware Lab
+            </h2>
+            
+            <p className="text-slate-600 dark:text-slate-400 text-sm sm:text-base mt-2.5 max-w-2xl leading-relaxed">
+              Real-world physical computing systems, sensors, and microcontrollers built and demonstrated under the 
+              <strong className="text-slate-900 dark:text-white font-semibold"> Federal Directorate of Education (FDE)</strong> & 
+              <strong className="text-emerald-600 dark:text-emerald-400 font-semibold"> LearnOBots</strong> Disruptive Education initiative.
+            </p>
           </div>
-        ))}
-      </div>
 
-      {/* Lightbox / High-Res Hardware Modal */}
-      {activeItem && (
-        <div
-          className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/85 backdrop-blur-md animate-in fade-in duration-200"
-          onClick={() => setActiveItem(null)}
-        >
-          <div
-            className="relative w-full max-w-3xl max-h-[92vh] overflow-y-auto bg-[#0d1117] border border-[#00ff9c]/50 rounded-xl p-6 sm:p-8 shadow-[0_0_50px_rgba(0,255,156,0.2)] space-y-6"
-            onClick={(e) => e.stopPropagation()}
-          >
-            {/* Close Button */}
-            <button
-              onClick={() => setActiveItem(null)}
-              className="absolute top-4 right-4 p-2 bg-[#1f2933] text-[#9da7b3] hover:text-[#00ff9c] rounded transition-colors"
+          <div className="flex items-center gap-3 text-xs font-semibold">
+            <span className="px-3.5 py-2 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-300 shadow-sm">
+              6 Physical Prototypes
+            </span>
+            <span className="px-3.5 py-2 rounded-xl bg-emerald-50 dark:bg-emerald-950/60 border border-emerald-200 dark:border-emerald-800/60 text-emerald-700 dark:text-emerald-400 shadow-sm">
+              100+ Students Mentored
+            </span>
+          </div>
+        </div>
+
+        {/* Real Hardware Prototype Cards Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7">
+          {hardwareProjects.map((item) => (
+            <div
+              key={item.id}
+              onClick={() => setActiveItem(item)}
+              className="group bg-white dark:bg-slate-900/60 border border-slate-200/80 dark:border-slate-800 hover:border-emerald-300 dark:hover:border-emerald-500/50 rounded-3xl overflow-hidden transition-all duration-300 flex flex-col justify-between cursor-pointer hover:-translate-y-1 hover:shadow-xl shadow-sm"
             >
-              <X className="w-5 h-5" />
-            </button>
+              {/* Actual Hardware Photo Container */}
+              <div className="relative h-64 bg-slate-950 overflow-hidden flex items-center justify-center border-b border-slate-200 dark:border-slate-800">
+                <img
+                  src={item.image}
+                  alt={item.title}
+                  className="w-full h-full object-contain p-2 group-hover:scale-105 transition-transform duration-500"
+                />
 
-            {/* Modal Image Display */}
-            <div className="w-full h-80 sm:h-96 rounded-lg bg-black/80 border border-[#1f2933] overflow-hidden flex items-center justify-center relative p-3">
-              <img
-                src={activeItem.image}
-                alt={activeItem.title}
-                className="w-full h-full object-contain"
-              />
-              <div className="absolute top-3 left-3 bg-[#00ff9c] text-black font-mono font-bold text-xs px-2.5 py-1 rounded">
-                {activeItem.category}
-              </div>
-            </div>
+                {/* Category Pill */}
+                <div className="absolute top-3.5 left-3.5 bg-white/95 dark:bg-slate-900/90 text-slate-900 dark:text-white font-semibold text-[10px] px-3 py-1 rounded-full shadow-md backdrop-blur-md border border-slate-200/60 dark:border-slate-700">
+                  {item.category.split("&")[0].trim()}
+                </div>
 
-            {/* Modal Info */}
-            <div>
-              <h3 className="font-header text-2xl font-bold text-white mb-2">
-                {activeItem.title}
-              </h3>
-              <p className="text-xs sm:text-sm text-[#9da7b3] leading-relaxed font-sans mb-4">
-                {activeItem.description}
-              </p>
+                {/* Inspect Pill */}
+                <div className="absolute top-3.5 right-3.5 p-2 rounded-xl bg-black/60 text-white backdrop-blur-md opacity-0 group-hover:opacity-100 transition-opacity flex items-center gap-1 text-xs">
+                  <Maximize2 className="w-3.5 h-3.5 text-emerald-400" />
+                  <span>Enlarge</span>
+                </div>
 
-              {/* STEM Fellowship Impact Box */}
-              <div className="p-4 rounded-lg bg-[#00ff9c]/5 border border-[#00ff9c]/30 mb-5">
-                <span className="font-mono text-xs text-[#00ff9c] font-bold block mb-1 uppercase tracking-wider">
-                  STEM Mentorship & Pedagogical Impact:
-                </span>
-                <p className="text-xs text-slate-300">
-                  {activeItem.impact}
-                </p>
+                {/* Device Type Pill */}
+                <div className="absolute bottom-3 left-3.5 right-3.5 flex justify-between items-center text-[10px] font-medium text-white bg-black/80 backdrop-blur-md px-3 py-1.5 rounded-xl border border-slate-700/60">
+                  <span className="text-emerald-400 font-semibold flex items-center gap-1.5">
+                    <span className="w-2 h-2 rounded-full bg-emerald-500" />
+                    Physical Working System
+                  </span>
+                  <span className="text-slate-300">Arduino Uno</span>
+                </div>
               </div>
 
-              {/* Components Grid */}
-              <div>
-                <span className="font-mono text-xs text-white uppercase font-bold block mb-2">
-                  Embedded Hardware Components:
-                </span>
-                <div className="flex flex-wrap gap-2 font-mono text-xs">
-                  {activeItem.components.map((c) => (
-                    <span
-                      key={c}
-                      className="px-2.5 py-1 rounded bg-[#050505] border border-[#1f2933] text-[#00ff9c]"
-                    >
-                      ✓ {c}
-                    </span>
-                  ))}
+              {/* Card Body */}
+              <div className="p-6 sm:p-7 flex-1 flex flex-col justify-between">
+                <div>
+                  <h3 className="text-lg font-bold text-slate-900 dark:text-white group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors mb-2">
+                    {item.title}
+                  </h3>
+                  
+                  <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400 leading-relaxed line-clamp-3 mb-5">
+                    {item.description}
+                  </p>
+                </div>
+
+                <div>
+                  {/* Components Used */}
+                  <div className="flex flex-wrap gap-1.5 pt-4 border-t border-slate-100 dark:border-slate-800 mb-4">
+                    {item.components.slice(0, 3).map((comp) => (
+                      <span
+                        key={comp}
+                        className="text-[10px] font-semibold px-2.5 py-0.5 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300"
+                      >
+                        {comp}
+                      </span>
+                    ))}
+                    {item.components.length > 3 && (
+                      <span className="text-[10px] font-semibold px-2 py-0.5 text-slate-400">
+                        +{item.components.length - 3} more
+                      </span>
+                    )}
+                  </div>
+
+                  <div className="flex items-center justify-between text-xs font-semibold text-emerald-600 dark:text-emerald-400">
+                    <span>Inspect System Specs</span>
+                    <span className="text-slate-400 text-[11px] font-normal">Click to Open</span>
+                  </div>
                 </div>
               </div>
             </div>
+          ))}
+        </div>
 
-            {/* Modal Footer */}
-            <div className="pt-4 border-t border-[#1f2933] flex justify-between items-center font-mono text-xs">
-              <span className="text-[#555]">
-                TECH_FELLOW // FDE_DISRUPTIVE_EDUCATION
-              </span>
+        {/* Lightbox / Zoom Modal */}
+        {activeItem && (
+          <div
+            className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/75 backdrop-blur-md animate-in fade-in duration-200"
+            onClick={() => setActiveItem(null)}
+          >
+            <div
+              className="relative w-full max-w-3xl max-h-[92vh] overflow-y-auto bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl p-6 sm:p-8 shadow-2xl space-y-6"
+              onClick={(e) => e.stopPropagation()}
+            >
+              {/* Close Button */}
               <button
                 onClick={() => setActiveItem(null)}
-                className="px-4 py-1.5 border border-[#1f2933] text-slate-300 hover:text-white rounded"
+                className="absolute top-5 right-5 p-2 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-500 hover:text-slate-900 dark:hover:text-white transition cursor-pointer"
               >
-                CLOSE_VIEW
+                <X className="w-5 h-5" />
               </button>
+
+              {/* Large Image Showcase */}
+              <div className="w-full h-80 sm:h-96 rounded-2xl bg-black overflow-hidden flex items-center justify-center p-3 relative shadow-inner">
+                <img
+                  src={activeItem.image}
+                  alt={activeItem.title}
+                  className="w-full h-full object-contain"
+                />
+                <div className="absolute top-4 left-4 bg-white/95 dark:bg-slate-900/90 text-slate-900 dark:text-white font-bold text-xs px-3 py-1 rounded-full shadow-md">
+                  {activeItem.category}
+                </div>
+              </div>
+
+              {/* Title & Description */}
+              <div>
+                <h3 className="text-2xl font-extrabold text-slate-900 dark:text-white mb-2">
+                  {activeItem.title}
+                </h3>
+                <p className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
+                  {activeItem.description}
+                </p>
+
+                {/* Educational Impact Box */}
+                <div className="p-4 rounded-2xl bg-emerald-50 dark:bg-emerald-950/40 border border-emerald-200 dark:border-emerald-800 mb-5">
+                  <span className="text-xs font-bold text-emerald-800 dark:text-emerald-300 block mb-1">
+                    STEM Fellowship & Mentorship Impact:
+                  </span>
+                  <p className="text-xs sm:text-sm text-emerald-950 dark:text-emerald-200 leading-relaxed">
+                    {activeItem.impact}
+                  </p>
+                </div>
+
+                {/* Component List */}
+                <div>
+                  <span className="text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 block mb-2">
+                    Hardware Components & Microcontrollers:
+                  </span>
+                  <div className="flex flex-wrap gap-2">
+                    {activeItem.components.map((c) => (
+                      <span
+                        key={c}
+                        className="text-xs font-semibold px-3 py-1 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-200 border border-slate-200 dark:border-slate-700"
+                      >
+                        ✓ {c}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              </div>
+
+              {/* Modal Footer */}
+              <div className="pt-4 border-t border-slate-200 dark:border-slate-800 flex justify-between items-center text-xs font-semibold text-slate-500">
+                <span>Tech Fellow • FDE Disruptive Education</span>
+                <button
+                  onClick={() => setActiveItem(null)}
+                  className="px-4 py-2 rounded-xl border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800"
+                >
+                  Close
+                </button>
+              </div>
             </div>
           </div>
-        </div>
-      )}
+        )}
 
+      </div>
     </section>
   );
 }
-

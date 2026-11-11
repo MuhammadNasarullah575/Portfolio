@@ -3,99 +3,79 @@
 @tailwind utilities;
 
 :root {
-  --accent: #00ff9c;
-  --cyber-blue: #00b3ff;
-  --bg: #050505;
-  --surface: #0d1117;
-  --border: #1f2933;
+  --bg-primary: #f8fafc;
+  --bg-surface: #ffffff;
+  --text-main: #0f172a;
+  --text-muted: #64748b;
+  --border-color: #e2e8f0;
+}
+
+html.dark {
+  --bg-primary: #090d16;
+  --bg-surface: #0f172a;
+  --text-main: #f8fafc;
+  --text-muted: #94a3b8;
+  --border-color: #1e293b;
 }
 
 html {
   scroll-behavior: smooth;
-  color-scheme: dark;
 }
 
 body {
-  background-color: var(--bg);
-  color: #e6edf3;
+  background-color: var(--bg-primary);
+  color: var(--text-main);
+  transition: background-color 0.3s ease, color 0.3s ease;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   overflow-x: hidden;
 }
 
-/* Custom Cyber Grid Background */
-.grid-bg {
+/* Subtle modern background grid */
+.light-grid-pattern {
+  background-size: 32px 32px;
   background-image: 
-    linear-gradient(to right, #1f2933 1px, transparent 1px),
-    linear-gradient(to bottom, #1f2933 1px, transparent 1px);
-  background-size: 40px 40px;
-  mask-image: radial-gradient(ellipse at center, black, transparent 80%);
-  -webkit-mask-image: radial-gradient(ellipse at center, black, transparent 80%);
+    linear-gradient(to right, rgba(148, 163, 184, 0.12) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(148, 163, 184, 0.12) 1px, transparent 1px);
 }
 
-/* Neon Borders & Glow */
-.neon-border {
-  border: 1px solid #1f2933;
-  transition: all 0.3s ease;
+.dark-grid-pattern {
+  background-size: 32px 32px;
+  background-image: 
+    linear-gradient(to right, rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
 }
 
-.neon-border:hover {
-  border-color: #00ff9c;
-  box-shadow: 0 0 20px rgba(0, 255, 156, 0.25);
+/* Glassmorphism */
+.glass-card-light {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(226, 232, 240, 0.9);
+  box-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.05);
 }
 
-.glow-text {
-  text-shadow: 0 0 15px rgba(0, 255, 156, 0.5);
+.glass-card-dark {
+  background: rgba(15, 23, 42, 0.75);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.3);
 }
 
-.glow-blue {
-  text-shadow: 0 0 15px rgba(0, 179, 255, 0.5);
-}
-
-/* 3D Floating Hologram Container */
-.cyber-3d-wrapper {
-  perspective: 1000px;
-  width: 100%;
-  max-width: 360px;
-  aspect-ratio: 1 / 1;
-  margin: 0 auto;
-}
-
-.cyber-card {
-  width: 100%;
-  height: 100%;
-  position: relative;
-  transform-style: preserve-3d;
-  animation: floatingTilt 6s ease-in-out infinite;
-}
-
-@keyframes floatingTilt {
-  0% {
-    transform: rotateX(10deg) rotateY(-10deg) translateY(0px);
-  }
-  25% {
-    transform: rotateX(-5deg) rotateY(15deg) translateY(-10px);
-  }
-  50% {
-    transform: rotateX(-15deg) rotateY(-5deg) translateY(0px);
-  }
-  75% {
-    transform: rotateX(5deg) rotateY(10deg) translateY(10px);
-  }
-  100% {
-    transform: rotateX(10deg) rotateY(-10deg) translateY(0px);
-  }
-}
-
-/* Custom Scrollbar */
+/* Clean Custom Scrollbar */
 ::-webkit-scrollbar {
-  width: 7px;
+  width: 8px;
 }
 ::-webkit-scrollbar-track {
-  background: #050505;
+  background: transparent;
 }
 ::-webkit-scrollbar-thumb {
-  background: #1f2933;
-  border-radius: 2px;
+  background: #cbd5e1;
+  border-radius: 4px;
+}
+.dark ::-webkit-scrollbar-thumb {
+  background: #334155;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #00ff9c;
+  background: #6366f1;
 }

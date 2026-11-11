@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter, Orbitron, Roboto_Mono } from "next/font/google";
+import { Inter } from "next/font/google";
 import "./globals.css";
 
 const inter = Inter({
@@ -8,41 +8,26 @@ const inter = Inter({
   display: "swap",
 });
 
-const orbitron = Orbitron({
-  subsets: ["latin"],
-  variable: "--font-orbitron",
-  display: "swap",
-});
-
-const robotoMono = Roboto_Mono({
-  subsets: ["latin"],
-  variable: "--font-mono",
-  display: "swap",
-});
-
 export const metadata: Metadata = {
-  title: "Engr. Muhammad Nasarullah | AI/ML Engineer & Full-Stack Developer",
+  title: "Muhammad Nasarullah — AI/ML Engineer & Full-Stack Developer",
   description:
-    "Official Portfolio of Engr. Muhammad Nasarullah — Computer Engineer, AI/ML Engineer, Computer Vision Specialist, and Full-Stack Web Developer. Transforming ideas into intelligent solutions.",
+    "Official Portfolio of Muhammad Nasarullah — Computer Engineer, AI/ML Specialist, and Full-Stack Developer. Transforming complex engineering and machine learning challenges into high-performance applications.",
   keywords: [
     "Muhammad Nasarullah",
-    "Engr. Muhammad Nasarullah",
     "AI/ML Engineer",
     "Full-Stack Web Developer",
     "Computer Engineer",
     "Computer Vision",
     "YOLOv8",
-    "OpenCV",
     "Next.js",
     "React",
-    "Machine Learning",
-    "NLP",
+    "Data Scraping",
     "Robotics",
     "IoT",
     "Pakistan",
     "Sargodha",
-    "Institute of Space Technology",
-    "PEC Registered Engineer"
+    "PEC Registered Engineer",
+    "IST"
   ],
   authors: [{ name: "Muhammad Nasarullah" }],
   creator: "Muhammad Nasarullah",
@@ -50,16 +35,16 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
     url: "https://muhammad-nasarullah.vercel.app",
-    title: "Engr. Muhammad Nasarullah | AI/ML Engineer & Full-Stack Developer",
+    title: "Muhammad Nasarullah — AI/ML Engineer & Full-Stack Developer",
     description:
-      "Building Intelligent Solutions Through AI, Engineering, and Modern Web Technologies. Explore featured AI systems, YOLOv8 vision models, and full-stack web platforms.",
+      "Building intelligent solutions with AI, computer vision, and modern full-stack web architecture. Explore live e-commerce applications, ML prediction engines, and robotics prototypes.",
     siteName: "Muhammad Nasarullah Portfolio",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Engr. Muhammad Nasarullah | AI/ML Engineer & Full-Stack Developer",
+    title: "Muhammad Nasarullah — AI/ML Engineer & Full-Stack Developer",
     description:
-      "Building Intelligent Solutions Through AI, Engineering, and Modern Web Technologies.",
+      "Building intelligent solutions with AI, computer vision, and modern full-stack web architecture.",
     creator: "@Nasarullah",
   },
   robots: {
@@ -74,11 +59,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${inter.variable} ${orbitron.variable} ${robotoMono.variable} scroll-smooth dark`}>
+    <html lang="en" className={`${inter.variable} scroll-smooth`}>
       <head>
-        <meta name="theme-color" content="#050505" />
+        <meta name="theme-color" content="#f8fafc" />
       </head>
-      <body className="bg-[#050505] text-[#e6edf3] font-sans overflow-x-hidden selection:bg-[#00ff9c]/20 selection:text-[#00ff9c]">
+      <body className="bg-slate-50 dark:bg-[#090d16] text-slate-900 dark:text-slate-100 font-sans antialiased selection:bg-indigo-500/20 selection:text-indigo-600 dark:selection:bg-indigo-500/30 dark:selection:text-indigo-300 transition-colors duration-300">
         {children}
       </body>
     </html>
