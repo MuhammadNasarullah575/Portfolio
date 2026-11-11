@@ -81,7 +81,7 @@ export default function About() {
               </p>
               
               <p>
-                I graduated with a Bachelor of Science in Computer Engineering from the <strong className="text-indigo-600 dark:text-indigo-400 font-semibold">Institute of Space Technology (IST), KICSIT</strong>, achieving a CGPA of <strong className="text-indigo-600 dark:text-indigo-400 font-semibold">3.23 / 4.00</strong> and maintaining a consistent First Division record throughout my academic sessions.
+                I graduated with a Bachelor of Science in Computer Engineering from the <strong className="text-indigo-600 dark:text-indigo-400 font-semibold">Institute of Space Technology (IST), KICSIT</strong>, maintaining a consistent First Division record throughout my academic sessions.
               </p>
 
               <p>
@@ -89,7 +89,7 @@ export default function About() {
               </p>
 
               <p>
-                Additionally, I served as a <strong>Tech Fellow</strong> under the Federal Directorate of Education's <em>Disruptive Education</em> initiative, where I trained over 100 students in practical robotics, Arduino programming, and sensor telemetry.
+                Additionally, I served as a <strong>Tech Fellow</strong> under the Federal Directorate of Education's <em>Disruptive Education</em> initiative, where I trained approximately 30 students in practical robotics, Arduino programming, and sensor telemetry.
               </p>
             </div>
 
@@ -152,7 +152,7 @@ export default function About() {
                       First Division Throughout
                     </h4>
                     <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">
-                      First Division in Matriculation (87.8%), Intermediate (64.4%), and BS Computer Engineering (CGPA 3.23).
+                      First Division in Matriculation (87.8%), Intermediate (64.4%), and BS Computer Engineering (IST/KICSIT).
                     </p>
                   </div>
                 </div>

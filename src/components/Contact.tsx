@@ -181,6 +181,19 @@ export default function Contact({ preselectedService }: ContactProps) {
                 </div>
                 <ExternalLink className="w-3.5 h-3.5 text-slate-400 group-hover:text-emerald-600" />
               </a>
+
+              <a
+                href="https://wa.me/923000000000"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center justify-between p-3.5 rounded-2xl bg-slate-50 dark:bg-slate-800/60 hover:bg-emerald-50 dark:hover:bg-slate-800 border border-slate-200/60 dark:border-slate-700/80 text-xs font-semibold text-slate-800 dark:text-slate-200 hover:text-emerald-600 transition group"
+              >
+                <div className="flex items-center gap-3">
+                  <MessageCircle className="w-4 h-4 text-emerald-600" />
+                  <span>WhatsApp Direct Connect</span>
+                </div>
+                <ExternalLink className="w-3.5 h-3.5 text-slate-400 group-hover:text-emerald-600" />
+              </a>
             </div>
 
           </div>

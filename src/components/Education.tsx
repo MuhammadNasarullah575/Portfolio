@@ -69,7 +69,7 @@ export default function Education() {
 
                 <div className="text-right shrink-0">
                   <span className="inline-block px-3 py-1 rounded-lg bg-emerald-500/10 border border-emerald-500/30 font-mono font-bold text-emerald-300 text-sm">
-                    CGPA {education.cgpa}
+                    First Division
                   </span>
                 </div>
               </div>

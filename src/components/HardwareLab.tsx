@@ -44,7 +44,7 @@ export default function HardwareLab() {
               6 Physical Prototypes
             </span>
             <span className="px-3.5 py-2 rounded-xl bg-emerald-50 dark:bg-emerald-950/60 border border-emerald-200 dark:border-emerald-800/60 text-emerald-700 dark:text-emerald-400 shadow-sm">
-              100+ Students Mentored
+              30+ Students Trained
             </span>
           </div>
         </div>

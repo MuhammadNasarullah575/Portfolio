@@ -81,11 +81,10 @@ export const personalData = {
   education: {
     degree: "Bachelor of Science in Computer Engineering",
     institution: "Institute of Space Technology (IST), KICSIT",
-    cgpa: "3.23 / 4.00",
     pecRegistered: true,
     hafizEQuran: true,
     academics: [
-      { label: "BS Computer Engineering (IST/KICSIT)", score: "CGPA 3.23 / 4.00", note: "First Division" },
+      { label: "BS Computer Engineering (IST/KICSIT)", score: "First Division", note: "Academic Distinction" },
       { label: "Intermediate (Pre-Engineering)", score: "64.4%", note: "First Division" },
       { label: "Matriculation (Science)", score: "87.8%", note: "First Division / High Distinction" },
     ],
@@ -99,13 +98,13 @@ export const personalData = {
   heroStats: [
     { value: "8+", label: "Production & Engineering Projects" },
     { value: "3+", label: "Industry & Tech Fellowship Roles" },
-    { value: "3.23", label: "BS Computer Engineering CGPA (IST)" },
-    { value: "100+", label: "Students Mentored in Robotics & STEM" },
+    { value: "PEC", label: "Registered Professional Engineer" },
+    { value: "30+", label: "Students Trained in Robotics & STEM" },
   ],
   bioParagraphs: [
     "I am Muhammad Nasarullah, a Computer Engineer with a deep passion for Artificial Intelligence, Machine Learning, Full-Stack Web Development, and cyber-physical systems.",
-    "I hold a Bachelor's degree in Computer Engineering from the Institute of Space Technology (IST), KICSIT, with a CGPA of 3.23/4.00. I combine the analytical rigor of hardware & system engineering with modern full-stack web architectures and deep learning pipelines.",
-    "My hands-on experience spans across production AI/ML systems, automated web scraping (Playwright/Python), computer vision, robotics, IoT, and educational technology. As a Tech Fellow under the Federal Directorate of Education's Disruptive Education initiative, I trained 100+ students in practical STEM, Arduino, sensors, and hardware prototyping.",
+    "I hold a Bachelor's degree in Computer Engineering from the Institute of Space Technology (IST), KICSIT. I combine the analytical rigor of hardware & system engineering with modern full-stack web architectures and deep learning pipelines.",
+    "My hands-on experience spans across production AI/ML systems, automated web scraping (Playwright/Python), computer vision, robotics, IoT, and educational technology. As a Tech Fellow under the Federal Directorate of Education's Disruptive Education initiative, I trained 30+ students in practical STEM, Arduino, sensors, and hardware prototyping.",
     "I believe in continuous learning, practical experimentation, and engineering intelligent software that solves real-world human and commercial challenges."
   ],
   vision: "My vision is to contribute to the development of intelligent technologies that make everyday processes smarter, faster, and more efficient. I aim to grow at the intersection of AI/ML and Full-Stack Engineering, transforming complex algorithms into scalable, accessible products."

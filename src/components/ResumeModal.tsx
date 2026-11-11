@@ -95,7 +95,7 @@ export default function ResumeModal({ isOpen, onClose }: ResumeModalProps) {
               Professional Summary
             </h2>
             <p className="text-slate-700 dark:text-slate-300 leading-relaxed print:text-slate-800 text-xs sm:text-sm">
-              Computer Engineer (IST / KICSIT, CGPA 3.23) and PEC Registered Engineer with verified experience across production AI/ML systems, computer vision (YOLOv8), automated web scraping (Playwright/Python), and full-stack web engineering. Proven ability to translate complex deep learning architectures into scalable, high-performance applications and prototype embedded IoT systems.
+              Computer Engineer (IST / KICSIT) and PEC Registered Engineer with verified experience across production AI/ML systems, computer vision (YOLOv8), automated web scraping (Playwright/Python), and full-stack web engineering. Proven ability to translate complex deep learning architectures into scalable, high-performance applications and prototype embedded IoT systems.
             </p>
           </div>
 
@@ -197,8 +197,8 @@ export default function ResumeModal({ isOpen, onClose }: ResumeModalProps) {
                   PEC Registered Engineer • Hafiz-e-Quran
                 </span>
               </div>
-              <div className="font-bold text-indigo-600 dark:text-indigo-400 print:text-indigo-800 text-sm">
-                CGPA 3.23 / 4.00
+              <div className="font-bold text-indigo-600 dark:text-indigo-400 print:text-indigo-800 text-xs sm:text-sm">
+                First Division
               </div>
             </div>
           </div>

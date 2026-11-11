@@ -107,7 +107,7 @@ export default function LearningPath() {
               Tech Fellow — Federal Directorate of Education (FDE) & LearnOBots
             </h4>
             <p className="text-xs text-[#9da7b3] font-mono mt-0.5">
-              Empowered 100+ students through practical STEM, microcontrollers, sensor kits, and creative hardware innovation.
+              Empowered 30+ students through practical STEM, microcontrollers, sensor kits, and creative hardware innovation.
             </p>
           </div>
         </div>
