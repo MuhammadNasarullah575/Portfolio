@@ -3,8 +3,11 @@
 @tailwind utilities;
 
 :root {
-  --background: #030712;
-  --foreground: #f8fafc;
+  --accent: #00ff9c;
+  --cyber-blue: #00b3ff;
+  --bg: #050505;
+  --surface: #0d1117;
+  --border: #1f2933;
 }
 
 html {
@@ -13,74 +16,86 @@ html {
 }
 
 body {
-  background-color: var(--background);
-  color: var(--foreground);
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  background-color: var(--bg);
+  color: #e6edf3;
   overflow-x: hidden;
-  selection-background-color: #10b981;
-  selection-color: #030712;
 }
 
-::selection {
-  background-color: rgba(16, 185, 129, 0.3);
-  color: #34d399;
-}
-
-/* Custom subtle scrollbar */
-::-webkit-scrollbar {
-  width: 8px;
-}
-::-webkit-scrollbar-track {
-  background: #030712;
-}
-::-webkit-scrollbar-thumb {
-  background: #1e293b;
-  border-radius: 4px;
-}
-::-webkit-scrollbar-thumb:hover {
-  background: #10b981;
-}
-
-/* Modern Cyber Grid & Glow background */
-.bg-grid-pattern {
-  background-size: 40px 40px;
+/* Custom Cyber Grid Background */
+.grid-bg {
   background-image: 
-    linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+    linear-gradient(to right, #1f2933 1px, transparent 1px),
+    linear-gradient(to bottom, #1f2933 1px, transparent 1px);
+  background-size: 40px 40px;
+  mask-image: radial-gradient(ellipse at center, black, transparent 80%);
+  -webkit-mask-image: radial-gradient(ellipse at center, black, transparent 80%);
 }
 
-.bg-dot-pattern {
-  background-image: radial-gradient(rgba(255, 255, 255, 0.07) 1px, transparent 1px);
-  background-size: 24px 24px;
+/* Neon Borders & Glow */
+.neon-border {
+  border: 1px solid #1f2933;
+  transition: all 0.3s ease;
 }
 
-.glass-panel {
-  background: rgba(15, 23, 42, 0.65);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+.neon-border:hover {
+  border-color: #00ff9c;
+  box-shadow: 0 0 20px rgba(0, 255, 156, 0.25);
 }
 
-.glass-panel-glow {
-  background: rgba(15, 23, 42, 0.7);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
-  border: 1px solid rgba(16, 185, 129, 0.2);
-  box-shadow: 0 0 25px -5px rgba(16, 185, 129, 0.15);
+.glow-text {
+  text-shadow: 0 0 15px rgba(0, 255, 156, 0.5);
 }
 
-@keyframes pulseGlow {
-  0%, 100% {
-    opacity: 0.4;
-    transform: scale(1);
+.glow-blue {
+  text-shadow: 0 0 15px rgba(0, 179, 255, 0.5);
+}
+
+/* 3D Floating Hologram Container */
+.cyber-3d-wrapper {
+  perspective: 1000px;
+  width: 100%;
+  max-width: 360px;
+  aspect-ratio: 1 / 1;
+  margin: 0 auto;
+}
+
+.cyber-card {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transform-style: preserve-3d;
+  animation: floatingTilt 6s ease-in-out infinite;
+}
+
+@keyframes floatingTilt {
+  0% {
+    transform: rotateX(10deg) rotateY(-10deg) translateY(0px);
+  }
+  25% {
+    transform: rotateX(-5deg) rotateY(15deg) translateY(-10px);
   }
   50% {
-    opacity: 0.8;
-    transform: scale(1.05);
+    transform: rotateX(-15deg) rotateY(-5deg) translateY(0px);
+  }
+  75% {
+    transform: rotateX(5deg) rotateY(10deg) translateY(10px);
+  }
+  100% {
+    transform: rotateX(10deg) rotateY(-10deg) translateY(0px);
   }
 }
 
-.animate-glow {
-  animation: pulseGlow 6s ease-in-out infinite;
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 7px;
 }
-
+::-webkit-scrollbar-track {
+  background: #050505;
+}
+::-webkit-scrollbar-thumb {
+  background: #1f2933;
+  border-radius: 2px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #00ff9c;
+}

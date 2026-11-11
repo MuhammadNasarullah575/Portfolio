@@ -3,16 +3,15 @@
 import { useState } from "react";
 import { personalData } from "@/data/portfolioData";
 import { 
+  Terminal, 
+  Send, 
+  Copy, 
+  Check, 
   Mail, 
   MapPin, 
-  Send, 
-  Check, 
-  Copy, 
   Github, 
   Linkedin, 
   ExternalLink, 
-  Sparkles, 
-  MessageSquare, 
   Phone 
 } from "lucide-react";
 
@@ -24,10 +23,11 @@ export default function Contact({ preselectedService }: ContactProps) {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
-    service: preselectedService || "AI/ML Solutions",
+    service: preselectedService || "AI & Machine Learning Solutions",
     subject: "",
-    message: ""
+    message: "",
   });
+
   const [copiedEmail, setCopiedEmail] = useState(false);
   const [submitted, setSubmitted] = useState(false);
 
@@ -39,12 +39,11 @@ export default function Contact({ preselectedService }: ContactProps) {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Generate mailto link
     const mailtoSubject = encodeURIComponent(
-      `[Portfolio Inquiry - ${formData.service}] ${formData.subject || "Collaboration Opportunity"}`
+      `[Portfolio Inquiry - ${formData.service}] ${formData.subject || "Collaboration"}`
     );
     const mailtoBody = encodeURIComponent(
-      `Hi Muhammad Nasarullah,\n\nName: ${formData.name}\nEmail: ${formData.email}\nService Interest: ${formData.service}\n\nMessage:\n${formData.message}`
+      `Hi Engr. Muhammad Nasarullah,\n\nName: ${formData.name}\nEmail: ${formData.email}\nService: ${formData.service}\n\nMessage:\n${formData.message}`
     );
     window.location.href = `mailto:${personalData.email}?subject=${mailtoSubject}&body=${mailtoBody}`;
     setSubmitted(true);
@@ -52,167 +51,107 @@ export default function Contact({ preselectedService }: ContactProps) {
   };
 
   return (
-    <section id="contact" className="py-24 relative border-t border-slate-900 bg-slate-950/80">
-      {/* Background glow */}
-      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-96 h-96 bg-emerald-500/10 rounded-full blur-[140px] pointer-events-none" />
-
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="contact" className="max-w-7xl mx-auto px-4 py-24">
+      {/* Outer Hardware Chassis Frame */}
+      <div className="relative group p-1 bg-[#1a1f26] border-[6px] sm:border-[8px] border-[#1f2933] rounded-xl shadow-2xl">
         
-        {/* Section Header */}
-        <div className="flex flex-col items-center text-center mb-16">
-          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-mono uppercase tracking-wider mb-3">
-            <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
-            Start A Conversation
+        {/* Hardware Status Header Tabs */}
+        <div className="absolute top-[-20px] left-6 sm:left-10 flex gap-2 z-20">
+          <div className="w-12 h-4 bg-[#1f2933] rounded-t-md flex items-center justify-center gap-1.5">
+            <div className="w-1.5 h-1.5 rounded-full bg-red-500 animate-pulse" />
+            <div className="w-1.5 h-1.5 rounded-full bg-[#00ff9c]" />
           </div>
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
-            Let's Connect & Build Together
-          </h2>
-          <p className="text-slate-400 max-w-xl text-sm sm:text-base mt-2">
-            Have a project idea, collaboration opportunity, or an interesting technical challenge? Let's explore how we can engineer meaningful solutions together.
-          </p>
+          <div className="px-3 py-0.5 bg-[#1f2933] rounded-t-md font-mono text-[8px] text-[#00ff9c]/90 uppercase tracking-wider font-bold">
+            Comm_Link_01 // SECURE_PORT_22
+          </div>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+        {/* Inner Terminal Chassis */}
+        <div className="relative bg-[#0d1117] border border-[#1f2933] rounded-sm p-6 sm:p-12 text-center overflow-hidden">
           
-          {/* Left Info Column */}
-          <div className="lg:col-span-5 space-y-6">
-            
-            {/* Direct Email Card with 1-Click Copy */}
-            <div className="p-6 rounded-2xl bg-slate-900/60 border border-slate-800 hover:border-emerald-500/30 transition-all">
-              <div className="flex items-center justify-between mb-3">
-                <span className="text-xs font-mono uppercase tracking-wider text-slate-400 flex items-center gap-1.5">
-                  <Mail className="w-3.5 h-3.5 text-emerald-400" />
-                  Direct Email
-                </span>
-                <button
-                  onClick={handleCopyEmail}
-                  className="inline-flex items-center gap-1 text-xs font-mono text-emerald-400 hover:text-emerald-300 transition-colors"
-                >
-                  {copiedEmail ? (
-                    <>
-                      <Check className="w-3.5 h-3.5 text-emerald-400" />
-                      <span>Copied!</span>
-                    </>
-                  ) : (
-                    <>
-                      <Copy className="w-3.5 h-3.5" />
-                      <span>Copy Email</span>
-                    </>
-                  )}
-                </button>
-              </div>
-              <a
-                href={`mailto:${personalData.email}`}
-                className="text-base sm:text-lg font-bold text-white hover:text-emerald-400 transition-colors break-all"
-              >
-                {personalData.email}
-              </a>
-              <p className="text-xs text-slate-400 mt-2">
-                Usually responds within 12–24 hours for project inquiries.
-              </p>
-            </div>
+          {/* Scanline Grid Pattern */}
+          <div
+            className="absolute inset-0 pointer-events-none opacity-5"
+            style={{
+              backgroundImage: "linear-gradient(#00ff9c 1px, transparent 1px)",
+              backgroundSize: "100% 4px",
+            }}
+          />
 
-            {/* Location & Presence */}
-            <div className="p-6 rounded-2xl bg-slate-900/60 border border-slate-800">
-              <div className="space-y-4">
-                <div className="flex items-start gap-3">
-                  <div className="w-10 h-10 rounded-xl bg-slate-800 flex items-center justify-center shrink-0">
-                    <MapPin className="w-5 h-5 text-emerald-400" />
-                  </div>
-                  <div>
-                    <span className="text-xs font-mono text-slate-400 block uppercase">Location</span>
-                    <span className="text-sm font-semibold text-white">
-                      {personalData.location}
-                    </span>
-                    <span className="text-xs text-slate-500 block mt-0.5">
-                      Available for remote, hybrid, & on-site engagements
-                    </span>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Social & Platform Channels */}
-            <div className="p-6 rounded-2xl bg-slate-900/60 border border-slate-800 space-y-4">
-              <span className="text-xs font-mono uppercase tracking-wider text-slate-400 block">
-                Professional Channels
-              </span>
-
-              <div className="space-y-2.5">
-                <a
-                  href={personalData.linkedin}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center justify-between p-3 rounded-xl bg-slate-950/70 hover:bg-slate-800 border border-slate-800 hover:border-cyan-500/40 transition-all text-xs group"
-                >
-                  <div className="flex items-center gap-2.5">
-                    <Linkedin className="w-4 h-4 text-cyan-400" />
-                    <span className="font-semibold text-white group-hover:text-cyan-300">
-                      LinkedIn Profile
-                    </span>
-                  </div>
-                  <ExternalLink className="w-3.5 h-3.5 text-slate-500 group-hover:text-cyan-400" />
-                </a>
-
-                <a
-                  href={personalData.github}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center justify-between p-3 rounded-xl bg-slate-950/70 hover:bg-slate-800 border border-slate-800 hover:border-emerald-500/40 transition-all text-xs group"
-                >
-                  <div className="flex items-center gap-2.5">
-                    <Github className="w-4 h-4 text-emerald-400" />
-                    <span className="font-semibold text-white group-hover:text-emerald-300">
-                      GitHub Repositories
-                    </span>
-                  </div>
-                  <ExternalLink className="w-3.5 h-3.5 text-slate-500 group-hover:text-emerald-400" />
-                </a>
-
-                <a
-                  href={personalData.fiverr}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center justify-between p-3 rounded-xl bg-slate-950/70 hover:bg-slate-800 border border-slate-800 hover:border-emerald-500/40 transition-all text-xs group"
-                >
-                  <div className="flex items-center gap-2.5">
-                    <span className="w-4 h-4 rounded-full bg-emerald-500/20 text-emerald-400 text-[10px] font-bold flex items-center justify-center">
-                      fi
-                    </span>
-                    <span className="font-semibold text-white group-hover:text-emerald-300">
-                      Fiverr Profile
-                    </span>
-                  </div>
-                  <ExternalLink className="w-3.5 h-3.5 text-slate-500 group-hover:text-emerald-400" />
-                </a>
-              </div>
-            </div>
-
+          {/* Circuit PCB Trace Overlay Vectors */}
+          <div className="absolute top-0 left-0 w-full h-full opacity-10 pointer-events-none">
+            <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+              <path
+                d="M0 40 H120 V120 M300 0 V60 H350 M700 80 H850 V180 M950 0 V110 H1100"
+                stroke="#00ff9c"
+                strokeWidth="1.5"
+                fill="none"
+              />
+              <circle cx="120" cy="120" r="3" fill="#00ff9c" />
+              <circle cx="350" cy="60" r="3" fill="#00ff9c" />
+              <circle cx="850" cy="180" r="3" fill="#00ff9c" />
+            </svg>
           </div>
 
-          {/* Right Interactive Contact Form */}
-          <div className="lg:col-span-7">
-            <div className="p-7 sm:p-8 rounded-2xl bg-slate-900/60 border border-slate-800 backdrop-blur-sm">
-              <h3 className="text-xl font-bold text-white mb-2 flex items-center gap-2">
-                <MessageSquare className="w-5 h-5 text-emerald-400" />
-                Send a Message
-              </h3>
-              <p className="text-xs sm:text-sm text-slate-400 mb-6">
-                Fill out the details below to dispatch an email inquiry directly to my inbox.
-              </p>
+          <div className="relative z-10 max-w-4xl mx-auto">
+            
+            {/* Glowing Terminal Icon */}
+            <div className="relative inline-block mb-6">
+              <div className="absolute inset-0 bg-[#00ff9c] blur-xl opacity-20" />
+              <Terminal className="relative w-12 sm:w-14 h-12 sm:h-14 text-[#00ff9c] mx-auto" />
+            </div>
 
-              {submitted && (
-                <div className="mb-6 p-4 rounded-xl bg-emerald-500/10 border border-emerald-500/30 text-emerald-300 text-xs flex items-center gap-2">
-                  <Check className="w-4 h-4 text-emerald-400 shrink-0" />
-                  <span>Email client opened! You can review and hit send directly to reach me.</span>
-                </div>
-              )}
+            {/* Bold Headline */}
+            <h2 className="font-header text-3xl sm:text-5xl md:text-6xl mb-4 tracking-tight text-white uppercase italic font-black">
+              READY TO{" "}
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#00ff9c] to-[#00b3ff] drop-shadow-[0_0_15px_rgba(0,255,156,0.4)]">
+                BOOT
+              </span>
+              <br />
+              YOUR NEXT PROJECT?
+            </h2>
 
-              <form onSubmit={handleSubmit} className="space-y-4">
+            {/* Subtitle */}
+            <p className="max-w-xl mx-auto text-[#9da7b3] text-sm sm:text-base mb-8 font-mono tracking-tight leading-relaxed">
+              // CURRENT_STATUS: <span className="text-[#00ff9c]">LISTENING_FOR_INPUT</span><br />
+              AI, Computer Vision, Full-Stack, & Hardware challenges accepted.
+            </p>
+
+            {/* Quick Action Strip (Copy Email & Direct Actions) */}
+            <div className="flex flex-wrap items-center justify-center gap-3 mb-10 font-mono text-xs">
+              <button
+                onClick={handleCopyEmail}
+                className="px-4 py-2 border border-[#1f2933] bg-[#050505] text-[#9da7b3] hover:border-[#00ff9c] hover:text-[#00ff9c] transition-colors rounded-sm flex items-center gap-2"
+              >
+                {copiedEmail ? (
+                  <>
+                    <Check className="w-3.5 h-3.5 text-[#00ff9c]" />
+                    <span className="text-[#00ff9c]">COPIED_TO_CLIPBOARD</span>
+                  </>
+                ) : (
+                  <>
+                    <Copy className="w-3.5 h-3.5" />
+                    <span>COPY_EMAIL: {personalData.email}</span>
+                  </>
+                )}
+              </button>
+
+              <span className="text-[#555] hidden sm:inline">|</span>
+
+              <span className="text-[#9da7b3] flex items-center gap-1 text-xs">
+                <MapPin className="w-3 h-3 text-[#00ff9c]" />
+                Sargodha, Punjab, Pakistan
+              </span>
+            </div>
+
+            {/* Interactive Form */}
+            <div className="max-w-2xl mx-auto bg-[#050505]/90 border border-[#1f2933] p-6 sm:p-8 rounded-sm text-left">
+              <form onSubmit={handleSubmit} className="space-y-4 font-mono text-xs">
+                
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
-                    <label className="block text-xs font-medium text-slate-300 mb-1.5">
-                      Your Name *
+                    <label className="block text-[#9da7b3] mb-1.5 uppercase tracking-wider">
+                      &gt; SENDER_NAME *
                     </label>
                     <input
                       type="text"
@@ -220,88 +159,96 @@ export default function Contact({ preselectedService }: ContactProps) {
                       placeholder="e.g. John Doe"
                       value={formData.name}
                       onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                      className="w-full px-4 py-2.5 rounded-xl bg-slate-950/80 border border-slate-800 focus:border-emerald-500 focus:outline-none text-xs sm:text-sm text-white placeholder-slate-600 transition-colors"
+                      className="w-full px-3.5 py-2.5 bg-[#0d1117] border border-[#1f2933] text-white focus:border-[#00ff9c] focus:outline-none transition rounded-sm"
                     />
                   </div>
 
                   <div>
-                    <label className="block text-xs font-medium text-slate-300 mb-1.5">
-                      Your Email *
+                    <label className="block text-[#9da7b3] mb-1.5 uppercase tracking-wider">
+                      &gt; RETURN_EMAIL *
                     </label>
                     <input
                       type="email"
                       required
-                      placeholder="e.g. john@example.com"
+                      placeholder="e.g. client@domain.com"
                       value={formData.email}
                       onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                      className="w-full px-4 py-2.5 rounded-xl bg-slate-950/80 border border-slate-800 focus:border-emerald-500 focus:outline-none text-xs sm:text-sm text-white placeholder-slate-600 transition-colors"
+                      className="w-full px-3.5 py-2.5 bg-[#0d1117] border border-[#1f2933] text-white focus:border-[#00ff9c] focus:outline-none transition rounded-sm"
                     />
                   </div>
                 </div>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
-                    <label className="block text-xs font-medium text-slate-300 mb-1.5">
-                      Service / Project Type
+                    <label className="block text-[#9da7b3] mb-1.5 uppercase tracking-wider">
+                      &gt; SYSTEM_REQUIREMENT
                     </label>
                     <select
                       value={formData.service}
                       onChange={(e) => setFormData({ ...formData, service: e.target.value })}
-                      className="w-full px-4 py-2.5 rounded-xl bg-slate-950/80 border border-slate-800 focus:border-emerald-500 focus:outline-none text-xs sm:text-sm text-white transition-colors"
+                      className="w-full px-3.5 py-2.5 bg-[#0d1117] border border-[#1f2933] text-white focus:border-[#00ff9c] focus:outline-none transition rounded-sm"
                     >
-                      <option value="AI & Machine Learning Solutions">AI & Machine Learning</option>
-                      <option value="Full-Stack Web Development">Full-Stack Web Development</option>
-                      <option value="Web Scraping & Data Solutions">Web Scraping & Data Solutions</option>
+                      <option value="AI & Machine Learning Solutions">AI & Computer Vision</option>
+                      <option value="Full-Stack Web Development">Full-Stack Web Platform</option>
+                      <option value="Web Scraping & Data Solutions">Automated Scraping & ETL</option>
                       <option value="Robotics & IoT Prototyping">Robotics & IoT Prototyping</option>
-                      <option value="Full-Time Hiring / Contract Opportunity">Full-Time / Contract Role</option>
-                      <option value="General Technical Consultation">General Consultation</option>
+                      <option value="Full-Time Engineering Hire">Full-Time Hiring Offer</option>
                     </select>
                   </div>
 
                   <div>
-                    <label className="block text-xs font-medium text-slate-300 mb-1.5">
-                      Subject
+                    <label className="block text-[#9da7b3] mb-1.5 uppercase tracking-wider">
+                      &gt; SUBJECT
                     </label>
                     <input
                       type="text"
-                      placeholder="e.g. New Project Discussion"
+                      placeholder="Project Scope..."
                       value={formData.subject}
                       onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
-                      className="w-full px-4 py-2.5 rounded-xl bg-slate-950/80 border border-slate-800 focus:border-emerald-500 focus:outline-none text-xs sm:text-sm text-white placeholder-slate-600 transition-colors"
+                      className="w-full px-3.5 py-2.5 bg-[#0d1117] border border-[#1f2933] text-white focus:border-[#00ff9c] focus:outline-none transition rounded-sm"
                     />
                   </div>
                 </div>
 
                 <div>
-                  <label className="block text-xs font-medium text-slate-300 mb-1.5">
-                    Your Message / Requirements *
+                  <label className="block text-[#9da7b3] mb-1.5 uppercase tracking-wider">
+                    &gt; TRANSMISSION_PAYLOAD (MESSAGE) *
                   </label>
                   <textarea
                     required
                     rows={4}
-                    placeholder="Tell me about your project goals, timelines, or technology requirements..."
+                    placeholder="Provide functional specs, algorithm constraints, or engagement requirements..."
                     value={formData.message}
                     onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                    className="w-full px-4 py-2.5 rounded-xl bg-slate-950/80 border border-slate-800 focus:border-emerald-500 focus:outline-none text-xs sm:text-sm text-white placeholder-slate-600 transition-colors resize-none"
+                    className="w-full px-3.5 py-2.5 bg-[#0d1117] border border-[#1f2933] text-white focus:border-[#00ff9c] focus:outline-none transition rounded-sm resize-none font-sans"
                   />
                 </div>
 
                 <button
                   type="submit"
-                  className="w-full inline-flex items-center justify-center gap-2 py-3 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-400 hover:to-teal-500 text-slate-950 font-bold text-sm transition-all duration-200 shadow-lg shadow-emerald-500/20 hover:shadow-emerald-500/35 hover:-translate-y-0.5"
+                  className="w-full py-4 bg-[#00ff9c] text-black font-header font-black text-sm uppercase tracking-widest hover:shadow-[0_0_30px_rgba(0,255,156,0.5)] transition-all duration-300 rounded-sm flex items-center justify-center gap-2 group cursor-pointer"
                 >
-                  <Send className="w-4 h-4" />
-                  <span>Send Message via Email</span>
+                  <Send className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                  <span>Initiate_Contact.exe</span>
                 </button>
               </form>
-
             </div>
-          </div>
 
+            {/* Telemetry Footer */}
+            <div className="mt-14 pt-8 border-t border-[#1f2933] flex flex-wrap justify-center gap-6 sm:gap-8 text-[#555] font-mono text-[9px] uppercase tracking-[0.2em]">
+              <span className="flex items-center gap-2">
+                <span className="w-1.5 h-1.5 bg-[#00ff9c] rounded-full animate-ping" />
+                <span className="text-[#9da7b3]">Status: Available</span>
+              </span>
+              <span>Link: <span className="text-[#00ff9c]">Encrypted</span></span>
+              <span>Protocol: <span className="text-[#00ff9c]">AES-256</span></span>
+              <span>Lat: <span className="text-[#00ff9c]">0ms</span></span>
+            </div>
+
+          </div>
         </div>
 
       </div>
     </section>
   );
 }
-

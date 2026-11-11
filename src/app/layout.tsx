@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter, JetBrains_Mono } from "next/font/google";
+import { Inter, Orbitron, Roboto_Mono } from "next/font/google";
 import "./globals.css";
 
 const inter = Inter({
@@ -8,18 +8,25 @@ const inter = Inter({
   display: "swap",
 });
 
-const jetbrainsMono = JetBrains_Mono({
+const orbitron = Orbitron({
+  subsets: ["latin"],
+  variable: "--font-orbitron",
+  display: "swap",
+});
+
+const robotoMono = Roboto_Mono({
   subsets: ["latin"],
   variable: "--font-mono",
   display: "swap",
 });
 
 export const metadata: Metadata = {
-  title: "Muhammad Nasarullah | AI/ML Engineer & Full-Stack Web Developer",
+  title: "Engr. Muhammad Nasarullah | AI/ML Engineer & Full-Stack Developer",
   description:
-    "Official Portfolio of Muhammad Nasarullah — Computer Engineer, AI/ML Engineer, and Full-Stack Web Developer. Specializing in Computer Vision (YOLOv8), Predictive Machine Learning, Next.js, and Robotics & IoT.",
+    "Official Portfolio of Engr. Muhammad Nasarullah — Computer Engineer, AI/ML Engineer, Computer Vision Specialist, and Full-Stack Web Developer. Transforming ideas into intelligent solutions.",
   keywords: [
     "Muhammad Nasarullah",
+    "Engr. Muhammad Nasarullah",
     "AI/ML Engineer",
     "Full-Stack Web Developer",
     "Computer Engineer",
@@ -43,14 +50,14 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
     url: "https://muhammad-nasarullah.vercel.app",
-    title: "Muhammad Nasarullah | AI/ML Engineer & Full-Stack Web Developer",
+    title: "Engr. Muhammad Nasarullah | AI/ML Engineer & Full-Stack Developer",
     description:
-      "Building Intelligent Solutions Through AI, Engineering, and Modern Web Technologies. Explore featured AI models, computer vision systems, and full-stack web applications.",
+      "Building Intelligent Solutions Through AI, Engineering, and Modern Web Technologies. Explore featured AI systems, YOLOv8 vision models, and full-stack web platforms.",
     siteName: "Muhammad Nasarullah Portfolio",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Muhammad Nasarullah | AI/ML Engineer & Full-Stack Web Developer",
+    title: "Engr. Muhammad Nasarullah | AI/ML Engineer & Full-Stack Developer",
     description:
       "Building Intelligent Solutions Through AI, Engineering, and Modern Web Technologies.",
     creator: "@Nasarullah",
@@ -67,14 +74,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${inter.variable} ${jetbrainsMono.variable} dark`}>
+    <html lang="en" className={`${inter.variable} ${orbitron.variable} ${robotoMono.variable} scroll-smooth dark`}>
       <head>
-        <meta name="theme-color" content="#030712" />
+        <meta name="theme-color" content="#050505" />
       </head>
-      <body className="bg-slate-950 text-slate-100 antialiased selection:bg-emerald-500/20 selection:text-emerald-300">
+      <body className="bg-[#050505] text-[#e6edf3] font-sans overflow-x-hidden selection:bg-[#00ff9c]/20 selection:text-[#00ff9c]">
         {children}
       </body>
     </html>
   );
 }
-

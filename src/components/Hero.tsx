@@ -2,18 +2,17 @@
 
 import { useState, useEffect } from "react";
 import { personalData } from "@/data/portfolioData";
+import SignalCanvas from "./SignalCanvas";
 import { 
-  Sparkles, 
+  Terminal, 
   ArrowRight, 
   FileText, 
-  Github, 
   Linkedin, 
-  Mail, 
-  MapPin, 
-  Brain, 
-  Code2, 
+  Github, 
+  ChevronDown, 
   Cpu, 
-  ChevronDown 
+  Sparkles, 
+  Activity 
 } from "lucide-react";
 
 interface HeroProps {
@@ -21,155 +20,152 @@ interface HeroProps {
 }
 
 export default function Hero({ onOpenResume }: HeroProps) {
-  const [roleIndex, setRoleIndex] = useState(0);
-  const roles = personalData.roleSubtitles;
+  const specialties = [
+    "AI & Machine Learning Engineer",
+    "Computer Vision & YOLOv8 Specialist",
+    "Full-Stack Web Developer (Next.js / React)",
+    "Robotics & IoT Systems Architect",
+    "PEC Registered Computer Engineer",
+  ];
+
+  const [currentText, setCurrentText] = useState("");
+  const [count, setCount] = useState(0);
+  const [index, setIndex] = useState(0);
+  const [isDeleting, setIsDeleting] = useState(false);
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      setRoleIndex((prev) => (prev + 1) % roles.length);
-    }, 3000);
-    return () => clearInterval(interval);
-  }, [roles.length]);
+    const fullText = specialties[count % specialties.length];
+
+    const timer = setTimeout(() => {
+      if (!isDeleting) {
+        setCurrentText(fullText.slice(0, index + 1));
+        setIndex((prev) => prev + 1);
+
+        if (index + 1 === fullText.length) {
+          setTimeout(() => setIsDeleting(true), 2200);
+        }
+      } else {
+        setCurrentText(fullText.slice(0, index - 1));
+        setIndex((prev) => prev - 1);
+
+        if (index - 1 === 0) {
+          setIsDeleting(false);
+          setCount((prev) => prev + 1);
+        }
+      }
+    }, isDeleting ? 40 : 80);
+
+    return () => clearTimeout(timer);
+  }, [index, isDeleting, count]);
 
   return (
-    <section className="relative min-h-[92vh] flex items-center justify-center pt-24 pb-16 overflow-hidden">
-      {/* Background Glow Spheres */}
-      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[550px] h-[550px] bg-gradient-to-tr from-emerald-600/15 via-teal-500/10 to-cyan-500/15 rounded-full blur-[130px] pointer-events-none animate-glow" />
-      <div className="absolute top-1/3 -left-32 w-80 h-80 bg-emerald-500/10 rounded-full blur-[100px] pointer-events-none" />
-      <div className="absolute top-1/2 -right-32 w-80 h-80 bg-cyan-500/10 rounded-full blur-[100px] pointer-events-none" />
+    <section className="relative min-h-screen flex items-center justify-center pt-24 pb-16 px-4 overflow-hidden border-b border-[#1f2933]">
+      {/* Background Signal Flow Canvas & Grid */}
+      <SignalCanvas />
+      <div className="fixed inset-0 grid-bg opacity-30 -z-20 pointer-events-none" />
 
-      {/* Grid Overlay */}
-      <div className="absolute inset-0 bg-grid-pattern opacity-40 pointer-events-none" />
+      {/* Radial Ambient Glow */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#00ff9c]/5 rounded-full blur-[140px] pointer-events-none animate-pulse-glow" />
 
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-        <div className="flex flex-col items-center text-center max-w-4xl mx-auto">
-          
-          {/* Status Badge */}
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-slate-900/80 border border-emerald-500/30 text-emerald-300 text-xs sm:text-sm font-medium mb-6 backdrop-blur-md shadow-sm shadow-emerald-500/10">
-            <span className="relative flex h-2 w-2">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
-            </span>
-            <span>{personalData.status}</span>
-            <span className="text-slate-600">|</span>
-            <span className="flex items-center gap-1 text-slate-400 text-xs">
-              <MapPin className="w-3 h-3 text-emerald-400" />
-              Sargodha, Pakistan
-            </span>
-          </div>
-
-          {/* Main Hero Heading */}
-          <h1 className="text-4xl sm:text-6xl md:text-7xl font-extrabold tracking-tight text-white mb-4">
-            Hi, I'm{" "}
-            <span className="bg-gradient-to-r from-emerald-400 via-teal-300 to-cyan-400 bg-clip-text text-transparent">
-              {personalData.name}
-            </span>
-          </h1>
-
-          {/* Dynamic Role Subtitle */}
-          <div className="h-10 sm:h-12 flex items-center justify-center mb-6">
-            <p className="text-xl sm:text-2xl md:text-3xl font-semibold text-slate-300 flex items-center gap-2">
-              <span className="text-emerald-400 font-mono">&gt;</span>
-              <span className="transition-all duration-500 key={roleIndex}">
-                {roles[roleIndex]}
-              </span>
-            </p>
-          </div>
-
-          {/* Tagline & Elevator Pitch */}
-          <p className="text-base sm:text-lg text-emerald-300/90 font-medium italic mb-4 max-w-2xl">
-            "{personalData.tagline}"
-          </p>
-
-          <p className="text-sm sm:text-base text-slate-400 max-w-2xl leading-relaxed mb-8">
-            I combine my knowledge of <strong>Artificial Intelligence</strong>, <strong>Machine Learning</strong>, <strong>Computer Vision</strong>, and <strong>Full-Stack Web Development</strong> to transform ideas into practical, technology-driven solutions.
-          </p>
-
-          {/* CTA Buttons */}
-          <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-4 mb-12">
-            <a
-              href="#projects"
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-400 hover:to-teal-500 text-slate-950 font-semibold text-sm transition-all duration-200 shadow-lg shadow-emerald-500/25 hover:shadow-emerald-500/40 hover:-translate-y-0.5"
-            >
-              <span>Explore Projects</span>
-              <ArrowRight className="w-4 h-4" />
-            </a>
-
-            <button
-              onClick={onOpenResume}
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-slate-900/90 hover:bg-slate-800 text-slate-200 border border-slate-700/80 hover:border-slate-500 font-semibold text-sm transition-all duration-200 backdrop-blur-sm"
-            >
-              <FileText className="w-4 h-4 text-emerald-400" />
-              <span>View & Download CV</span>
-            </button>
-
-            <a
-              href="#contact"
-              className="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-slate-900/50 hover:bg-slate-900 text-slate-300 hover:text-white border border-slate-800 hover:border-slate-700 font-medium text-sm transition-all duration-200"
-            >
-              <Mail className="w-4 h-4 text-cyan-400" />
-              <span>Contact Me</span>
-            </a>
-          </div>
-
-          {/* Social Links Bar */}
-          <div className="flex items-center gap-3 text-slate-400 mb-12">
-            <a
-              href={personalData.github}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="p-2.5 rounded-lg bg-slate-900/80 border border-slate-800 hover:border-emerald-500/50 hover:text-emerald-400 transition-colors"
-              title="GitHub Profile"
-            >
-              <Github className="w-4 h-4" />
-            </a>
-            <a
-              href={personalData.linkedin}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="p-2.5 rounded-lg bg-slate-900/80 border border-slate-800 hover:border-cyan-500/50 hover:text-cyan-400 transition-colors"
-              title="LinkedIn Profile"
-            >
-              <Linkedin className="w-4 h-4" />
-            </a>
-            <a
-              href={`mailto:${personalData.email}`}
-              className="p-2.5 rounded-lg bg-slate-900/80 border border-slate-800 hover:border-teal-500/50 hover:text-teal-400 transition-colors"
-              title="Email Directly"
-            >
-              <Mail className="w-4 h-4" />
-            </a>
-          </div>
-
-          {/* Metric Stats Cards */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 w-full max-w-4xl">
-            {personalData.heroStats.map((stat, idx) => (
-              <div
-                key={idx}
-                className="p-4 rounded-xl bg-slate-900/60 border border-slate-800/80 backdrop-blur-sm hover:border-slate-700 transition-all text-center group"
-              >
-                <div className="text-2xl sm:text-3xl font-extrabold bg-gradient-to-r from-emerald-400 to-teal-300 bg-clip-text text-transparent group-hover:scale-105 transition-transform duration-200">
-                  {stat.value}
-                </div>
-                <div className="text-xs text-slate-400 mt-1 font-medium">
-                  {stat.label}
-                </div>
-              </div>
-            ))}
-          </div>
-
+      <div className="relative z-10 max-w-5xl mx-auto text-center flex flex-col items-center">
+        
+        {/* System Initialize Tag */}
+        <div className="inline-flex items-center gap-2 px-3 py-1 bg-[#0d1117] border border-[#00ff9c]/30 rounded-sm mb-6 shadow-[0_0_15px_rgba(0,255,156,0.1)]">
+          <span className="w-2 h-2 rounded-full bg-[#00ff9c] animate-ping" />
+          <span className="font-mono text-[#00ff9c] text-xs sm:text-sm tracking-[0.3em] uppercase">
+            System.Initialize()
+          </span>
         </div>
+
+        {/* Large Name Header */}
+        <h1 className="font-header text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-black tracking-tight mb-4 text-white uppercase">
+          Engr.{" "}
+          <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#00ff9c] via-[#22c55e] to-[#00b3ff] drop-shadow-[0_0_25px_rgba(0,255,156,0.35)]">
+            Nasarullah
+          </span>
+        </h1>
+
+        {/* Typing Console Prompt */}
+        <div className="h-10 sm:h-12 flex items-center justify-center mb-6">
+          <p className="font-mono text-base sm:text-xl md:text-2xl text-[#9da7b3] flex items-center">
+            <span className="text-[#00ff9c] mr-2 font-bold">&gt;</span>
+            <span className="text-white font-medium">{currentText}</span>
+            <span className="inline-block w-2.5 h-5 bg-[#00ff9c] ml-1 animate-pulse" />
+          </p>
+        </div>
+
+        {/* Tagline */}
+        <p className="font-mono text-xs sm:text-sm text-[#00ff9c]/90 max-w-2xl mb-4 uppercase tracking-wider">
+          // "{personalData.tagline}"
+        </p>
+
+        {/* Core Subtitle Paragraph */}
+        <p className="text-sm sm:text-base text-[#9da7b3] max-w-2xl leading-relaxed mb-10 font-sans">
+          Computer Engineer from <strong className="text-white">Institute of Space Technology (IST)</strong>. 
+          Architecting AI-powered computer vision models, data-driven market forecasting engines, and high-performance full-stack web applications.
+        </p>
+
+        {/* Cyber Action Buttons */}
+        <div className="flex flex-col sm:flex-row gap-4 justify-center items-center w-full max-w-md sm:max-w-none mb-12 font-mono">
+          <a
+            href="#projects"
+            className="w-full sm:w-auto bg-[#00ff9c] text-black px-8 py-3.5 font-bold uppercase text-xs sm:text-sm tracking-wider hover:scale-105 hover:shadow-[0_0_25px_rgba(0,255,156,0.5)] transition duration-300 rounded-sm flex items-center justify-center gap-2 group"
+          >
+            <span>03. VIEW_PROJECTS</span>
+            <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+          </a>
+
+          <a
+            href="#contact"
+            className="w-full sm:w-auto border border-[#1f2933] bg-[#0d1117]/80 text-white px-8 py-3.5 font-bold uppercase text-xs sm:text-sm tracking-wider hover:border-[#00ff9c] hover:text-[#00ff9c] hover:bg-[#00ff9c]/5 transition duration-300 rounded-sm flex items-center justify-center gap-2"
+          >
+            <Terminal className="w-4 h-4 text-[#00ff9c]" />
+            <span>INITIATE_CONTACT</span>
+          </a>
+
+          <button
+            onClick={onOpenResume}
+            className="w-full sm:w-auto border border-[#00b3ff]/40 bg-[#0d1117]/80 text-[#00b3ff] px-6 py-3.5 font-bold uppercase text-xs sm:text-sm tracking-wider hover:border-[#00b3ff] hover:bg-[#00b3ff]/10 hover:shadow-[0_0_20px_rgba(0,179,255,0.3)] transition duration-300 rounded-sm flex items-center justify-center gap-2"
+          >
+            <FileText className="w-4 h-4" />
+            <span>RESUME_ATS</span>
+          </button>
+        </div>
+
+        {/* Live System Telemetry Strip */}
+        <div className="w-full max-w-4xl border-t border-[#1f2933] pt-6 flex flex-wrap justify-center sm:justify-between items-center gap-4 text-[10px] sm:text-xs font-mono uppercase tracking-[0.2em] text-[#555]">
+          <div className="flex items-center gap-2">
+            <span className="w-2 h-2 rounded-full bg-[#00ff9c] animate-ping" />
+            <span className="text-[#9da7b3]">STATUS:</span>
+            <span className="text-[#00ff9c] font-bold">AVAILABLE_FOR_HIRE</span>
+          </div>
+
+          <div>
+            <span className="text-[#9da7b3]">PEC_ACCREDITED:</span>{" "}
+            <span className="text-white font-bold">COMP_ENGINEER</span>
+          </div>
+
+          <div>
+            <span className="text-[#9da7b3]">DEGREE:</span>{" "}
+            <span className="text-[#00b3ff] font-bold">BS_CE (IST/KICSIT)</span>
+          </div>
+
+          <div>
+            <span className="text-[#9da7b3]">HONOR:</span>{" "}
+            <span className="text-[#00ff9c] font-bold">HAFIZ_E_QURAN</span>
+          </div>
+        </div>
+
       </div>
 
-      {/* Subtle Scroll Down Prompt */}
+      {/* Scroll indicator */}
       <a
         href="#about"
-        className="absolute bottom-3 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1 text-slate-500 hover:text-emerald-400 transition-colors text-xs font-mono"
+        className="absolute bottom-4 left-1/2 -translate-x-1/2 text-[#555] hover:text-[#00ff9c] transition-colors flex flex-col items-center font-mono text-[9px] uppercase tracking-widest"
       >
-        <span>scroll</span>
-        <ChevronDown className="w-3.5 h-3.5 animate-bounce" />
+        <span>SCROLL_DOWN</span>
+        <ChevronDown className="w-3.5 h-3.5 animate-bounce mt-1 text-[#00ff9c]" />
       </a>
     </section>
   );
 }
-

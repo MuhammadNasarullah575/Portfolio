@@ -1,16 +1,17 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { personalData } from "@/data/portfolioData";
 import { 
+  Cpu, 
   Menu, 
   X, 
-  Terminal, 
-  Sparkles, 
-  FileText, 
   Github, 
   Linkedin, 
-  ExternalLink 
+  FileText, 
+  Terminal, 
+  ChevronRight, 
+  Sparkles 
 } from "lucide-react";
 
 interface NavbarProps {
@@ -18,144 +19,169 @@ interface NavbarProps {
 }
 
 export default function Navbar({ onOpenResume }: NavbarProps) {
-  const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
-    };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
   const navLinks = [
-    { name: "About", href: "#about" },
-    { name: "Experience", href: "#experience" },
-    { name: "Projects", href: "#projects" },
-    { name: "Skills", href: "#skills" },
-    { name: "Services", href: "#services" },
-    { name: "Education", href: "#education" },
-    { name: "Contact", href: "#contact" },
+    { label: "01. About", href: "#about" },
+    { label: "02. Process", href: "#process" },
+    { label: "03. Projects", href: "#projects" },
+    { label: "04. Experience", href: "#experience" },
+    { label: "05. Stack", href: "#skills" },
+    { label: "06. Mentorship", href: "#learning" },
+    { label: "07. Services", href: "#services" },
+    { label: "08. Contact", href: "#contact" },
   ];
 
   return (
-    <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled
-          ? "bg-slate-950/85 backdrop-blur-md border-b border-slate-800/80 shadow-lg shadow-emerald-500/5 py-3"
-          : "bg-transparent py-5"
-      }`}
-    >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between">
-          {/* Brand Logo */}
+    <>
+      <nav className="fixed top-0 w-full z-50 bg-[#050505]/90 backdrop-blur-xl border-b border-[#1f2933]">
+        <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+          {/* Logo */}
           <a
             href="#"
-            className="flex items-center gap-3 group focus:outline-none focus:ring-2 focus:ring-emerald-500 rounded-lg p-1"
+            className="font-header text-lg sm:text-xl tracking-tighter text-[#00ff9c] flex items-center gap-2 group"
           >
-            <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-emerald-500 via-teal-500 to-cyan-500 p-[1.5px] transition-transform duration-300 group-hover:scale-105 shadow-md shadow-emerald-500/20">
-              <div className="w-full h-full bg-slate-950 rounded-[10px] flex items-center justify-center">
-                <span className="font-mono font-bold text-sm bg-gradient-to-r from-emerald-400 to-cyan-400 bg-clip-text text-transparent">
-                  MN
-                </span>
-              </div>
+            <div className="w-8 h-8 rounded border border-[#00ff9c]/40 bg-[#0d1117] flex items-center justify-center group-hover:border-[#00ff9c] group-hover:shadow-[0_0_15px_rgba(0,255,156,0.4)] transition-all">
+              <Cpu className="w-4 h-4 text-[#00ff9c]" />
             </div>
-            <div className="flex flex-col">
-              <span className="font-bold text-white text-base tracking-tight flex items-center gap-1.5">
-                {personalData.name}
-                <span className="inline-block w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-              </span>
-              <span className="text-xs text-slate-400 font-mono hidden sm:inline-block">
-                AI/ML & Full-Stack Eng.
-              </span>
-            </div>
+            <span className="font-bold tracking-tight text-white group-hover:text-[#00ff9c] transition-colors">
+              ENGR. <span className="text-[#00ff9c]">NASARULLAH</span>
+            </span>
           </a>
 
-          {/* Desktop Navigation Links */}
-          <nav className="hidden md:flex items-center gap-1 bg-slate-900/60 p-1.5 rounded-full border border-slate-800/80 backdrop-blur-sm">
+          {/* Desktop Nav */}
+          <div className="hidden xl:flex items-center gap-7 font-mono text-xs uppercase tracking-widest text-[#9da7b3]">
             {navLinks.map((link) => (
               <a
-                key={link.name}
+                key={link.label}
                 href={link.href}
-                className="text-xs font-medium text-slate-300 hover:text-white px-3.5 py-1.5 rounded-full hover:bg-slate-800/80 transition-all duration-200"
+                className="hover:text-[#00ff9c] transition-colors"
               >
-                {link.name}
+                {link.label}
+              </a>
+            ))}
+
+            <div className="flex items-center gap-4 border-l border-[#1f2933] pl-6">
+              <a
+                href={personalData.github}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-[#9da7b3] hover:text-[#00ff9c] transition"
+                title="GitHub"
+              >
+                <Github className="w-4 h-4" />
+              </a>
+              <a
+                href={personalData.linkedin}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-[#9da7b3] hover:text-[#00b3ff] transition"
+                title="LinkedIn"
+              >
+                <Linkedin className="w-4 h-4" />
+              </a>
+              <button
+                onClick={onOpenResume}
+                className="px-3 py-1 border border-[#00ff9c]/50 text-[#00ff9c] hover:bg-[#00ff9c] hover:text-black transition-all rounded-sm font-bold text-[10px] tracking-wider"
+              >
+                CURRICULUM_VITAE
+              </button>
+            </div>
+          </div>
+
+          {/* Tablet/Mobile Actions */}
+          <div className="flex xl:hidden items-center gap-3">
+            <button
+              onClick={onOpenResume}
+              className="px-2.5 py-1 border border-[#00ff9c]/50 text-[#00ff9c] text-[10px] font-mono hover:bg-[#00ff9c] hover:text-black transition rounded-sm"
+            >
+              CV
+            </button>
+            <button
+              onClick={() => setMobileMenuOpen(true)}
+              className="text-white hover:text-[#00ff9c] transition p-1"
+              aria-label="Open Menu"
+            >
+              <Menu className="w-7 h-7" />
+            </button>
+          </div>
+        </div>
+      </nav>
+
+      {/* Mobile Drawer Overlay */}
+      {mobileMenuOpen && (
+        <div
+          onClick={() => setMobileMenuOpen(false)}
+          className="fixed inset-0 bg-black/70 z-[55] backdrop-blur-sm transition-opacity"
+        />
+      )}
+
+      {/* Mobile Drawer */}
+      <div
+        className={`fixed inset-y-0 right-0 z-[60] w-full sm:w-80 bg-[#0d1117] border-l border-[#00ff9c]/30 shadow-2xl transition-transform duration-500 ease-in-out md:hidden ${
+          mobileMenuOpen ? "translate-x-0" : "translate-x-full"
+        }`}
+      >
+        <div className="flex flex-col h-full p-8 relative overflow-y-auto">
+          {/* Scanline pattern */}
+          <div className="absolute inset-0 pointer-events-none opacity-10 bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.25)_50%),linear-gradient(90deg,rgba(0,255,156,0.06),rgba(0,179,255,0.02),rgba(0,255,156,0.06))] bg-[length:100%_4px,4px_100%]" />
+
+          {/* Top Bar */}
+          <div className="flex justify-between items-center mb-12 relative z-10">
+            <span className="font-mono text-[10px] text-[#00ff9c] tracking-wider">
+              SYSTEM_NAV_v3.2
+            </span>
+            <button
+              onClick={() => setMobileMenuOpen(false)}
+              className="text-white hover:text-[#00ff9c] transition-colors p-2 border border-[#1f2933]"
+            >
+              <X className="w-5 h-5" />
+            </button>
+          </div>
+
+          {/* Links */}
+          <nav className="flex flex-col gap-5 font-header text-lg uppercase tracking-tight relative z-10">
+            {navLinks.map((link) => (
+              <a
+                key={link.label}
+                href={link.href}
+                onClick={() => setMobileMenuOpen(false)}
+                className="group flex items-center justify-between text-slate-300 hover:text-[#00ff9c] transition-all"
+              >
+                <span>{link.label}</span>
+                <ChevronRight className="w-4 h-4 opacity-0 group-hover:opacity-100 text-[#00ff9c] transition-all" />
               </a>
             ))}
           </nav>
 
-          {/* Action CTAs */}
-          <div className="hidden lg:flex items-center gap-3">
-            <button
-              onClick={onOpenResume}
-              className="inline-flex items-center gap-1.5 text-xs font-semibold px-3.5 py-2 rounded-lg bg-slate-800/90 hover:bg-slate-700/90 text-slate-200 border border-slate-700 transition-all hover:border-slate-500 shadow-sm"
-            >
-              <FileText className="w-3.5 h-3.5 text-emerald-400" />
-              View CV
-            </button>
-
-            <a
-              href="#contact"
-              className="inline-flex items-center gap-1.5 text-xs font-semibold px-4 py-2 rounded-lg bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-400 hover:to-teal-500 text-slate-950 font-medium transition-all shadow-md shadow-emerald-500/25 hover:shadow-emerald-500/40 hover:-translate-y-0.5"
-            >
-              <Sparkles className="w-3.5 h-3.5" />
-              Let's Talk
-            </a>
-          </div>
-
-          {/* Mobile Menu Button */}
-          <div className="flex items-center gap-2 md:hidden">
-            <button
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="p-2 rounded-lg bg-slate-900 border border-slate-800 text-slate-300 hover:text-white focus:outline-none"
-              aria-label="Toggle Menu"
-            >
-              {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
-            </button>
+          {/* Bottom Telemetry */}
+          <div className="mt-auto border-t border-[#1f2933] pt-6 relative z-10">
+            <div className="font-mono text-[10px] text-[#9da7b3] mb-4 space-y-1">
+              <p>&gt; STATUS: <span className="text-[#00ff9c]">ENCRYPTED_ONLINE</span></p>
+              <p>&gt; PEC_REG: <span className="text-white">VERIFIED_COMP_ENGR</span></p>
+              <p>&gt; CORE: <span className="text-[#00b3ff]">AI_VISION_FULLSTACK</span></p>
+            </div>
+            <div className="flex gap-3">
+              <a
+                href={personalData.github}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-2.5 bg-[#1f2933] text-white hover:bg-[#00ff9c] hover:text-black transition-all"
+              >
+                <Github className="w-4 h-4" />
+              </a>
+              <a
+                href={personalData.linkedin}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-2.5 bg-[#1f2933] text-white hover:bg-[#00ff9c] hover:text-black transition-all"
+              >
+                <Linkedin className="w-4 h-4" />
+              </a>
+            </div>
           </div>
         </div>
       </div>
-
-      {/* Mobile Drawer */}
-      {mobileMenuOpen && (
-        <div className="md:hidden bg-slate-950/95 border-b border-slate-800 px-4 pt-3 pb-6 space-y-3 backdrop-blur-xl animate-in slide-in-from-top duration-200">
-          <div className="flex flex-col space-y-1">
-            {navLinks.map((link) => (
-              <a
-                key={link.name}
-                href={link.href}
-                onClick={() => setMobileMenuOpen(false)}
-                className="text-sm font-medium text-slate-300 hover:text-emerald-400 px-3 py-2.5 rounded-lg hover:bg-slate-900/80 transition-colors"
-              >
-                {link.name}
-              </a>
-            ))}
-          </div>
-
-          <div className="pt-3 border-t border-slate-800/80 flex flex-col gap-2">
-            <button
-              onClick={() => {
-                setMobileMenuOpen(false);
-                if (onOpenResume) onOpenResume();
-              }}
-              className="w-full flex items-center justify-center gap-2 text-sm font-medium py-2.5 rounded-lg bg-slate-900 text-slate-200 border border-slate-800"
-            >
-              <FileText className="w-4 h-4 text-emerald-400" />
-              View & Download CV
-            </button>
-            <a
-              href="#contact"
-              onClick={() => setMobileMenuOpen(false)}
-              className="w-full flex items-center justify-center gap-2 text-sm font-semibold py-2.5 rounded-lg bg-gradient-to-r from-emerald-500 to-teal-600 text-slate-950 shadow-md shadow-emerald-500/20"
-            >
-              <Sparkles className="w-4 h-4" />
-              Let's Connect
-            </a>
-          </div>
-        </div>
-      )}
-    </header>
+    </>
   );
 }
-

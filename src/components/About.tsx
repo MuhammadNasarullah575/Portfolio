@@ -1,196 +1,218 @@
 "use client";
 
-import { personalData, professionalStrengths } from "@/data/portfolioData";
+import { personalData } from "@/data/portfolioData";
 import { 
-  GraduationCap, 
-  Award, 
+  Cpu, 
+  Eye, 
+  Terminal, 
+  ShieldCheck, 
   BookOpen, 
-  CheckCircle, 
-  Sparkles, 
+  Award, 
+  GraduationCap, 
   Layers, 
-  Search, 
-  Users, 
-  TrendingUp, 
-  CheckCircle2, 
-  Target 
+  ArrowUpRight, 
+  Binary, 
+  Activity 
 } from "lucide-react";
 
 export default function About() {
-  const getIcon = (iconName: string) => {
-    switch (iconName) {
-      case "Sparkles": return <Sparkles className="w-5 h-5 text-emerald-400" />;
-      case "Layers": return <Layers className="w-5 h-5 text-teal-400" />;
-      case "Search": return <Search className="w-5 h-5 text-cyan-400" />;
-      case "Users": return <Users className="w-5 h-5 text-blue-400" />;
-      case "TrendingUp": return <TrendingUp className="w-5 h-5 text-emerald-400" />;
-      default: return <CheckCircle2 className="w-5 h-5 text-teal-400" />;
+  const services = [
+    {
+      code: "SRV_01",
+      title: "Computer Vision & YOLOv8",
+      desc: "Real-time hazard detection, video tracking with Kalman filtering, OpenCV image pipelines, and high-FPS edge inference models.",
+      tech: "YOLOv8 // OpenCV // CVZone // Python"
+    },
+    {
+      code: "SRV_02",
+      title: "Full-Stack Web Development",
+      desc: "Engineering responsive web applications, high-converting e-commerce platforms, and intuitive administrative SaaS dashboards.",
+      tech: "Next.js // React // Tailwind // Vercel"
+    },
+    {
+      code: "SRV_03",
+      title: "FinTech & Predictive ML",
+      desc: "Quantitative stock market risk models, FINRA short interest analysis, RSI/MACD indicators, and probabilistic regime forecasting.",
+      tech: "Python // Scikit-learn // Pandas // Streamlit"
+    },
+    {
+      code: "SRV_04",
+      title: "NLP & Semantic Transformers",
+      desc: "High-dimensional text embeddings with Sentence-Transformers (MiniLM), news sentiment modeling, and BiLSTM neural classifiers.",
+      tech: "DistilBART // MiniLM // BiLSTM // PostgreSQL"
+    },
+    {
+      code: "SRV_05",
+      title: "Automated Data Scraping & ETL",
+      desc: "Resilient automated Python harvesting pipelines, dynamic browser automation with Playwright, and structured data extraction.",
+      tech: "Playwright // BeautifulSoup // Pandas // APIs"
+    },
+    {
+      code: "SRV_06",
+      title: "Robotics & IoT Prototyping",
+      desc: "Microcontroller firmware in C/C++, sensor telemetry integration, UART serial communication, and smart actuator controllers.",
+      tech: "Arduino Uno // C/C++ // Sensors // Embedded"
     }
-  };
+  ];
 
   return (
-    <section id="about" className="py-24 relative border-t border-slate-900 bg-slate-950/40">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="about" className="max-w-7xl mx-auto px-6 py-24 border-b border-[#1f2933]">
+      
+      {/* Top Profile Grid */}
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
         
-        {/* Section Header */}
-        <div className="flex flex-col items-center text-center mb-16">
-          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-mono uppercase tracking-wider mb-3">
-            <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
-            Background & Mindset
-          </div>
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
-            About Me
-          </h2>
-          <p className="text-slate-400 max-w-xl text-sm sm:text-base mt-2">
-            Bridging hardware foundations with modern machine learning and full-stack web engineering.
+        {/* Left Column: Story & Narrative */}
+        <div className="lg:col-span-7">
+          <p className="font-mono text-[#00ff9c] text-xs tracking-[0.5em] mb-4 uppercase">
+            01. PROFILE_OVERVIEW
           </p>
-        </div>
 
-        {/* Top Story & Credentials Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start mb-16">
-          
-          {/* Left Bio Column */}
-          <div className="lg:col-span-7 space-y-4 text-slate-300 text-sm sm:text-base leading-relaxed">
-            <div className="p-6 rounded-2xl bg-slate-900/50 border border-slate-800/80 backdrop-blur-sm space-y-4">
-              <p>
-                I am <span className="text-white font-semibold">{personalData.name}</span>, a Computer Engineer with a deep passion for Artificial Intelligence, Machine Learning, Full-Stack Web Development, and emerging cyber-physical systems.
-              </p>
-              <p>
-                I hold a Bachelor's degree in Computer Engineering from the <strong className="text-emerald-300 font-medium">Institute of Space Technology (IST), KICSIT</strong>, graduating with a CGPA of <strong className="text-emerald-300 font-medium">3.23 / 4.00</strong> and maintaining a First Division record throughout my academic sessions.
-              </p>
-              <p>
-                My professional journey encompasses hands-on development in computer vision, machine learning models, financial market prediction engines, automated web scraping, and production e-commerce platforms.
-              </p>
-              <p>
-                Beyond code, I served as a <strong>Tech Fellow</strong> under the Federal Directorate of Education's <em>Disruptive Education</em> initiative, where I trained and mentored students on practical STEM, robotics, Arduino microcontrollers, sensor telemetry, and IoT-based hardware solutions.
-              </p>
-              <p className="pt-2 text-slate-400 border-t border-slate-800/60 italic text-xs sm:text-sm">
-                "I believe in continuous learning, practical experimentation, and developing technology that solves real-world challenges."
-              </p>
-            </div>
+          <h2 className="font-header text-3xl sm:text-5xl mb-6 font-bold leading-tight text-white">
+            Engineering{" "}
+            <span className="text-[#00ff9c] drop-shadow-[0_0_12px_rgba(0,255,156,0.4)]">
+              Intelligent Systems
+            </span>{" "}
+            for a{" "}
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#00ff9c] to-[#00b3ff]">
+              Smarter World
+            </span>.
+          </h2>
 
-            {/* Career Vision Card */}
-            <div className="p-5 rounded-xl bg-gradient-to-r from-emerald-950/40 via-teal-950/20 to-slate-900/40 border border-emerald-500/20">
-              <div className="flex items-center gap-2 text-emerald-400 font-semibold text-sm mb-2">
-                <Target className="w-4 h-4" />
-                <span>Career Vision</span>
-              </div>
-              <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
-                {personalData.vision}
-              </p>
-            </div>
-          </div>
+          <div className="space-y-4 text-[#9da7b3] leading-relaxed text-sm sm:text-base font-sans">
+            <p>
+              I am <strong className="text-white">Engr. Muhammad Nasarullah</strong>, an 
+              <strong className="text-[#00ff9c]"> AI/ML Engineer</strong> and 
+              <strong className="text-[#00b3ff]"> Full-Stack Web Developer</strong> with a Bachelor's degree in 
+              Computer Engineering from the <strong className="text-white">Institute of Space Technology (IST), KICSIT</strong> (CGPA 3.23 / 4.00), maintaining a continuous First Division record throughout my academic sessions.
+            </p>
 
-          {/* Right Credentials Column */}
-          <div className="lg:col-span-5 space-y-4">
-            
-            {/* Quick Badges Card */}
-            <div className="p-6 rounded-2xl bg-slate-900/70 border border-slate-800 space-y-4">
-              <h3 className="text-base font-bold text-white flex items-center gap-2">
-                <Award className="w-4 h-4 text-emerald-400" />
-                Honors & Accreditations
-              </h3>
+            <p>
+              I combine the mathematical rigor of machine learning, deep learning, and computer vision with modern full-stack web engineering. My portfolio includes real-time hazardous fire & smoke detection engines (YOLOv8), financial market risk classifiers (US stocks & FINRA metrics), transformer-based NLP news sentiment predictors, and production e-commerce platforms.
+            </p>
 
-              <div className="space-y-3">
-                <div className="flex items-start gap-3 p-3 rounded-xl bg-slate-950/60 border border-slate-800/60">
-                  <div className="w-8 h-8 rounded-lg bg-emerald-500/10 flex items-center justify-center shrink-0">
-                    <GraduationCap className="w-4 h-4 text-emerald-400" />
-                  </div>
-                  <div>
-                    <h4 className="text-xs font-bold text-white uppercase tracking-wider">PEC Registered Engineer</h4>
-                    <p className="text-xs text-slate-400 mt-0.5">
-                      Accredited by Pakistan Engineering Council as a professional Computer Engineer.
-                    </p>
-                  </div>
-                </div>
-
-                <div className="flex items-start gap-3 p-3 rounded-xl bg-slate-950/60 border border-slate-800/60">
-                  <div className="w-8 h-8 rounded-lg bg-teal-500/10 flex items-center justify-center shrink-0">
-                    <BookOpen className="w-4 h-4 text-teal-400" />
-                  </div>
-                  <div>
-                    <h4 className="text-xs font-bold text-white uppercase tracking-wider">Hafiz-e-Quran</h4>
-                    <p className="text-xs text-slate-400 mt-0.5">
-                      Completed full memorization of the Holy Quran, fostering immense discipline and focus.
-                    </p>
-                  </div>
-                </div>
-
-                <div className="flex items-start gap-3 p-3 rounded-xl bg-slate-950/60 border border-slate-800/60">
-                  <div className="w-8 h-8 rounded-lg bg-cyan-500/10 flex items-center justify-center shrink-0">
-                    <CheckCircle className="w-4 h-4 text-cyan-400" />
-                  </div>
-                  <div>
-                    <h4 className="text-xs font-bold text-white uppercase tracking-wider">Academic First Division</h4>
-                    <p className="text-xs text-slate-400 mt-0.5">
-                      Consistent First Division throughout Matriculation (87.8%), Intermediate (64.4%), and BS Computer Engineering (CGPA 3.23).
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Quick Info Matrix */}
-            <div className="p-5 rounded-2xl bg-slate-900/50 border border-slate-800/70">
-              <h4 className="text-xs font-mono uppercase tracking-wider text-slate-400 mb-3">
-                Key Details
-              </h4>
-              <div className="grid grid-cols-2 gap-3 text-xs">
-                <div>
-                  <span className="text-slate-500 block">Location:</span>
-                  <span className="text-slate-200 font-medium">Sargodha, Pakistan</span>
-                </div>
-                <div>
-                  <span className="text-slate-500 block">Degree:</span>
-                  <span className="text-slate-200 font-medium">BS Computer Eng.</span>
-                </div>
-                <div>
-                  <span className="text-slate-500 block">Institute:</span>
-                  <span className="text-slate-200 font-medium">IST (KICSIT)</span>
-                </div>
-                <div>
-                  <span className="text-slate-500 block">Languages:</span>
-                  <span className="text-slate-200 font-medium">English, Urdu</span>
-                </div>
-              </div>
-            </div>
-
-          </div>
-
-        </div>
-
-        {/* Section 8: Professional Strengths ("What I Bring to the Table") */}
-        <div>
-          <div className="text-center mb-8">
-            <h3 className="text-xl sm:text-2xl font-bold text-white tracking-tight">
-              What I Bring to the Table
-            </h3>
-            <p className="text-xs sm:text-sm text-slate-400 mt-1">
-              Core working competencies and professional value I deliver to engineering teams
+            <p>
+              Additionally, I served as a <strong>Tech Fellow</strong> under the Federal Directorate of Education's <em>Disruptive Education</em> initiative, conducting hands-on engineering labs in robotics, Arduino programming, sensors, and IoT hardware prototyping.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            {professionalStrengths.map((item, idx) => (
-              <div
-                key={idx}
-                className="p-5 rounded-xl bg-slate-900/40 border border-slate-800/70 hover:border-emerald-500/30 hover:bg-slate-900/70 transition-all duration-200 group"
-              >
-                <div className="w-10 h-10 rounded-lg bg-slate-800/80 border border-slate-700/60 flex items-center justify-center mb-3 group-hover:scale-105 transition-transform">
-                  {getIcon(item.icon)}
-                </div>
-                <h4 className="text-sm font-semibold text-white mb-1.5 group-hover:text-emerald-400 transition-colors">
-                  {item.title}
-                </h4>
-                <p className="text-xs text-slate-400 leading-relaxed">
-                  {item.desc}
-                </p>
+          {/* Academic & Professional Distinction Badges */}
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 mt-8 font-mono text-xs">
+            <div className="p-3 bg-[#0d1117] border border-[#1f2933] hover:border-[#00ff9c] transition-colors flex items-center gap-2.5">
+              <ShieldCheck className="w-4 h-4 text-[#00ff9c] shrink-0" />
+              <div>
+                <span className="text-[10px] text-[#555] block">ACCREDITATION</span>
+                <span className="text-white font-bold">PEC Registered</span>
               </div>
-            ))}
+            </div>
+
+            <div className="p-3 bg-[#0d1117] border border-[#1f2933] hover:border-[#00ff9c] transition-colors flex items-center gap-2.5">
+              <BookOpen className="w-4 h-4 text-[#00ff9c] shrink-0" />
+              <div>
+                <span className="text-[10px] text-[#555] block">HONOR</span>
+                <span className="text-white font-bold">Hafiz-e-Quran</span>
+              </div>
+            </div>
+
+            <div className="p-3 bg-[#0d1117] border border-[#1f2933] hover:border-[#00b3ff] transition-colors flex items-center gap-2.5">
+              <Award className="w-4 h-4 text-[#00b3ff] shrink-0" />
+              <div>
+                <span className="text-[10px] text-[#555] block">MERIT</span>
+                <span className="text-white font-bold">First Division</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Right Column: 3D Holographic AI Neural Core */}
+        <div className="lg:col-span-5 relative flex justify-center items-center py-8">
+          <div className="absolute w-80 h-80 bg-[#00ff9c]/10 rounded-full blur-[110px] animate-pulse pointer-events-none" />
+
+          <div className="cyber-3d-wrapper">
+            <div className="cyber-card">
+              <div className="w-full h-full rounded-2xl bg-[#0d1117] border border-[#00ff9c]/40 shadow-[0_0_30px_rgba(0,255,156,0.2)] p-6 flex flex-col justify-between relative overflow-hidden backdrop-blur-xl">
+                
+                {/* Background Scanline Pattern */}
+                <div className="absolute inset-0 pointer-events-none opacity-10 bg-[linear-gradient(#00ff9c_1px,transparent_1px)] bg-[size:100%_4px]" />
+
+                {/* HUD Top Bar */}
+                <div className="flex justify-between items-center font-mono text-[10px] text-[#00ff9c] pb-3 border-b border-[#1f2933] relative z-10">
+                  <span className="flex items-center gap-1.5">
+                    <Activity className="w-3.5 h-3.5 animate-pulse" />
+                    AI_CORE_ONLINE
+                  </span>
+                  <span className="text-[#9da7b3]">LAT: 12ms // 60FPS</span>
+                </div>
+
+                {/* Central Futuristic Visualization */}
+                <div className="relative my-auto flex flex-col items-center justify-center z-10 py-4">
+                  {/* Concentric Rotating Rings */}
+                  <div className="w-40 h-40 rounded-full border-2 border-dashed border-[#00ff9c]/40 flex items-center justify-center animate-[spin_20s_linear_infinite] relative">
+                    <div className="w-32 h-32 rounded-full border border-[#00b3ff]/50 flex items-center justify-center animate-[spin_12s_linear_infinite_reverse]">
+                      <div className="w-20 h-20 rounded-full bg-[#00ff9c]/10 border border-[#00ff9c] flex items-center justify-center shadow-[0_0_20px_rgba(0,255,156,0.5)]">
+                        <Cpu className="w-10 h-10 text-[#00ff9c]" />
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Simulated HUD Detection Boxes */}
+                  <div className="absolute top-2 left-2 px-2 py-0.5 rounded bg-black/80 border border-red-500/80 font-mono text-[9px] text-red-400">
+                    [YOLOv8] HAZARD_DETECT: 98.4%
+                  </div>
+                  <div className="absolute bottom-2 right-2 px-2 py-0.5 rounded bg-black/80 border border-[#00ff9c]/80 font-mono text-[9px] text-[#00ff9c]">
+                    [MODEL] LIGHTGBM: SPIKE_CONF 92%
+                  </div>
+                </div>
+
+                {/* HUD Footer Telemetry */}
+                <div className="font-mono text-[10px] text-[#9da7b3] pt-3 border-t border-[#1f2933] flex justify-between items-center relative z-10">
+                  <span>CORE: IST_CE_2026</span>
+                  <span className="text-[#00ff9c] font-bold">READY_TO_DEPLOY</span>
+                </div>
+
+              </div>
+            </div>
           </div>
         </div>
 
       </div>
+
+      {/* Services Grid (6 Cyber Cards with Hover Elevation & Glow) */}
+      <div className="mt-20">
+        <div className="mb-8">
+          <p className="font-mono text-[#00ff9c] text-xs tracking-[0.3em] uppercase mb-1">
+            CAPABILITIES & SPECIALIZATIONS
+          </p>
+          <h3 className="font-header text-2xl sm:text-3xl font-bold text-white">
+            Engineering Solutions I Deliver
+          </h3>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {services.map((srv) => (
+            <div
+              key={srv.code}
+              className="border border-[#00ff9c]/20 p-6 bg-[#0b1120]/60 backdrop-blur-sm hover:border-[#00ff9c] hover:-translate-y-2 hover:shadow-[0_0_30px_rgba(0,255,156,0.18)] transition-all duration-300 rounded-sm flex flex-col justify-between group"
+            >
+              <div>
+                <span className="font-mono text-[#00ff9c] text-xs tracking-widest block mb-2">
+                  {srv.code}
+                </span>
+                <h4 className="text-white text-lg font-bold font-header mb-3 group-hover:text-[#00ff9c] transition-colors">
+                  {srv.title}
+                </h4>
+                <p className="text-[#9da7b3] text-sm leading-relaxed mb-6 font-sans">
+                  {srv.desc}
+                </p>
+              </div>
+
+              <div className="pt-4 border-t border-[#1f2933] font-mono text-[11px] text-[#00ff9c]/80">
+                &gt; {srv.tech}
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
     </section>
   );
 }
-

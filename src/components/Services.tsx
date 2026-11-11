@@ -3,7 +3,7 @@
 import { services } from "@/data/portfolioData";
 import { 
   Brain, 
-  Layout, 
+  Code2, 
   Database, 
   Cpu, 
   CheckCircle2, 
@@ -16,12 +16,12 @@ interface ServicesProps {
 }
 
 export default function Services({ onSelectService }: ServicesProps) {
-  const getServiceIcon = (iconName: string) => {
+  const getIcon = (iconName: string) => {
     switch (iconName) {
-      case "Brain": return <Brain className="w-6 h-6 text-emerald-400" />;
-      case "Layout": return <Layout className="w-6 h-6 text-teal-400" />;
-      case "Database": return <Database className="w-6 h-6 text-cyan-400" />;
-      default: return <Cpu className="w-6 h-6 text-blue-400" />;
+      case "Brain": return <Brain className="w-6 h-6 text-[#00ff9c]" />;
+      case "Layout": return <Code2 className="w-6 h-6 text-[#00b3ff]" />;
+      case "Database": return <Database className="w-6 h-6 text-[#00ff9c]" />;
+      default: return <Cpu className="w-6 h-6 text-[#00b3ff]" />;
     }
   };
 
@@ -36,82 +36,73 @@ export default function Services({ onSelectService }: ServicesProps) {
   };
 
   return (
-    <section id="services" className="py-24 relative border-t border-slate-900 bg-slate-950/60">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        
-        {/* Section Header */}
-        <div className="flex flex-col items-center text-center mb-16">
-          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-mono uppercase tracking-wider mb-3">
-            <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
-            Client & Business Offerings
-          </div>
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
-            Services I Offer
-          </h2>
-          <p className="text-slate-400 max-w-xl text-sm sm:text-base mt-2">
-            Professional freelance, consulting, and end-to-end development services for businesses and innovators.
-          </p>
-        </div>
+    <section id="services" className="max-w-7xl mx-auto px-6 py-24 border-b border-[#1f2933]">
+      <div className="mb-14">
+        <p className="font-mono text-[#00ff9c] text-xs tracking-[0.5em] mb-4 uppercase">
+          07. CLIENT_SOLUTIONS
+        </p>
+        <h2 className="font-header text-3xl sm:text-4xl font-bold text-white text-left">
+          Consulting & Development Offerings
+        </h2>
+        <p className="text-[#9da7b3] font-mono text-xs sm:text-sm mt-2">
+          Turnkey engineering services for startups, businesses, and research initiatives.
+        </p>
+      </div>
 
-        {/* Services Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {services.map((service) => (
-            <div
-              key={service.id}
-              className="flex flex-col justify-between p-7 rounded-2xl bg-slate-900/40 border border-slate-800 hover:border-emerald-500/40 hover:bg-slate-900/70 transition-all duration-300 group"
-            >
-              <div>
-                {/* Header */}
-                <div className="flex items-center justify-between mb-4">
-                  <div className="w-12 h-12 rounded-xl bg-slate-800/80 border border-slate-700/80 flex items-center justify-center group-hover:scale-105 transition-transform">
-                    {getServiceIcon(service.icon)}
-                  </div>
-                  <span className="text-[11px] font-mono font-semibold px-2.5 py-1 rounded-md bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
-                    {service.badge}
-                  </span>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        {services.map((srv) => (
+          <div
+            key={srv.id}
+            className="p-7 sm:p-8 bg-[#0d1117] border border-[#1f2933] hover:border-[#00ff9c]/50 transition-all duration-300 rounded-sm flex flex-col justify-between group hover:-translate-y-1 hover:shadow-[0_0_25px_rgba(0,255,156,0.15)]"
+          >
+            <div>
+              {/* Header */}
+              <div className="flex items-center justify-between mb-4">
+                <div className="w-12 h-12 rounded border border-[#1f2933] bg-[#050505] flex items-center justify-center group-hover:border-[#00ff9c] transition-colors">
+                  {getIcon(srv.icon)}
                 </div>
-
-                {/* Title & Short Description */}
-                <h3 className="text-xl font-bold text-white group-hover:text-emerald-300 transition-colors mb-2">
-                  {service.title}
-                </h3>
-                <p className="text-xs sm:text-sm text-slate-400 leading-relaxed mb-4">
-                  {service.description}
-                </p>
-
-                {/* Deliverables Checklist */}
-                <div className="space-y-2 mb-6">
-                  <h4 className="text-xs font-mono uppercase tracking-wider text-slate-400 font-semibold">
-                    Typical Deliverables:
-                  </h4>
-                  <ul className="space-y-2 text-xs text-slate-300">
-                    {service.deliverables.map((item, dIdx) => (
-                      <li key={dIdx} className="flex items-start gap-2">
-                        <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 shrink-0 mt-0.5" />
-                        <span>{item}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
+                <span className="font-mono text-[10px] font-bold px-2 py-0.5 border border-[#00ff9c]/40 text-[#00ff9c] bg-[#00ff9c]/5 uppercase tracking-wider">
+                  {srv.badge}
+                </span>
               </div>
 
-              {/* Action Button */}
-              <div className="pt-4 border-t border-slate-800/80">
-                <button
-                  onClick={() => handleHireClick(service.title)}
-                  className="w-full inline-flex items-center justify-center gap-2 py-2.5 px-4 rounded-xl bg-slate-800/80 hover:bg-emerald-500 hover:text-slate-950 text-slate-200 text-xs font-semibold transition-all duration-200 border border-slate-700/80 hover:border-emerald-400 shadow-sm"
-                >
-                  <span>Request This Service</span>
-                  <ArrowRight className="w-3.5 h-3.5" />
-                </button>
-              </div>
+              {/* Title & Description */}
+              <h3 className="font-header text-xl font-bold text-white mb-2 group-hover:text-[#00ff9c] transition-colors">
+                {srv.title}
+              </h3>
+              <p className="text-xs sm:text-sm text-[#9da7b3] leading-relaxed mb-6 font-sans">
+                {srv.description}
+              </p>
 
+              {/* Deliverables Checklist */}
+              <div className="space-y-2 mb-6">
+                <span className="font-mono text-[11px] text-white uppercase tracking-wider block font-bold mb-2">
+                  KEY_DELIVERABLES:
+                </span>
+                <ul className="space-y-2 text-xs text-slate-300">
+                  {srv.deliverables.map((item, idx) => (
+                    <li key={idx} className="flex items-start gap-2 bg-[#050505] p-2 border border-[#1f2933] rounded-sm">
+                      <span className="w-1.5 h-1.5 bg-[#00ff9c] shrink-0 mt-1.5" />
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
             </div>
-          ))}
-        </div>
 
+            {/* CTA */}
+            <div className="pt-4 border-t border-[#1f2933]">
+              <button
+                onClick={() => handleHireClick(srv.title)}
+                className="w-full py-2.5 px-4 border border-[#00ff9c]/40 text-[#00ff9c] hover:bg-[#00ff9c] hover:text-black font-mono text-xs font-bold uppercase tracking-wider transition-all duration-200 flex items-center justify-center gap-2 rounded-sm"
+              >
+                <span>REQUEST_SERVICE.exe</span>
+                <ArrowRight className="w-3.5 h-3.5" />
+              </button>
+            </div>
+          </div>
+        ))}
       </div>
     </section>
   );
 }
-
