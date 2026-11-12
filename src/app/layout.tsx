@@ -53,11 +53,12 @@ export const metadata: Metadata = {
   },
   icons: {
     icon: [
-      { url: "/portfolio-logo.png", type: "image/png" },
       { url: "/favicon.ico", sizes: "any" },
+      { url: "/icon-32x32.png", type: "image/png", sizes: "32x32" },
+      { url: "/icon-192x192.png", type: "image/png", sizes: "192x192" },
     ],
-    shortcut: "/portfolio-logo.png",
-    apple: "/portfolio-logo.png",
+    shortcut: "/favicon.ico",
+    apple: "/icon-192x192.png",
   },
 };
 
@@ -70,8 +71,9 @@ export default function RootLayout({
     <html lang="en" className={`${inter.variable} scroll-smooth`}>
       <head>
         <meta name="theme-color" content="#f8fafc" />
-        <link rel="icon" href="/portfolio-logo.png" type="image/png" />
-        <link rel="apple-touch-icon" href="/portfolio-logo.png" />
+        <link rel="icon" href="/favicon.ico" sizes="any" />
+        <link rel="icon" href="/icon-32x32.png" type="image/png" sizes="32x32" />
+        <link rel="apple-touch-icon" href="/icon-192x192.png" />
       </head>
       <body className="bg-slate-50 dark:bg-[#090d16] text-slate-900 dark:text-slate-100 font-sans antialiased selection:bg-indigo-500/20 selection:text-indigo-600 dark:selection:bg-indigo-500/30 dark:selection:text-indigo-300 transition-colors duration-300">
         {children}
