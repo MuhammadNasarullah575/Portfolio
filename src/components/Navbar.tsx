@@ -8,7 +8,6 @@ import {
   Moon, 
   Menu, 
   X, 
-  FileText, 
   Sparkles, 
   ArrowRight, 
   Github, 
@@ -17,12 +16,11 @@ import {
 } from "lucide-react";
 
 interface NavbarProps {
-  onOpenResume?: () => void;
   isDark: boolean;
   onToggleTheme: () => void;
 }
 
-export default function Navbar({ onOpenResume, isDark, onToggleTheme }: NavbarProps) {
+export default function Navbar({ isDark, onToggleTheme }: NavbarProps) {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
@@ -112,15 +110,6 @@ export default function Navbar({ onOpenResume, isDark, onToggleTheme }: NavbarPr
                 )}
               </button>
 
-              {/* View CV Trigger */}
-              <button
-                onClick={onOpenResume}
-                className="hidden sm:inline-flex items-center gap-1.5 px-3.5 py-2 text-xs font-semibold rounded-xl bg-white dark:bg-slate-900 text-slate-800 dark:text-slate-200 border border-slate-200 dark:border-slate-800 hover:border-slate-300 dark:hover:border-slate-700 transition shadow-sm cursor-pointer"
-              >
-                <FileText className="w-3.5 h-3.5 text-indigo-600 dark:text-indigo-400" />
-                <span>Resume</span>
-              </button>
-
               {/* Let's Talk CTA */}
               <a
                 href="#contact"
@@ -166,18 +155,7 @@ export default function Navbar({ onOpenResume, isDark, onToggleTheme }: NavbarPr
             </div>
 
             <div className="pt-4 border-t border-slate-200 dark:border-slate-800 flex flex-col gap-2.5">
-              <button
-                onClick={() => {
-                  setMobileMenuOpen(false);
-                  if (onOpenResume) onOpenResume();
-                }}
-                className="w-full flex items-center justify-center gap-2 py-2.5 rounded-xl border border-slate-200 dark:border-slate-800 text-xs font-semibold text-slate-800 dark:text-slate-200 bg-slate-50 dark:bg-slate-800/60"
-              >
-                <FileText className="w-4 h-4 text-indigo-600 dark:text-indigo-400" />
-                <span>View & Print Curriculum Vitae</span>
-              </button>
-
-              <div className="flex items-center justify-between pt-2">
+              <div className="flex items-center justify-between pt-1">
                 <span className="text-xs text-slate-500 font-medium">Switch Theme:</span>
                 <button
                   onClick={onToggleTheme}

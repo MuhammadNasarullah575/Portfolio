@@ -11,10 +11,8 @@ import Skills from "@/components/Skills";
 import Services from "@/components/Services";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
-import ResumeModal from "@/components/ResumeModal";
 
 export default function Home() {
-  const [resumeOpen, setResumeOpen] = useState(false);
   const [selectedService, setSelectedService] = useState<string>(
     "AI & Machine Learning Solutions"
   );
@@ -57,7 +55,6 @@ export default function Home() {
       
       {/* Navigation with Theme Switcher */}
       <Navbar
-        onOpenResume={() => setResumeOpen(true)}
         isDark={isDark}
         onToggleTheme={toggleTheme}
       />
@@ -65,7 +62,7 @@ export default function Home() {
       {/* Main Flow */}
       <main>
         {/* Hero Section */}
-        <Hero onOpenResume={() => setResumeOpen(true)} />
+        <Hero />
 
         {/* About & Credentials */}
         <About />
@@ -91,13 +88,6 @@ export default function Home() {
 
       {/* Footer */}
       <Footer />
-
-      {/* In-App Resume / CV Viewer Modal */}
-      <ResumeModal
-        isOpen={resumeOpen}
-        onClose={() => setResumeOpen(false)}
-      />
-
     </div>
   );
 }

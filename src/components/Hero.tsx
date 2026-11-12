@@ -4,7 +4,6 @@ import { useState, useEffect } from "react";
 import { personalData } from "@/data/portfolioData";
 import { 
   ArrowRight, 
-  FileText, 
   Github, 
   Linkedin, 
   Mail, 
@@ -16,11 +15,7 @@ import {
   ArrowUpRight 
 } from "lucide-react";
 
-interface HeroProps {
-  onOpenResume?: () => void;
-}
-
-export default function Hero({ onOpenResume }: HeroProps) {
+export default function Hero() {
   const roles = [
     "AI & Machine Learning Engineer",
     "Computer Vision & YOLOv8 Specialist",
@@ -120,14 +115,6 @@ export default function Hero({ onOpenResume }: HeroProps) {
             <Cpu className="w-4 h-4 text-indigo-600 dark:text-indigo-400" />
             <span>Tech Fellow Hardware Lab</span>
           </a>
-
-          <button
-            onClick={onOpenResume}
-            className="inline-flex items-center gap-2 px-5 py-3.5 rounded-xl bg-slate-100 dark:bg-slate-800/80 hover:bg-slate-200 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-300 font-semibold text-xs sm:text-sm transition-all"
-          >
-            <FileText className="w-4 h-4 text-indigo-600 dark:text-indigo-400" />
-            <span>Curriculum Vitae</span>
-          </button>
         </div>
 
         {/* Social Quick Links Bar */}
