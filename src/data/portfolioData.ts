@@ -113,6 +113,15 @@ export const personalData = {
 
 export const hardwareProjects: HardwareProject[] = [
   {
+    id: "milk-quality-detection",
+    title: "Milk Quality Detection using pH Sensor",
+    image: "/images/tech-fellow/milk-quality.jpg",
+    category: "IoT Food Safety & Biochemical Sensing",
+    components: ["Arduino Uno", "pH Sensor Probe", "16x2 I2C LCD Display", "Python", "Embedded Systems"],
+    description: "Developed an IoT-based milk quality detection system using a pH sensor to measure milk acidity and assess its quality. The system analyzes pH readings and displays real-time results, helping identify potentially spoiled or poor-quality milk.",
+    impact: "Evaluates biochemical milk acidity levels in real-time, preventing consumption of spoiled or unsafe dairy products."
+  },
+  {
     id: "door-lock",
     title: "Smart Keypad Door Lock System",
     image: "/images/tech-fellow/door-lock.jfif",

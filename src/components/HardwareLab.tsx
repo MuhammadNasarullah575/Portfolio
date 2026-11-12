@@ -41,7 +41,7 @@ export default function HardwareLab() {
 
           <div className="flex items-center gap-3 text-xs font-semibold">
             <span className="px-3.5 py-2 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-300 shadow-sm">
-              6 Physical Prototypes
+              {hardwareProjects.length} Physical Prototypes
             </span>
             <span className="px-3.5 py-2 rounded-xl bg-emerald-50 dark:bg-emerald-950/60 border border-emerald-200 dark:border-emerald-800/60 text-emerald-700 dark:text-emerald-400 shadow-sm">
               30+ Students Trained
