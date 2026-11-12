@@ -30,4 +30,9 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
-
+# local folders
+AI-Based Fire Detection system/
+Daraz Scraper/
+Short squeeze risk prediction system/
+Tech Fellow Role/
+Tijaaro website/
