@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Muhammad Nasarullah — Official Portfolio Website 🚀
 
 > **AI/ML Engineer | Full-Stack Web Developer | Computer Engineer**  
@@ -101,3 +102,6 @@ Aapka OpenGraph preview card automatically configure hai. Jab aap apna live link
 3. **About Section:**
    Add: *"Explore my interactive projects, models, and live demos at [your-link]"*.
 
+=======
+# Portfolio
+>>>>>>> b9b9fbf4847bd4a19364360b0c4eb07f09783293
