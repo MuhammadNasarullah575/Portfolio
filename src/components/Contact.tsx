@@ -245,11 +245,11 @@ export default function Contact({ preselectedService }: ContactProps) {
             <div className="p-8 sm:p-9 rounded-3xl bg-white dark:bg-slate-900/60 border border-slate-200/80 dark:border-slate-800 shadow-sm">
               <h3 className="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white mb-2 flex items-center gap-2">
                 <MessageSquare className="w-5 h-5 text-indigo-600 dark:text-indigo-400" />
-                <span>Send a Direct Inquiry</span>
+                <span>Send a Message</span>
               </h3>
               
               <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400 mb-6">
-                Directly transmit your requirements to my inbox with instant notification.
+                Feel free to reach out for project inquiries, collaborations, or engineering roles.
               </p>
 
               {isSuccess ? (
@@ -259,7 +259,7 @@ export default function Contact({ preselectedService }: ContactProps) {
                   </div>
                   
                   <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-50 dark:bg-emerald-950/50 border border-emerald-200 dark:border-emerald-800 text-emerald-700 dark:text-emerald-300 text-xs font-semibold uppercase tracking-wider mb-3">
-                    Message Delivered
+                    Message Sent
                   </span>
 
                   <h4 className="text-xl sm:text-2xl font-extrabold text-slate-900 dark:text-white tracking-tight mb-2">
@@ -267,7 +267,7 @@ export default function Contact({ preselectedService }: ContactProps) {
                   </h4>
 
                   <p className="text-sm text-slate-600 dark:text-slate-300 max-w-md mx-auto leading-relaxed mb-6">
-                    Your inquiry regarding <strong className="text-slate-900 dark:text-white">{formData.service}</strong> has been transmitted directly to my email. I typically review and respond within <span className="font-semibold text-indigo-600 dark:text-indigo-400">12–24 hours</span>.
+                    Your message regarding <strong className="text-slate-900 dark:text-white">{formData.service}</strong> has been sent successfully. I will get back to you within <span className="font-semibold text-indigo-600 dark:text-indigo-400">12–24 hours</span>.
                   </p>
 
                   <div className="p-4 rounded-2xl bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 max-w-sm mx-auto text-left text-xs space-y-1.5 mb-7">
@@ -308,7 +308,7 @@ export default function Contact({ preselectedService }: ContactProps) {
                             rel="noopener noreferrer"
                             className="underline font-bold text-indigo-600 dark:text-indigo-400"
                           >
-                            Click here to dispatch directly via Gmail
+                            Click here to send via Gmail
                           </a>
                         </div>
                       </div>
@@ -404,12 +404,12 @@ export default function Contact({ preselectedService }: ContactProps) {
                     {isSubmitting ? (
                       <>
                         <Loader2 className="w-4 h-4 animate-spin" />
-                        <span>Transmitting Message Directly...</span>
+                        <span>Sending Message...</span>
                       </>
                     ) : (
                       <>
                         <Send className="w-4 h-4" />
-                        <span>Send Message Directly</span>
+                        <span>Send Message</span>
                       </>
                     )}
                   </button>
