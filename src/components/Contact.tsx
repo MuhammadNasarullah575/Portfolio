@@ -50,7 +50,7 @@ export default function Contact({ preselectedService }: ContactProps) {
     setErrorMessage("");
 
     try {
-      const response = await fetch(`https://formsubmit.co/ajax/${personalData.email}`, {
+      const response = await fetch("https://formsubmit.co/ajax/a0b5c2560b1b76594aed13e4c9d1c580", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
