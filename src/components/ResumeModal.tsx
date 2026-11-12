@@ -9,6 +9,7 @@ import {
   MapPin, 
   Github, 
   Linkedin, 
+  Phone,
   GraduationCap, 
   CheckCircle2, 
   ExternalLink 
@@ -78,14 +79,43 @@ export default function ResumeModal({ isOpen, onClose }: ResumeModalProps) {
                 <MapPin className="w-3.5 h-3.5 text-indigo-600" />
                 {personalData.location}
               </span>
-              <span className="flex items-center gap-1">
+              <a
+                href={`https://mail.google.com/mail/?view=cm&fs=1&to=${personalData.email}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-1 hover:text-indigo-600 transition"
+              >
                 <Mail className="w-3.5 h-3.5 text-indigo-600" />
                 {personalData.email}
-              </span>
-              <span className="flex items-center gap-1">
+              </a>
+              <a
+                href={personalData.whatsapp}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-1 hover:text-indigo-600 transition"
+                title="Chat on WhatsApp"
+              >
+                <Phone className="w-3.5 h-3.5 text-indigo-600" />
+                {personalData.phone}
+              </a>
+              <a
+                href={personalData.github}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-1 hover:text-indigo-600 transition"
+              >
                 <Github className="w-3.5 h-3.5 text-indigo-600" />
                 github.com/MuhammadNasarullah575
-              </span>
+              </a>
+              <a
+                href={personalData.linkedin}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-1 hover:text-indigo-600 transition"
+              >
+                <Linkedin className="w-3.5 h-3.5 text-indigo-600" />
+                linkedin.com/in/muhammad-nasarullah-504664282
+              </a>
             </div>
           </div>
 

@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import Image from "next/image";
 import { personalData } from "@/data/portfolioData";
 import { 
   Sun, 
@@ -58,10 +59,15 @@ export default function Navbar({ onOpenResume, isDark, onToggleTheme }: NavbarPr
             {/* Logo */}
             <a href="#" className="flex items-center gap-3 group">
               <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-indigo-600 via-indigo-500 to-violet-600 p-[1.5px] shadow-sm group-hover:shadow-indigo-500/25 transition-all">
-                <div className="w-full h-full bg-white dark:bg-slate-900 rounded-[10px] flex items-center justify-center">
-                  <span className="font-extrabold text-sm bg-gradient-to-r from-indigo-600 to-violet-600 bg-clip-text text-transparent">
-                    MN
-                  </span>
+                <div className="w-full h-full bg-white dark:bg-slate-900 rounded-[10px] flex items-center justify-center overflow-hidden">
+                  <Image
+                    src="/portfolio-logo.png"
+                    alt="Muhammad Nasarullah Logo"
+                    width={40}
+                    height={40}
+                    className="w-full h-full object-cover rounded-[9px]"
+                    priority
+                  />
                 </div>
               </div>
 

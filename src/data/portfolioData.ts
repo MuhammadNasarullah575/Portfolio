@@ -73,9 +73,10 @@ export const personalData = {
   tagline: "Building Intelligent Solutions Through AI, Engineering, and Modern Web Technologies.",
   location: "Sargodha, Punjab, Pakistan",
   email: "nasarullah.lak@gmail.com",
-  phone: "+92 300 0000000",
+  phone: "+92 323 3937672",
+  whatsapp: "https://wa.me/923233937672",
   github: "https://github.com/MuhammadNasarullah575",
-  linkedin: "https://www.linkedin.com/in/muhammad-nasarullah/",
+  linkedin: "https://www.linkedin.com/in/muhammad-nasarullah-504664282/",
   fiverr: "https://www.fiverr.com/",
   status: "Available for AI/ML, Full-Stack & Automation Opportunities",
   education: {

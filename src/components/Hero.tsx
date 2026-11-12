@@ -30,6 +30,15 @@ export default function Hero({ onOpenResume }: HeroProps) {
   ];
 
   const [currentRoleIndex, setCurrentRoleIndex] = useState(0);
+  const [copiedEmail, setCopiedEmail] = useState(false);
+
+  const handleEmailClick = () => {
+    try {
+      navigator.clipboard.writeText(personalData.email);
+      setCopiedEmail(true);
+      setTimeout(() => setCopiedEmail(false), 2500);
+    } catch (_) {}
+  };
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -141,13 +150,23 @@ export default function Hero({ onOpenResume }: HeroProps) {
           >
             <Linkedin className="w-4 h-4" />
           </a>
-          <a
-            href={`mailto:${personalData.email}`}
-            className="p-2.5 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 hover:text-indigo-600 dark:hover:text-white hover:border-indigo-300 dark:hover:border-indigo-500/40 transition shadow-sm"
-            title="Email"
-          >
-            <Mail className="w-4 h-4" />
-          </a>
+          <div className="relative">
+            <a
+              href={`https://mail.google.com/mail/?view=cm&fs=1&to=${personalData.email}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={handleEmailClick}
+              className="p-2.5 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 hover:text-indigo-600 dark:hover:text-white hover:border-indigo-300 dark:hover:border-indigo-500/40 transition shadow-sm flex items-center justify-center"
+              title={`Email: ${personalData.email} (Opens Gmail & copies address)`}
+            >
+              <Mail className="w-4 h-4" />
+            </a>
+            {copiedEmail && (
+              <span className="absolute -top-8 left-1/2 -translate-x-1/2 px-2 py-0.5 bg-slate-900 dark:bg-slate-100 text-white dark:text-slate-900 text-[10px] font-medium rounded shadow-md whitespace-nowrap animate-in fade-in">
+                Email copied!
+              </span>
+            )}
+          </div>
         </div>
 
         {/* Live Metric Stats Cards */}

@@ -47,7 +47,10 @@ export default function Contact({ preselectedService }: ContactProps) {
     const mailtoBody = encodeURIComponent(
       `Hi Muhammad Nasarullah,\n\nName: ${formData.name}\nEmail: ${formData.email}\nService: ${formData.service}\n\nMessage:\n${formData.message}`
     );
-    window.location.href = `mailto:${personalData.email}?subject=${mailtoSubject}&body=${mailtoBody}`;
+    window.open(
+      `https://mail.google.com/mail/?view=cm&fs=1&to=${personalData.email}&su=${mailtoSubject}&body=${mailtoBody}`,
+      "_blank"
+    );
     setSubmitted(true);
     setTimeout(() => setSubmitted(false), 5000);
   };
@@ -104,8 +107,11 @@ export default function Contact({ preselectedService }: ContactProps) {
               </div>
 
               <a
-                href={`mailto:${personalData.email}`}
+                href={`https://mail.google.com/mail/?view=cm&fs=1&to=${personalData.email}`}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="text-base sm:text-lg font-bold text-slate-900 dark:text-white hover:text-indigo-600 dark:hover:text-indigo-400 transition break-all"
+                title={`Email: ${personalData.email}`}
               >
                 {personalData.email}
               </a>
@@ -183,10 +189,11 @@ export default function Contact({ preselectedService }: ContactProps) {
               </a>
 
               <a
-                href="https://wa.me/923000000000"
+                href={personalData.whatsapp}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center justify-between p-3.5 rounded-2xl bg-slate-50 dark:bg-slate-800/60 hover:bg-emerald-50 dark:hover:bg-slate-800 border border-slate-200/60 dark:border-slate-700/80 text-xs font-semibold text-slate-800 dark:text-slate-200 hover:text-emerald-600 transition group"
+                title={`Chat on WhatsApp: ${personalData.phone}`}
               >
                 <div className="flex items-center gap-3">
                   <MessageCircle className="w-4 h-4 text-emerald-600" />

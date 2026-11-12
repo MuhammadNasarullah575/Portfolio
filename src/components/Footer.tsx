@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { personalData } from "@/data/portfolioData";
 import { Github, Linkedin, Mail, ArrowUp, Heart } from "lucide-react";
 
@@ -16,8 +17,14 @@ export default function Footer() {
           {/* Logo & Identity */}
           <div className="flex flex-col items-center md:items-start text-center md:text-left">
             <div className="flex items-center gap-2.5 mb-2">
-              <div className="w-8 h-8 rounded-lg bg-gradient-to-tr from-indigo-600 to-violet-600 flex items-center justify-center font-bold text-white text-xs">
-                MN
+              <div className="w-8 h-8 rounded-lg bg-gradient-to-tr from-indigo-600 to-violet-600 p-[1px] flex items-center justify-center overflow-hidden">
+                <Image
+                  src="/portfolio-logo.png"
+                  alt="Muhammad Nasarullah Logo"
+                  width={32}
+                  height={32}
+                  className="w-full h-full object-cover rounded-[7px]"
+                />
               </div>
               <span className="font-bold text-slate-900 dark:text-white text-base">
                 {personalData.name}
@@ -52,9 +59,11 @@ export default function Footer() {
             </a>
 
             <a
-              href={`mailto:${personalData.email}`}
+              href={`https://mail.google.com/mail/?view=cm&fs=1&to=${personalData.email}`}
+              target="_blank"
+              rel="noopener noreferrer"
               className="p-2.5 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900 text-slate-600 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-white hover:border-indigo-300 dark:hover:border-indigo-500/50 transition"
-              title="Email"
+              title={`Email: ${personalData.email}`}
             >
               <Mail className="w-4 h-4" />
             </a>
